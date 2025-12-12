@@ -1,0 +1,57 @@
+@font-face{
+	font-family:"socialshare";
+	src:url("fonts/sns.woff2") format("woff2"),
+	url("fonts/sns.woff") format("woff"),
+	url("fonts/sns.ttf") format("truetype")
+}
+.sharing { font-family:"socialshare"!important; font-size:16px; font-style:normal; }
+.sharing *{font-family:"socialshare"!important}
+.sharing .icon-qq::before { content:"\e60f"; }
+.sharing .icon-weibo::before { content:"\e612"; }
+.sharing .icon-wechat::before { content:"\e610"; }
+.sharing .icon-douban::before { content:"\e64a"; }
+.sharing .icon-qzone::before { content:"\e640"; }
+.sharing .icon-linkedin::before { content:"\e646"; }
+.sharing .icon-diandian::before { content:"\e63a"; }
+.sharing .icon-facebook::before { content:"\e630"; }
+.sharing .icon-google::before { content:"\e6fc"; }
+.sharing .icon-twitter::before { content:"\e619"; }
+.sharing a {position:relative;text-decoration:none;margin:4px;display:inline-block;outline:none; }
+.sharing .sharing-icon { position:relative;display:inline-block;width:28px;height:28px;font-size:0px;border-radius:50%;line-height:28px;border:1px solid #666;color:#666;text-align:center;vertical-align:middle;transition:background 0s ease-out 0s; }
+.sharing .sharing-icon::before { font-size:28px; }
+.sharing .icon-douban::before,.sharing .icon-linkedin::before,.sharing .icon-twitter::before { font-size:22px; }
+.sharing .icon-qq::before, .sharing .icon-qzone::before, .sharing .icon-diandian::before { font-size:26px; line-height:27px; }
+.sharing .sharing-icon:hover { background:#666; color:#fff; text-decoration:none; }
+.sharing .icon-weibo { color:#ff763b; border-color:#ff763b; }
+.sharing .icon-weibo:hover { background:#ff763b; }
+.sharing .icon-qq { color:#12b7f5; border-color:#12b7f5; }
+.sharing .icon-qq:hover { background:#12b7f5; }
+.sharing .icon-qzone { color:#fdbe3d; border-color:#fdbe3d; }
+.sharing .icon-qzone:hover { background:#fdbe3d; }
+.sharing .icon-douban { color:#33b045; border-color:#33b045; }
+.sharing .icon-douban:hover { background:#33b045; }
+.sharing .icon-linkedin { color:#0c65bf; border-color:#0c65bf; }
+.sharing .icon-linkedin:hover { background:#0c65bf}
+.sharing .icon-facebook { color:#0c65da; border-color:#0c65da; }
+.sharing .icon-facebook:hover { background:#0c65da; }
+.sharing .icon-google { color:#db4437; border-color:#db4437; }
+.sharing .icon-google:hover { background:#db4437; }
+.sharing .icon-twitter { color:#29aae1; border-color:#29aae1; }
+.sharing .icon-twitter:hover { background:#29aae1; }
+.sharing .icon-diandian { color:#307dca; border-color:#307dca; }
+.sharing .icon-diandian:hover { background:#307dca; }
+.sharing .icon-wechat { position:relative; color:#4cbf2a; border-color:#4cbf2a; }
+.sharing .icon-wechat:hover { background:#4cbf2a; }
+.sharing .icon-wechat .wechat-qrcode { display:none; border:1px solid #eee; position:absolute; z-index:999; top:-205px; left:-67px; width:160px; height:192px; color:#666; font-size:12px; text-align:center; background-color:#fff; box-shadow:0 2px 10px #aaa; transition:all .2s; -webkit-tansition:all 350ms; -moz-transition:all 350ms; }
+.sharing .icon-wechat .wechat-qrcode.bottom { top:40px; left:-84px; }
+.sharing .icon-wechat .wechat-qrcode.bottom::after { display:none; }
+.sharing .icon-wechat .wechat-qrcode h4 { font-weight:400; height:26px; line-height:26px; font-size:12px; background-color:#f3f3f3; margin:0; padding:0; color:#777; }
+.sharing .icon-wechat .wechat-qrcode .qrcode{ width:100%; margin:10px auto 8px; }
+.sharing .icon-wechat .wechat-qrcode .qrcode img, .sharing .icon-wechat .wechat-qrcode .qrcode canvas { width:100px; margin:0 auto; border:3px solid #fff; background:#fff; display:block; }
+.sharing .icon-wechat .wechat-qrcode .qrcode table { margin:0 !important}
+.sharing .icon-wechat .wechat-qrcode .help p { font-weight:400; text-align:center; line-height:16px; padding:0; margin:0; }
+.sharing .icon-wechat .wechat-qrcode::after { content:''; position:absolute; left:50%; margin-left:-6px; bottom:-14px; width:0; height:0; border-width:8px 6px 6px 6px; border-style:solid; border-color:#fff transparent transparent transparent; }
+.sharing .icon-wechat:hover .wechat-qrcode { display:block; }
+.night .sharing .icon-wechat .wechat-qrcode { color:#999; border:1px solid #3a3a3a; box-shadow:0 2px 10px #191919; background-color:#262626; }
+.night .sharing .icon-wechat .wechat-qrcode h4 { color:#999; background:#3a3a3a; }
+.night .sharing .icon-wechat .wechat-qrcode::after { border-color:#3a3a3a transparent transparent transparent; }

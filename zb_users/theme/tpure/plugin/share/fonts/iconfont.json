@@ -1,0 +1,247 @@
+{
+  "id": "3773549",
+  "name": "SNS",
+  "font_family": "sns",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3071190",
+      "name": "头条",
+      "font_class": "jinritoutiao",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "21840769",
+      "name": "gitee",
+      "font_class": "gitee",
+      "unicode": "ec52",
+      "unicode_decimal": 60498
+    },
+    {
+      "icon_id": "24324469",
+      "name": "快手",
+      "font_class": "kuaishou1",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "27365027",
+      "name": "discord",
+      "font_class": "discord",
+      "unicode": "ebf8",
+      "unicode_decimal": 60408
+    },
+    {
+      "icon_id": "39664922",
+      "name": "xiaohongshu",
+      "font_class": "xiaohongshu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "40577808",
+      "name": "bilibili",
+      "font_class": "bilibili",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "40706735",
+      "name": "推特",
+      "font_class": "tuite1",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "41502936",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "60389",
+      "name": "点点",
+      "font_class": "diandian",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "841268",
+      "name": "豆瓣",
+      "font_class": "douban",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "33981520",
+      "name": "ixigua",
+      "font_class": "ixigua",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1078601",
+      "name": "share_share",
+      "font_class": "shareshare",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "4936951",
+      "name": "google",
+      "font_class": "google",
+      "unicode": "e87a",
+      "unicode_decimal": 59514
+    },
+    {
+      "icon_id": "6353293",
+      "name": "share",
+      "font_class": "share",
+      "unicode": "e86e",
+      "unicode_decimal": 59502
+    },
+    {
+      "icon_id": "11215242",
+      "name": "google+",
+      "font_class": "google1",
+      "unicode": "e6fc",
+      "unicode_decimal": 59132
+    },
+    {
+      "icon_id": "21937767",
+      "name": "ic_share",
+      "font_class": "ic_share",
+      "unicode": "e6c5",
+      "unicode_decimal": 59077
+    },
+    {
+      "icon_id": "4936972",
+      "name": "instagram",
+      "font_class": "instagram",
+      "unicode": "e87f",
+      "unicode_decimal": 59519
+    },
+    {
+      "icon_id": "8356570",
+      "name": "推特1",
+      "font_class": "tuite",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "7714938",
+      "name": "facebook",
+      "font_class": "facebook1",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "6598322",
+      "name": "whatsapp",
+      "font_class": "whatsapp",
+      "unicode": "e8ea",
+      "unicode_decimal": 59626
+    },
+    {
+      "icon_id": "339640",
+      "name": "微信",
+      "font_class": "icon1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "592812",
+      "name": "app_qzone",
+      "font_class": "appqzone",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "1214787",
+      "name": "创建群组",
+      "font_class": "weibiaoti1",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1327494",
+      "name": "QQ",
+      "font_class": "QQ",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "1327499",
+      "name": "sina",
+      "font_class": "sina",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "4937000",
+      "name": "github-fill",
+      "font_class": "github-fill",
+      "unicode": "e885",
+      "unicode_decimal": 59525
+    },
+    {
+      "icon_id": "13314189",
+      "name": "icon_sign_email",
+      "font_class": "icon_sign_email",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "18166694",
+      "name": "抖音",
+      "font_class": "douyin",
+      "unicode": "e8db",
+      "unicode_decimal": 59611
+    },
+    {
+      "icon_id": "19445921",
+      "name": "知乎",
+      "font_class": "zhihu",
+      "unicode": "ea8b",
+      "unicode_decimal": 60043
+    },
+    {
+      "icon_id": "703366",
+      "name": "pinterest",
+      "font_class": "pinterest",
+      "unicode": "e9f6",
+      "unicode_decimal": 59894
+    },
+    {
+      "icon_id": "740932",
+      "name": "tumblr",
+      "font_class": "tumblr",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "742540",
+      "name": "linkedIn",
+      "font_class": "linkedin",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "19446285",
+      "name": "亚马逊",
+      "font_class": "amazon",
+      "unicode": "ea92",
+      "unicode_decimal": 60050
+    },
+    {
+      "icon_id": "19877095",
+      "name": "youtube",
+      "font_class": "youtube",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    }
+  ]
+}
