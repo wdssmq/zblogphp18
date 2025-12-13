@@ -1,0 +1,151 @@
+@font-face {
+  font-family: "sns"; /* Project id 3773549 */
+  src: url('sns.woff2?t=1765168236051') format('woff2'),
+       url('sns.woff?t=1765168236051') format('woff'),
+       url('sns.ttf?t=1765168236051') format('truetype');
+}
+
+.iconfont {
+  font-family: "sns" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jinritoutiao:before {
+  content: "\e649";
+}
+
+.icon-gitee:before {
+  content: "\ec52";
+}
+
+.icon-kuaishou1:before {
+  content: "\e648";
+}
+
+.icon-discord:before {
+  content: "\ebf8";
+}
+
+.icon-xiaohongshu:before {
+  content: "\e60d";
+}
+
+.icon-bilibili:before {
+  content: "\e60e";
+}
+
+.icon-tuite1:before {
+  content: "\e619";
+}
+
+.icon-github:before {
+  content: "\e611";
+}
+
+.icon-diandian:before {
+  content: "\e63a";
+}
+
+.icon-douban:before {
+  content: "\e64a";
+}
+
+.icon-ixigua:before {
+  content: "\e600";
+}
+
+.icon-shareshare:before {
+  content: "\e623";
+}
+
+.icon-google:before {
+  content: "\e87a";
+}
+
+.icon-share:before {
+  content: "\e86e";
+}
+
+.icon-google1:before {
+  content: "\e6fc";
+}
+
+.icon-ic_share:before {
+  content: "\e6c5";
+}
+
+.icon-instagram:before {
+  content: "\e87f";
+}
+
+.icon-tuite:before {
+  content: "\e652";
+}
+
+.icon-facebook1:before {
+  content: "\e630";
+}
+
+.icon-whatsapp:before {
+  content: "\e8ea";
+}
+
+.icon-icon1:before {
+  content: "\e610";
+}
+
+.icon-appqzone:before {
+  content: "\e640";
+}
+
+.icon-weibiaoti1:before {
+  content: "\e604";
+}
+
+.icon-QQ:before {
+  content: "\e60f";
+}
+
+.icon-sina:before {
+  content: "\e612";
+}
+
+.icon-github-fill:before {
+  content: "\e885";
+}
+
+.icon-icon_sign_email:before {
+  content: "\e617";
+}
+
+.icon-douyin:before {
+  content: "\e8db";
+}
+
+.icon-zhihu:before {
+  content: "\ea8b";
+}
+
+.icon-pinterest:before {
+  content: "\e9f6";
+}
+
+.icon-tumblr:before {
+  content: "\e63c";
+}
+
+.icon-linkedin:before {
+  content: "\e646";
+}
+
+.icon-amazon:before {
+  content: "\ea92";
+}
+
+.icon-youtube:before {
+  content: "\e621";
+}
+
