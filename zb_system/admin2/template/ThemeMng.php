@@ -10,19 +10,19 @@ $csrfToken = $zbp->GetCSRFToken();
   {foreach $allthemes as $curTheme}
   {php}<?php
   $cls = $curTheme->IsUsed() ? 'theme-now' : 'theme-other';
-  $themeIdEscaped = htmlspecialchars($curTheme->id);
-  $themeNameEscaped = htmlspecialchars($curTheme->name);
-  $themeUrlEscaped = htmlspecialchars($curTheme->url);
-  $themeAuthorUrlEscaped = htmlspecialchars($curTheme->author_url);
-  $themeAuthorNameEscaped = htmlspecialchars($curTheme->author_name);
-  ?>{/php}
+$themeIdEscaped = htmlspecialchars($curTheme->id);
+$themeNameEscaped = htmlspecialchars($curTheme->name);
+$themeUrlEscaped = htmlspecialchars($curTheme->url);
+$themeAuthorUrlEscaped = htmlspecialchars($curTheme->author_url);
+$themeAuthorNameEscaped = htmlspecialchars($curTheme->author_name);
+?>{/php}
   <div class="theme {$cls}" data-themeid="{$themeIdEscaped}" data-themename="{$themeNameEscaped}">
     <div class="theme-name">
       {php}<?php
-      if (isset($zbp->lang[$curTheme->id]['theme_name'])) {
+    if (isset($zbp->lang[$curTheme->id]['theme_name'])) {
         $curTheme->name = $zbp->lang[$curTheme->id]['theme_name'];
-      }
-      ?>{/php}
+    }
+?>{/php}
 
       {if $curTheme.IsUsed() && $curTheme.path && !in_array('AppCentre', $zbp.GetPreActivePlugin())}
       <a href="{$curTheme.GetManageUrl()}" title="{$zbp.lang['msg']['manage']}"><i class="icon-tools"></i></a>&nbsp;&nbsp;

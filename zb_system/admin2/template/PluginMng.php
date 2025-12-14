@@ -13,13 +13,13 @@
   {foreach $plugins as $plugin}
   {php}<?php
         $pluginIdEscaped = htmlspecialchars($plugin->id);
-        $pluginNoteEscaped = htmlspecialchars($plugin->note);
-        $pluginNameEscaped = htmlspecialchars($plugin->name);
-        $pluginVersionEscaped = htmlspecialchars($plugin->version);
-        $pluginAuthorUrlEscaped = htmlspecialchars($plugin->author_url);
-        $pluginAuthorNameEscaped = htmlspecialchars($plugin->author_name);
-        $pluginModifiedEscaped = htmlspecialchars($plugin->modified);
-        ?>{/php}
+$pluginNoteEscaped = htmlspecialchars($plugin->note);
+$pluginNameEscaped = htmlspecialchars($plugin->name);
+$pluginVersionEscaped = htmlspecialchars($plugin->version);
+$pluginAuthorUrlEscaped = htmlspecialchars($plugin->author_url);
+$pluginAuthorNameEscaped = htmlspecialchars($plugin->author_name);
+$pluginModifiedEscaped = htmlspecialchars($plugin->modified);
+?>{/php}
   <tr>
     <td class="td5 tdCenter{if $plugin.type == 'plugin'} plugin{/if}{if $plugin.IsUsed()} plugin-on{/if}" data-pluginid="{$pluginIdEscaped}">
       <img {if !$plugin.IsUsed()}style="opacity:0.2" {/if} src="{$plugin.GetLogo()}" alt="" width="32" height="32" />

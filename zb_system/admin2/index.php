@@ -1,11 +1,12 @@
 <?php
+
 require '../function/c_system_base.php';
 require '../function/c_system_admin_function.php';
 require 'function/admin2_function.php';
 
 $zbp->Load();
 $zbp->action = GetVars('act', 'GET');
-$zbp->action = ($zbp->action == '') ? 'admin' : $zbp->action;
+$zbp->action = ($zbp->action === '') ? 'admin' : $zbp->action;
 
 if (!$zbp->CheckRights($zbp->action)) {
     $zbp->ShowError(6, __FILE__, __LINE__);
