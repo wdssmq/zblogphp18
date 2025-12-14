@@ -7,6 +7,8 @@ $zbp->Load();
 $zbp->action = GetVars('act', 'GET');
 $zbp->action = ($zbp->action == '') ? 'admin' : $zbp->action;
 
+$zbp->CheckTemplateAdmin();
+
 if (!$zbp->CheckRights($zbp->action)) {
     $zbp->ShowError(6, __FILE__, __LINE__);
     die();

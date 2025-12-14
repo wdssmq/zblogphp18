@@ -18,6 +18,8 @@ class Template
 
     protected $uncompiledCodeStore = array();
 
+    public $compileFiles_hash = array();
+
     public $theme = "";
 
     public $templates = array();
@@ -220,6 +222,7 @@ class Template
         foreach ($this->templates as $name => $content) {
             $s = RemoveBOM($this->CompileFile($content, $name));
             @file_put_contents($this->path . $name . '.php', $s);
+            $this->compileFiles_hash[$name] = md5($s);
         }
     }
 

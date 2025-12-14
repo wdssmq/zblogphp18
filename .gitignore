@@ -6,3 +6,4 @@ zb_users/logs/
 vendor/
 zb_users/data/
 web.config
+test.php
