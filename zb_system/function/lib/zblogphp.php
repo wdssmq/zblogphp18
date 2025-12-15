@@ -2367,77 +2367,43 @@ class ZBlogPHP
     /**
      * 更新模板缓存.
      *
-     * @param bool $onlycheck  为真的且$forcebuild为假的话，只判断是否需要而不Build，返回false就是需要更新，为true就不需要
-     * @param bool $forcebuild
+     * @param bool $onlycheck 为真时，返回值为false表示需要BuildTemplate
+     * @param bool $forcebuild 强制BuildTemplate
      *
      * @return bool
      */
     public function CheckTemplate($onlycheck = false, $forcebuild = false)
     {
+
         $this->template->LoadTemplates();
+        //$forcebuild = true 强制跳过比较
+        if ($forcebuild == true) {
+            $this->BuildTemplate();
+            return true;
+        }
+
         $s = implode($this->template->templates);
         $md5 = md5($s);
-
-        //本函数的返回值很有意思，为false表示需要rebuild 为true表示已重建完成或是不需要rebuild
-        //$zbp->CheckTemplate(true) == false 的意思，就是判断模板需需要重刷新吗？
-
         $array_md5 = @unserialize($this->cache->templates_md5_array);
         if (!is_array($array_md5)) {
             $array_md5 = array();
         }
-
         $new_md5 = GetValueInArray($array_md5, $this->template->template_dirname);
 
-        //如果对比不一样,$onlycheck就有用了
-        if ($md5 != $new_md5) {
-            if ($onlycheck == true && $forcebuild == false) {
-                return false;
-            }
-            $this->BuildTemplate();
-            $array_md5[$this->template->template_dirname] = $md5;
-            $this->cache->templates_md5_array = serialize($array_md5);
-            $this->SaveCache();
-
-            return true;
-        }
-        //如果对比一样的话，$forcebuild就有用了
-        if ($md5 == $new_md5) {
-            if ($onlycheck == true && $forcebuild == false) {
-                return true;
-            }
-            if ($forcebuild == true) {
+        if ($onlycheck == true) {
+            return ($md5 == $new_md5);
+        } elseif ($onlycheck == false) {
+            //$onlycheck = false时
+            if ($md5 != $new_md5) {
                 $this->BuildTemplate();
                 $array_md5[$this->template->template_dirname] = $md5;
                 $this->cache->templates_md5_array = serialize($array_md5);
                 $this->SaveCache();
+                return true;
             }
         }
 
         return true;
-
-        /*
-        //如果对比不一样,$onlycheck就有用了
-        if ($md5 != $this->cache->templates_md5) {
-            if ($onlycheck == true && $forcebuild == false) {
-                return false;
-            }
-            $this->BuildTemplate();
-            $this->cache->templates_md5 = $md5;
-            $this->SaveCache();
-
-            return true;
-        }
-        //如果对比一样的话，$forcebuild就有用了
-        if ($md5 == $this->cache->templates_md5) {
-            if ($forcebuild == true) {
-                $this->BuildTemplate();
-                $this->cache->templates_md5 = $md5;
-                $this->SaveCache();
-            }
-        }
-
-        return true;
-        */
     }
 
     /**
@@ -2475,55 +2441,63 @@ class ZBlogPHP
     /**
      * 更新后台模板缓存.
      *
-     * @param bool $onlycheck  为真的且$forcebuild为假的话，只判断是否需要而不Build，返回false就是需要更新，为true就不需要
-     * @param bool $forcebuild
+     * @param bool $onlycheck 为真时，返回值为false表示需要BuildTemplateAdmin
+     * @param bool $forcebuild 强制BuildTemplateAdmin
      *
      * @return bool
      */
     public function CheckTemplateAdmin($onlycheck = false, $forcebuild = false)
     {
         $this->template_admin = $this->PrepareTemplateAdmin();
-        $s = implode($this->template_admin->templates);
-        $md5 = md5($s);
-
-        $array_md5 = @unserialize($this->cache->templates_admin_md5_array);
-        if (!is_array($array_md5)) {
-            $array_md5 = array();
+        //$forcebuild = true 强制跳过比较直接Build
+        if ($forcebuild == true) {
+            $this->BuildTemplateAdmin();
+            return true;
         }
 
+        $hash_compare = null;
         $array_files_hash_md5 = @unserialize($this->cache->templates_admin_files_hash_array);
+        if (!is_array($array_files_hash_md5)) {
+            $array_files_hash_md5 = array();
+        }
         foreach ($array_files_hash_md5 as $file=>$md5_file){
+            if (!file_exists($this->template_admin->GetPath() . $file . '.php')) {
+                //缺编译后的文件
+                if ($onlycheck == true) {
+                    return false;
+                }
+                $hash_compare = false;
+                break;
+            }
             $md5_now_file = @md5_file($this->template_admin->GetPath() . $file . '.php');
             if ($md5_file != $md5_now_file) {
-                $onlycheck = false && $forcebuild = true;
+                //编译后的文件hash不对
+                if ($onlycheck == true) {
+                    return false;
+                }
+                $hash_compare = false;
                 break;
             }
         }
 
+        $s = implode($this->template_admin->templates);
+        $md5 = md5($s);
+        $array_md5 = @unserialize($this->cache->templates_admin_md5_array);
+        if (!is_array($array_md5)) {
+            $array_md5 = array();
+        }
         $new_md5 = GetValueInArray($array_md5, $this->template_admin->template_dirname);
 
-        //如果对比不一样,$onlycheck就有用了
-        if ($md5 != $new_md5) {
-            if ($onlycheck == true && $forcebuild == false) {
-                return false;
-            }
-            $this->BuildTemplateAdmin();
-            $array_md5[$this->template_admin->template_dirname] = $md5;
-            $this->cache->templates_admin_md5_array = serialize($array_md5);
-            $this->SaveCache();
-
-            return true;
-        }
-        //如果对比一样的话，$forcebuild就有用了
-        if ($md5 == $new_md5) {
-            if ($onlycheck == true && $forcebuild == false) {
-                return true;
-            }
-            if ($forcebuild == true) {
+        if ($onlycheck == true) {
+            return ($md5 == $new_md5);
+        } elseif ($onlycheck == false) {
+            //$onlycheck = false时
+            if (($md5 != $new_md5) || ($hash_compare === false)) {
                 $this->BuildTemplateAdmin();
                 $array_md5[$this->template_admin->template_dirname] = $md5;
                 $this->cache->templates_admin_md5_array = serialize($array_md5);
                 $this->SaveCache();
+                return true;
             }
         }
 
