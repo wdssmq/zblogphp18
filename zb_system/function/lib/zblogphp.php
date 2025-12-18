@@ -2321,13 +2321,13 @@ class ZBlogPHP
      */
     public function BuildTemplate()
     {
-        $this->BuildTemplate_Once();
+        $this->template->LoadTemplates();
 
-        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplate_End'] as $fpname => &$fpsignal) {
-            $fpname($this->template);
+        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplate'] as $fpname => &$fpsignal) {
+            $fpname($this->template->templates);
         }
 
-        return true;
+        return $this->template->BuildTemplate();
     }
 
     /**
@@ -2343,16 +2343,6 @@ class ZBlogPHP
         $this->template->theme = $theme;
         $this->template->template_dirname = $template_dirname;
         $this->template->SetPath();
-        return $this->BuildTemplate_Once();
-    }
-
-    /**
-     * 模板解析.
-     *
-     * @return bool
-     */
-    private function BuildTemplate_Once()
-    {
         $this->template->LoadTemplates();
 
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplate'] as $fpname => &$fpsignal) {
@@ -2361,8 +2351,6 @@ class ZBlogPHP
 
         return $this->template->BuildTemplate();
     }
-
-
 
     /**
      * 更新模板缓存.
@@ -2375,7 +2363,6 @@ class ZBlogPHP
     public function CheckTemplate($onlycheck = false, $forcebuild = false)
     {
 
-        $this->template->LoadTemplates();
         //$forcebuild = true 强制跳过比较
         if ($forcebuild == true) {
             $s = implode($this->template->templates);
@@ -2503,7 +2490,6 @@ class ZBlogPHP
             }
         }
 
-        $this->template_admin->LoadAdminTemplates();
         $s = implode($this->template_admin->templates);
         $md5 = md5($s);
         $array_md5 = @unserialize($this->cache->templates_admin_md5_array);
