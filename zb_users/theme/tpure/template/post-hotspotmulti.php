@@ -2,8 +2,7 @@
 <div class="post item">
 	{if tpure_Thumb($article) != ''}<div class="postimg{if $article->Metas->video} v{/if}"><a href="{$article.Url}"{if $zbp->Config('tpure')->PostBLANKSTYLE == 2} target="_blank"{/if}><img src="{tpure_Thumb($article)}" alt="{$article.Title}"></a></div>{/if}
 	<div class="hotspotinfo{if !tpure_Thumb($article)} noimg{/if}">
-		<h2><a href="{$article.Url}"{if $zbp->Config('tpure')->PostBLANKSTYLE == 2} target="_blank"{/if}>{if $zbp->Config('tpure')->PostMEDIAICONSTYLE == '0'}{if $article.Metas.audio}<span class="zbaudio"></span>{/if}{if $article.Metas.video}<span class="video"></span>{/if}{/if}{$article.Title}{if $zbp->Config('tpure')->PostMEDIAICONSTYLE == '1'}{if $article.Metas.audio}<span class="zbaudio"></span>{/if}{if $article.Metas.video}<span class="video"></span>{/if}{/if}</a></h2>
-		{$zbp->Config('tpure')->PostINTROSOURCE == '1' ? $introsource = $article->Content : $introsource = $article->Intro}
+		<h2><a href="{$article.Url}"{if $zbp->Config('tpure')->PostBLANKSTYLE == 2} target="_blank"{/if}>{if $zbp->Config('tpure')->PostMEDIAICONSTYLE == '0'}{if $article.Metas.audio}<span class="zbaudioicon"></span>{/if}{if $article.Metas.video}<span class="video"></span>{/if}{/if}{$article.Title}{if $zbp->Config('tpure')->PostMEDIAICONSTYLE == '1'}{if $article.Metas.audio}<span class="zbaudioicon"></span>{/if}{if $article.Metas.video}<span class="video"></span>{/if}{/if}</a></h2>
 		<div class="intro{if tpure_Thumb($article) != ''} isimg{/if}">
 			{if tpure_isMobile()}<a href="{$article.Url}">{/if}{if $type == 'search'}{tpure_GetIntro($article, GetVars('q'))}{else}{tpure_GetIntro($article)}{/if}{if tpure_isMobile()}</a>{/if}
 		</div>

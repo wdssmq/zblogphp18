@@ -111,6 +111,7 @@ if ($act == 'base') {
 		$zbp->Config('tpure')->VerifyCode = $_POST['VerifyCode'];			//自定义验证码出现的字符集
 		$zbp->Config('tpure')->PostCMSON = $_POST['PostCMSON'];			//首页CMS模块开关
 		$zbp->Config('tpure')->PostCMS = tpure_FormatID($_POST['PostCMS']);			//首页CMS模块分类ID
+		$zbp->Config('tpure')->PostCMSSUBCATEON = $_POST['PostCMSSUBCATEON']; //首页CMS模块是否包含子分类
 		$zbp->Config('tpure')->PostCMSLENGTH = $_POST['PostCMSLENGTH'];			//首页CMS模块分类列表文章数量
 		$zbp->Config('tpure')->PostCMSCOLUMN = $_POST['PostCMSCOLUMN'];			//首页CMS模块列数
 		$zbp->Config('tpure')->PostINDEXLISTON = $_POST['PostINDEXLISTON'];	   //首页列表开关
@@ -204,6 +205,8 @@ if ($act == 'base') {
 		$zbp->Config('tpure')->PostFILTERON = $_POST['PostFILTERON'];		//列表排序功能开关
 		$zbp->Config('tpure')->PostMOREBTNON = $_POST['PostMOREBTNON'];			 //列表查看全文按钮开关
 		$zbp->Config('tpure')->PostBIGPOSTIMGON = $_POST['PostBIGPOSTIMGON'];				//放大列表缩略图开关
+		$zbp->Config('tpure')->PostSHUOTITLEON = $_POST['PostSHUOTITLEON']; //说说列表标题开关
+		$zbp->Config('tpure')->PostAUDIOINTROON = $_POST['PostAUDIOINTROON'];//列表显示音频播放器
 		$zbp->Config('tpure')->PostFIXMENUON = $_POST['PostFIXMENUON'];				//导航悬浮开关
 		$zbp->Config('tpure')->PostTIMGBOXON = $_POST['PostTIMGBOXON'];				//图片灯箱开关
 		$zbp->Config('tpure')->PostLAZYLOADON = $_POST['PostLAZYLOADON'];		   //全局图片延时加载开关
@@ -585,11 +588,16 @@ if ($act == 'base') {
 		</dd>
 		<dt><?php echo $lang['tpure']['admin']['cmsset'];?></dt>
 		<dd data-stretch="cms" class="half">
-			<label><?php echo $lang['tpure']['admin']['cmscate'];?></label>
+			<label><?php echo $lang['tpure']['admin']['cms'];?></label>
 			<input type="text" id="PostCMSON" name="PostCMSON" class="checkbox" value="<?php echo $zbp->Config('tpure')->PostCMSON; ?>">
 			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['cms_desc'];?></span>
 		</dd>
 		<div class="cmsinfo"<?php echo $zbp->Config('tpure')->PostCMSON == 1 ? '' : ' style="display:none"'; ?>>
+		<dd class="half">
+			<label><?php echo $lang['tpure']['admin']['cmssubcate'];?></label>
+			<input type="text" id="PostCMSSUBCATEON" name="PostCMSSUBCATEON" class="checkbox" value="<?php echo $zbp->Config('tpure')->PostCMSSUBCATEON; ?>">
+			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['cmssubcate_desc'];?></span>
+		</dd>
 		<dd class="half">
 			<label for="PostCMS"><?php echo $lang['tpure']['admin']['cmscate'];?></label>
 			<input type="text" id="PostCMS" name="PostCMS" value="<?php echo $zbp->Config('tpure')->PostCMS; ?>" class="settext">
@@ -600,7 +608,7 @@ if ($act == 'base') {
 			<input type="text" id="PostCMSLENGTH" name="PostCMSLENGTH" value="<?php echo $zbp->Config('tpure')->PostCMSLENGTH; ?>" class="settext">
 			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['cmslength_desc'];?></span>
 		</dd>
-		<dd class="half">
+		<dd>
 			<label for="PostCMSCOLUMN"><?php echo $lang['tpure']['admin']['cmscolumn'];?></label>
 			<select size="1" name="PostCMSCOLUMN">
 				<option value="0"<?php if($zbp->Config('tpure')->PostCMSCOLUMN == '0'){echo ' selected="selected"';}?>><?php echo $lang['tpure']['admin']['cmscolumn0'];?></option>
@@ -1211,6 +1219,16 @@ if ($act == 'base') {
 			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['bigpostimg_desc'];?></span>
 		</dd>
 		<dd class="half">
+			<label><?php echo $lang['tpure']['admin']['shuotitle'];?></label>
+			<input type="text" id="PostSHUOTITLEON" name="PostSHUOTITLEON" class="checkbox" value="<?php echo $zbp->Config('tpure')->PostSHUOTITLEON; ?>">
+			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['shuotitle_desc'];?></span>
+		</dd>
+		<dd class="half">
+			<label><?php echo $lang['tpure']['admin']['audiointro'];?></label>
+			<input type="text" id="PostAUDIOINTROON" name="PostAUDIOINTROON" class="checkbox" value="<?php echo $zbp->Config('tpure')->PostAUDIOINTROON; ?>">
+			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['audiointro_desc'];?></span>
+		</dd>
+		<dd class="half">
 			<label><?php echo $lang['tpure']['admin']['fixmenu'];?></label>
 			<input type="text" id="PostFIXMENUON" name="PostFIXMENUON" class="checkbox" value="<?php echo $zbp->Config('tpure')->PostFIXMENUON; ?>">
 			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['fixmenu_desc'];?></span>
@@ -1485,7 +1503,6 @@ $seo_info = array(
 	} ?>
 			<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['seoother_desc'];?></span>
 		</dd>
-	</div>
 	<dt><?php echo $lang['tpure']['admin']['ogset'];?> <span><?php echo $lang['tpure']['admin']['ogsetinfo'];?></span></dt>
 	<dd class="half">
 		<label><?php echo $lang['tpure']['admin']['ogindex'];?></label>
@@ -1517,6 +1534,7 @@ $seo_info = array(
 		<input type="text" id="PostOGPAGEON" name="PostOGPAGEON" class="checkbox" value="<?php echo $zbp->Config('tpure')->PostOGPAGEON; ?>">
 		<i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['ogpage_desc'];?></span>
 	</dd>
+	</div>
 	<dt><?php echo $lang['tpure']['admin']['customcodeset'];?> <span><?php echo $lang['tpure']['admin']['customcodesetinfo'];?></span></dt>
 	<dd>
 		<label for="PostHEADERCODE"><?php echo $lang['tpure']['admin']['headercode'];?></label><textarea name="PostHEADERCODE" id="PostHEADERCODE" cols="30" rows="3" class="setinput"><?php echo $zbp->Config('tpure')->PostHEADERCODE; ?></textarea><i class="help"></i><span class="helpcon"><?php echo $lang['tpure']['admin']['headercode_desc'];?></span>

@@ -2,9 +2,7 @@
 $url = GetVars('go_url', 'GET');
 $goUrlTitle = $zbp->Config('tpure')->PostGOURLTITLE ? $zbp->Config('tpure')->PostGOURLTITLE : $zbp->lang['tpure']['go_url_title'];
 $goUrlTip = $zbp->Config('tpure')->PostGOURLTIP ? $zbp->Config('tpure')->PostGOURLTIP : $zbp->lang['tpure']['go_url_tip'];
-//验证hash参数
 $hash = GetVars('hash', 'GET');
-//如果不相等，就是外人构造的非法链接
 if (md5(md5($zbp->guid) . md5($url)) != $hash) {
 	die;
 }

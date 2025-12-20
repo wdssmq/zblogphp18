@@ -73,6 +73,10 @@ function ActivePlugin_tpure()
 	Add_Filter_Plugin('Filter_Plugin_Index_Begin', 'tpure_Jump_Main');
 	// 语言包
 	Add_Filter_Plugin('Filter_Plugin_Html_Js_Add', 'tpure_Html_Js_Add');
+	//搜索结果页伪静态
+	// Add_Filter_Plugin('Filter_Plugin_Zbp_PreLoad', 'tpure_SearchRegRoute');
+	//更新应用
+	Add_Filter_Plugin('Filter_Plugin_Admin_Begin', 'tpure_UpdateConfig');
 
 	// 自定义侧栏模块名称
 	$zbp->lang['msg']['theme_module'] = $zbp->lang['tpure']['admin']['thememodule'];
@@ -86,6 +90,25 @@ function ActivePlugin_tpure()
 	$zbp->lang['msg']['sidebar8'] = $zbp->lang['tpure']['member'].$zbp->lang['tpure']['sidebar'];
 	$zbp->lang['msg']['sidebar9'] = $zbp->lang['tpure']['readers'].$zbp->lang['tpure']['sidebar'];
 	$zbp->option['ZC_VERIFYCODE_STRING'] = $zbp->Config('tpure')->VerifyCode;
+	Add_Filter_Plugin('Filter_Plugin_PostTag_Core', 'tpure_Fix_ZB17_Bug_Tag');
+}
+
+function tpure_SearchRegRoute()
+{
+	global $zbp;
+	$route = array(
+		'posttype' => 0,
+		'type' => 'rewrite',
+		'name' => 'post_article_search',
+		'call' => 'ViewSearch',
+		'urlrule' => '{%host%}search/{%q%}/{%page%}/',
+		'args' => array(
+			'q' => '[^\\/_]+',
+			'page',
+		),
+		'only_match_page' => false,
+	);
+	$zbp->RegRoute($route);
 }
 
 //语言包
@@ -172,7 +195,7 @@ function tpure_ViewPost_Content(&$template)
 			if(!$homepage){//说明空网页
 				continue;
 			}
-			$zbp->comments[$k]->HomePage = $zbp->host.'?go_url=' . urlencode($homepage) . '&hash=' . md5(md5($zbp->guid) . md5($homepage));;
+			$zbp->comments[$k]->HomePage = $zbp->host.'?go_url=' . urlencode($homepage) . '&hash=' . md5(md5($zbp->guid) . md5($homepage));
 		}
 
 		//评论内容外链
@@ -584,8 +607,9 @@ function tpure_ZBaudioLoad(&$template)
 	if(!isset($article->Metas->audio)){
 		return;
 	}
-	$zbaudio_player = '<link rel="stylesheet" href="'. $zbp->host .'zb_users/theme/tpure/plugin/zbaudio/style.css"><script src="'. $zbp->host .'zb_users/theme/tpure/plugin/zbaudio/audio.js"></script><p><span class="zbaudio"><span class="zbaudio_img"></span><span class="zbaudio_info"><strong></strong><em class="zbaudio_singer"></em><span class="zbaudio_area"><span class="zbaudio_item"><span class="zbaudio_progress"><span class="zbaudio_now"><span class="zbaudio_bar"></span></span><span class="zbaudio_cache"></span></span><span class="zbaudio_time"><em class="zbaudio_current">00:00</em><em class="zbaudio_total"></em></span></span><span class="zbaudio_play"><em data-action="play" data-on="play" data-off="pause"></em></span></span></span></span></p>';
-	$zbaudio_config = '<script>var setConfig = {song:[{cover:"'. $article->Metas->audioimg .'",src:"'. $article->Metas->audio .'",title:"'. htmlspecialchars($article->Metas->audiotitle, ENT_QUOTES) .'",singer:"'. $article->Metas->audiosinger .'"}],error:function(meg){console.log(meg);}};var zbaudio = audioPlay(setConfig);if(zbaudio){zbaudio.loadFile('. ($article->Metas->audioautoplay ? 'true' : 'false') .');}</script>';
+	$zbaudio_player = '<link rel="stylesheet" href="'. $zbp->host .'zb_users/theme/tpure/plugin/zbaudio/style.css"><script src="'. $zbp->host .'zb_users/theme/tpure/plugin/zbaudio/zbaudio.js"></script><p><span data-audioid="'. $article->ID .'" class="zbaudio"><span class="zbaudio_img"></span><span class="zbaudio_info"><strong></strong><em class="zbaudio_singer"></em><span class="zbaudio_area"><span class="zbaudio_item"><span class="zbaudio_progress"><span class="zbaudio_now"><span class="zbaudio_bar"></span></span><span class="zbaudio_cache"></span></span><span class="zbaudio_time"><em class="zbaudio_current">00:00</em><em class="zbaudio_total"></em></span></span><span class="zbaudio_play"><em data-action="play" data-on="play" data-off="pause"></em></span></span></span></span></p>';
+	$zbaudio_config = '<script>$(function(){$(`[data-audioid="'. $article->ID .'"]`).zbaudio({song: [{cover:"'. $article->Metas->audioimg .'", src:"'. $article->Metas->audio .'", title:"'. htmlspecialchars($article->Metas->audiotitle, ENT_QUOTES) .'", singer:"'. $article->Metas->audiosinger .'"}],
+		autoPlay: '. ($article->Metas->audioautoplay ? 'true' : 'false') .'});});</script>';
 	$template->SetTags('zbaudio', $zbaudio_player . $zbaudio_config);
 }
 
@@ -1633,7 +1657,7 @@ function tpure_SideContent(&$module)
 			if($zbp->Config('tpure')->PostSIDEUSERNAME){$sideusername = $zbp->Config('tpure')->PostSIDEUSERNAME;}else{$sideusername = $zbp->name;}
 			if($zbp->Config('tpure')->PostSIDEUSERINTRO){$sideuserintro = $zbp->Config('tpure')->PostSIDEUSERINTRO;}else{$sideuserintro = $zbp->name;}
 			$sideuserwechat = '<p><a href="javascript:;" title="'.$zbp->lang['tpure']['sidewechat'].'" class="wechat"><span><img src="'.$zbp->Config('tpure')->PostSIDEUSERWECHAT.'" alt="'.$zbp->lang['tpure']['sidewechat'].'"></span></a></p>';
-			$sideuserqq = '<p><a href="https://wpa.qq.com/msgrd?v=3&uin='.$zbp->Config('tpure')->PostSIDEUSERQQ.'&site=qq&menu=yes" target="_blank" title="'.$zbp->lang['tpure']['sideqq'].'" class="qq"></a></p>';
+			$sideuserqq = '<p><a href="'.$zbp->Config('tpure')->PostSIDEUSERQQ.'" target="_blank" title="'.$zbp->lang['tpure']['sideqq'].'" class="qq"></a></p>';
 			$sideuseremail = '<p><a href="mailto:'.$zbp->Config('tpure')->PostSIDEUSEREMAIL.'" target="_blank" title="'.$zbp->lang['tpure']['sideemail'].'" class="email"></a></p>';
 			$sideuserweibo = '<p><a href="'.$zbp->Config('tpure')->PostSIDEUSERWEIBO.'" target="_blank" title="'.$zbp->lang['tpure']['sideweibo'].'" class="weibo"></a></p>';
 			$sideusergroup = '<p><a href="'.$zbp->Config('tpure')->PostSIDEUSERGROUP.'" target="_blank" title="'.$zbp->lang['tpure']['sidegroup'].'" class="group"></a></p>';
@@ -2167,17 +2191,14 @@ function tpure_Thumb($Source, $IsThumb = '0', $allThumbs = false)
 			$temp = $Source->Metas->proimg;
 		} elseif (isset($Source->Metas->videopic)) {
 			$temp = $Source->Metas->videopic;
-		// } elseif ($Source->ImageCount >= 1 && (count($thumbs = $Source->Thumbs($thumbwidth, $thumbheight, 1)) > 0)) {
-		// 裁切缩略图
-		// 	$temp = $thumbs[0];
 		} elseif (isset($matchContent[1][0])){
 			$temp = $matchContent[1][0];
-            if (stripos($temp, '/lazyload.png') !== false) {
-                preg_match('/title=\"(?<url>[^\"]+)\"/', $matchContent[0][0], $matches);
-                if (isset($matches[1])){
-                    $temp = $matches[1];
-                }
-            }
+			if (stripos($temp, '/lazyload.png') !== false) {
+				preg_match('/data-original=\"(?<url>[^\"]+)\"/', $matchContent[0][0], $matches);
+				if (isset($matches[1])){
+					$temp = $matches[1];
+				}
+			}
 		} else {
 			if ($zbp->Config('tpure')->PostTHUMBON == '1') {
 				$temp = $zbp->Config('tpure')->PostTHUMB;
@@ -2318,6 +2339,7 @@ function tpure_Config()
 		'VerifyCode' => 'ACDEFHKMNPRSTUVWXY34578',
 		'PostCMSON' => '1',
 		'PostCMS' => '1',
+		'PostCMSSUBCATEON' => '1',
 		'PostCMSLENGTH' => '5',
 		'PostCMSCOLUMN' => '1',
 		'PostINDEXLISTON' => '1',
@@ -2408,6 +2430,8 @@ function tpure_Config()
 		'PostFILTERON' => '1',
 		'PostMOREBTNON' => '0',
 		'PostBIGPOSTIMGON' => '0',
+		'PostSHUOTITLEON' => '1',
+		'PostAUDIOINTROON' => '1',
 		'PostFIXMENUON' => '1',
 		'PostTIMGBOXON' => '1',
 		'PostLAZYLOADON' => '1',
@@ -2539,7 +2563,7 @@ function InstallPlugin_tpure()
 	if (!$zbp->Config('tpure')->HasKey('Version')) {
 		tpure_Config();
 	}
-	$zbp->Config('tpure')->Version = '6.1';
+	$zbp->Config('tpure')->Version = $zbp->themeapp->Version;
 	$zbp->SaveConfig('tpure');
 	tpure_CreateModule();
 	//创建索引
@@ -2549,15 +2573,17 @@ function InstallPlugin_tpure()
 //应用升级时执行
 function UpdatePlugin_tpure()
 {
+	tpure_UpdateConfig();
+}
+
+//挂接口：Add_Filter_Plugin('Filter_Plugin_Admin_Begin', 'tpure_UpdateConfig');
+function tpure_UpdateConfig()
+{
 	global $zbp;
-	$version = $zbp->Config('tpure')->Version;
-	if($version !== 6.1){
-		$zbp->Config('tpure')->Version = 6.1;
+	$version = $zbp->themeapp->Version;
+	if(version_compare($zbp->Config('tpure')->Version, '6.0', '<')) {
+		$zbp->Config('tpure')->Version = $version;
 		$zbp->Config('tpure')->PostINDEXLISTON = '1';
-		$zbp->SaveConfig('tpure');
-	}
-	if(!$zbp->Config('tpure')->Haskey("Version")){
-		$zbp->Config('tpure')->Version = '6.1';
 		$zbp->SaveConfig('tpure');
 	}
 }
@@ -2577,4 +2603,13 @@ function UninstallPlugin_tpure()
 	}
 	//删除主题在模块管理中创建的模块
 	tpure_DelModule();
+}
+
+
+
+//挂接口：Add_Filter_Plugin('Filter_Plugin_PostTag_Core', 'tpure_Fix_ZB17_Bug_Tag');
+function tpure_Fix_ZB17_Bug_Tag(&$tag)
+{
+	$tag->ID = (int) $tag->ID;
+	$tag->Type = (int) $tag->Type;
 }

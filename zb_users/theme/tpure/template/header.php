@@ -132,7 +132,7 @@ if(isset($SEOON) && $SEOON == '1'){
 			$description = tpure_TrimString($category->Intro);
 		}
 
-		$post = tpure_OGTime($type);
+		$post = tpure_OGTime($type, $category->ID);
 		if (!empty($post)){
 			$PostTime = $post->Time('PostTime','Y-m-d\TH:i:s');
 			$updateTime = $post->Time('UpdateTime','Y-m-d\TH:i:s');
@@ -228,7 +228,7 @@ if(isset($SEOON) && $SEOON == '1'){
 			$description = tpure_TrimString($tag->Intro);
 		}
 
-		$post = tpure_OGTime($type);
+		$post = tpure_OGTime($type, $tag->ID);
 		if (!empty($post)){
 			$PostTime = $post->Time('PostTime','Y-m-d\TH:i:s');
 			$updateTime = $post->Time('UpdateTime','Y-m-d\TH:i:s');
@@ -523,7 +523,7 @@ if(isset($SEOON) && $SEOON == '1'){
 			$description = '';
 		}
 
-		$post = tpure_OGTime($type);
+		$post = tpure_OGTime($type, $author->ID);
 		if (!empty($post)){
 			$PostTime = $post->Time('PostTime','Y-m-d\TH:i:s');
 			$updateTime = $post->Time('UpdateTime','Y-m-d\TH:i:s');
@@ -685,6 +685,10 @@ if(isset($SEOON) && $SEOON == '1'){
 {if $zbp->Config('tpure')->PostSLIDEON == '1'}
 	<script src="{$host}zb_users/theme/{$theme}/plugin/swiper/swiper.min.js"></script>
 	<link rel="stylesheet" rev="stylesheet" href="{$host}zb_users/theme/{$theme}/plugin/swiper/swiper.min.css" type="text/css" media="all">
+{/if}
+{if ($type != 'article' || $type != 'page') && $zbp->Config('tpure')->PostAUDIOINTROON}
+	<link rel="stylesheet" href="{$host}zb_users/theme/{$theme}/plugin/zbaudio/style.css">
+	<script src="{$host}zb_users/theme/{$theme}/plugin/zbaudio/zbaudio.js"></script>
 {/if}
 	<link rel="stylesheet" rev="stylesheet" href="{$host}zb_users/theme/{$theme}/style/{$style}.css?v={$zbp->themeapp->version}" type="text/css" media="all">
 {if $zbp->Config('tpure')->PostCOLORON == '1'}

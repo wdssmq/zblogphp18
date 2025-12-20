@@ -82,10 +82,14 @@
 								<div class="cmstitle"><h4><a href="{$categorys[$flid].Url}" target="_blank" class="cmscate">{$categorys[$flid].Name}</a><a href="{$categorys[$flid].Url}" target="_blank" class="more">{$lang['tpure']['more']}</a></h4></div>
 								<div class="cmscon">
 									<ul>
-									{if count(GetList($zbp->Config('tpure')->PostCMSLENGTH,$flid)) == '0'}
+									{$w = array()}
+									{$w['count'] = $zbp->Config('tpure')->PostCMSLENGTH ? $zbp->Config('tpure')->PostCMSLENGTH : 5}
+									{$w['cate'] = $flid}
+									{$w['has_subcate'] = false}
+									{if count(GetList($w)) == '0'}
 									<li class="cmstip">{$lang['tpure']['searchnulltip']}{$lang['tpure']['searchnullcon']}</li>
 									{else}
-									{foreach GetList($zbp->Config('tpure')->PostCMSLENGTH,$flid) as $key=>$article}
+									{foreach GetList($w) as $key=>$article}
 										{if $key==0}
 											<li class="cmstop">
 												{if tpure_Thumb($article,1)}<a href="{$article.Url}" target="_blank" class="cmsimg{if $article->Metas->video} v{/if}"><i><img src="{tpure_Thumb($article,1)}" alt="{$article.Title}"></i></a>{/if}
