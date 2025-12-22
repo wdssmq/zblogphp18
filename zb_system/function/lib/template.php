@@ -90,6 +90,11 @@ class Template
     public $template_dirname = 'template';
 
     /**
+     * @var string 主题应用的根目录
+     */
+    public $app_dirname = '';
+
+    /**
      * @var bool 是否已显示过了
      */
     public $isdisplayed = false;
@@ -251,6 +256,7 @@ class Template
                 }
             }
             $this->dirs = array_reverse($this->dirs);
+
             foreach ($this->dirs as $key => $value) {
                 $s = str_replace($zbp->usersdir . 'theme/' . $this->theme . '/' . $this->template_dirname . '/', $this->path, $value);
                 if (file_exists($s)) {
@@ -770,7 +776,7 @@ class Template
         $templates = array();
 
         // 读取预置模板
-        $files = GetFilesInDir($zbp->systemdir . 'admin2/template/', 'php');
+        $files = GetFilesInDir($zbp->systemdir . 'defend/backend/', 'php');
         foreach ($files as $sortname => $fullname) {
             $s = file_get_contents($fullname);
             if (substr($s, 0, 2) == '{*' && strstr($s, '*}') !== false) {
@@ -779,6 +785,21 @@ class Template
             }
             $templates[$sortname] = $s;
             $s = null;
+        }
+
+        // 读取Backend模板
+        $this->dirs = array();
+        $this->files = array();
+        $this->GetAllFileDir($zbp->systemdir . 'admin2/' . $this->theme . "/{$this->template_dirname}");
+
+        foreach ($this->files as $key => $value) {
+            $templates[$key] = $value;
+        }
+
+        for ($i = 2; $i < 10; $i++) {
+            if (!isset($templates['sidebar' . $i])) {
+                $templates['sidebar' . $i] = str_replace('$sidebar', '$sidebar' . $i, $templates['sidebar']);
+            }
         }
 
         $this->templates = $templates;
@@ -1009,6 +1030,7 @@ class Template
         $this->templateTags['name'] = htmlspecialchars($zbp->name);
         $this->templateTags['subname'] = htmlspecialchars($zbp->subname);
         $this->templateTags['theme'] = &$zbp->theme;
+        $this->templateTags['backend_theme'] = &$zbp->backend_theme;
         $this->templateTags['themeapp'] = &$zbp->themeapp;
         $this->templateTags['themeinfo'] = &$zbp->themeinfo;
         $this->templateTags['style'] = &$zbp->style;

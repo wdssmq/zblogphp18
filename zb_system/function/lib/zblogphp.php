@@ -281,9 +281,19 @@ class ZBlogPHP
     public $subname = null;
 
     /**
-     * @var App 当前主题
+     * @var string 当前主题
      */
     public $theme = null;
+
+    /**
+     * @var string 当前后台主题
+     */
+    public $backend_theme = null;
+
+    /**
+     * @var App 当前主题类
+     */
+    public $themeapp = null;
 
     /**
      * @var array() 当前主题版本信息
@@ -476,11 +486,6 @@ class ZBlogPHP
      * @var int 当前实例下VerifyCode过期时间（分钟数）
      */
     public $verifyCodeExpirationMinute = 15;
-
-    /**
-     * @var App 当前主题类
-     */
-    public $themeapp = null;
 
     /**
      * @var int 分类最大递归层数
@@ -1062,7 +1067,6 @@ class ZBlogPHP
 
         if ($this->ismanage && $this->option['ZC_MANAGE_UI'] == 2) {
             $this->template_admin = $this->PrepareTemplateAdmin();
-            //Add_Filter_Plugin("Filter_Plugin_Admin_Header", "Include_Admin2_RedirectEdt");
         }
 
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_LoadManage'] as $fpname => &$fpsignal) {
@@ -2410,8 +2414,8 @@ class ZBlogPHP
         $template_admin = new Template();
         $template_admin->MakeTemplateTags();
 
-        $theme = 'system/admin2';
-        $template_admin_dirname = '';
+        $theme = 'backend-legacy';
+        $template_admin_dirname = 'template';
 
         //只改templateTags的
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_MakeTemplatetags_Admin'] as $fpname => &$fpsignal) {
@@ -2426,9 +2430,10 @@ class ZBlogPHP
         $template_admin->theme = $theme;
         $template_admin->template_dirname = $template_admin_dirname;
 
-        $template_admin->SetPath($this->cachedir . 'compiled/system/admin2/');
+        $template_admin->SetPath($this->cachedir . 'compiled/system/' . $theme . '/');
         $template_admin->LoadAdminTemplates();
         $this->autofill_template_htmltags = false;
+        $this->backend_theme = $template_admin->theme;
 
         return $template_admin;
     }

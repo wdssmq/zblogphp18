@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <theme version="php">
-<id>backend-new</id>
-<name>backend-new后台主题</name>
+<id>backend-nexus</id>
+<name>backend-nexus后台主题</name>
 <url>http://www.zblogcn.com/</url>
-<note>backend-new后台主题</note>
-<description>backend-new后台主题.</description>
+<note>backend-nexus后台主题</note>
+<description>backend-nexus后台主题.</description>
 <path></path>
 <include></include>
 <level>1</level>
