@@ -614,7 +614,7 @@ class Template
 
         return "{php} for($exp) {{/php} $code{php} }  {/php}";
     }
-    
+
     /**
      * @param $content
      */
@@ -628,7 +628,7 @@ class Template
             );
         }
     }
-    
+
     /**
      * @param $matches
      *
@@ -637,13 +637,13 @@ class Template
     protected function parse_switch_sub($matches)
     {
         $exp = $this->replace_dot($matches[1]);
-        
+
         $code = $this->parse_switch_case($matches[2]);
         $code = preg_replace('/^(\s+?){php}/', '${1}', $code);
-        
+
         return "{php} switch($exp) { $code{php} }  {/php}";
     }
-    
+
     /**
      * @param $code
      *
@@ -653,7 +653,7 @@ class Template
     {
         $code = preg_replace('/{break;?}/', '{php}break;{/php}', $code);
         $code = preg_replace('/{default:?}/', '{php}default:{/php}', $code);
-        
+
         $code = preg_replace_callback('/{case(.+?)}/', array($this, 'parse_switch_case_repalce'), $code);
         return $code;
     }
