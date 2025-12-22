@@ -296,6 +296,11 @@ class ZBlogPHP
     public $themeapp = null;
 
     /**
+     * @var App 所有后台主题类
+     */
+    public $backend_apps = null;
+
+    /**
      * @var array() 当前主题版本信息
      */
     public $themeinfo = array();
