@@ -291,9 +291,10 @@ class ZBlogPHP
     public $backend_theme = null;
 
     /**
-     * @var App 当前主题类
+     * @var App 当前主题类 $theme_app引用自themeapp
      */
     public $themeapp = null;
+    public $theme_app = null;
 
     /**
      * @var App 所有后台主题类
@@ -742,6 +743,8 @@ class ZBlogPHP
         $this->tags = &$this->tags_type[0];
         $this->tagsbyname = &$this->tagsbyname_type[0];
 
+        $this->theme_app = &$this->themeapp;
+
         $this->user = new stdClass();
         foreach ($this->datainfo['Member'] as $key => $value) {
             $this->user->$key = $value[3];
@@ -1065,6 +1068,13 @@ class ZBlogPHP
      */
     public function LoadManage()
     {
+        if ($this->option['ZC_MANAGE_UI'] == 2) {
+            $this->RegisterBackEndApp('backend-legacy', $this->systemdir . 'admin2/backend-legacy/backend.xml');
+            $this->RegisterBackEndApp('backend-nexus', $this->systemdir . 'admin2/backend-nexus/backend.xml');
+            $this->RegisterBackEndApp('backend-toyean', $this->systemdir . 'admin2/backend-toyean/backend.xml');
+            $this->template_admin = $this->PrepareTemplateAdmin();
+        }
+
         Add_Filter_Plugin('Filter_Plugin_Admin_PageMng_SubMenu', 'Include_Admin_Addpagesubmenu');
         Add_Filter_Plugin('Filter_Plugin_Admin_TagMng_SubMenu', 'Include_Admin_Addtagsubmenu');
         Add_Filter_Plugin('Filter_Plugin_Admin_CategoryMng_SubMenu', 'Include_Admin_Addcatesubmenu');
@@ -1072,16 +1082,12 @@ class ZBlogPHP
         Add_Filter_Plugin('Filter_Plugin_Admin_ModuleMng_SubMenu', 'Include_Admin_Addmodsubmenu');
         Add_Filter_Plugin('Filter_Plugin_Admin_CommentMng_SubMenu', 'Include_Admin_Addcmtsubmenu');
         Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'Include_Admin_Addsettingsubmenu');
-        Add_Filter_Plugin('Filter_Plugin_Zbp_LoadManage', 'Include_Admin_UpdateDB');
+        Add_Filter_Plugin('Filter_Plugin_Admin_Hint', 'Include_Admin_UpdateDB');
         Add_Filter_Plugin('Filter_Plugin_Admin_End', 'Include_Admin_CheckHttp304OK');
         Add_Filter_Plugin('Filter_Plugin_Admin_Hint', 'Include_Admin_CheckWeakPassWord');
 
         if (isset($GLOBALS['zbpvers'])) {
             $GLOBALS['zbpvers'][$GLOBALS['blogversion']] = ZC_VERSION_DISPLAY . ' Build ' . $GLOBALS['blogversion'];
-        }
-
-        if ($this->ismanage && $this->option['ZC_MANAGE_UI'] == 2) {
-            $this->template_admin = $this->PrepareTemplateAdmin();
         }
 
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_LoadManage'] as $fpname => &$fpsignal) {
@@ -2435,12 +2441,14 @@ class ZBlogPHP
         //从ZC_BACKEND_ID取值
         $backend_id = $this->option['ZC_BACKEND_ID'];
         if (isset($this->backend_apps[$backend_id]) && is_object($this->backend_apps[$backend_id])) {
-            $backend_app = $this->backend_apps[$backend_id];
-            $theme = $backend_app->id;
-            $backend_app_dirname = $backend_app->app_path;
+            $this->backend_app = &$this->backend_apps[$backend_id];
+            $theme = $this->backend_app->id;
+            $backend_app_dirname = $this->backend_app->app_path;
 
-            $this->backendapp = $backend_app;
-            $this->backendinfo = $backend_app->GetInfoArray();
+            $this->backendinfo = $this->backend_app->GetInfoArray();
+            if (is_readable($this->backend_app->GetPath() . $this->backend_app->include)) {
+                require_once($this->backend_app->GetPath() . $this->backend_app->include);
+            }
         }
 
         //只改templateTags的
@@ -5182,6 +5190,19 @@ class ZBlogPHP
         }
 
         return $articles_top_notorder;
+    }
+
+    // admin2 注册后台主题
+    function RegisterBackEndApp($app_id, $app_file)
+    {
+        $app = new App();
+        if (is_readable($app_file)) {
+            $app->LoadInfoByXml('backend', $app_id, $app_file);
+                if ($app->isloaded == true) {
+                $this->backend_apps[$app_id] = $app;
+                return true;
+            }
+        }
     }
 
     /**

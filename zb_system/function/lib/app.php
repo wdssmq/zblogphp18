@@ -205,12 +205,12 @@ class App
     public static $unpack_app = null;
 
     /**
-     * @var string app_path 之前是魔术方法
+     * @var string app_path 之前是魔术方法，现在转入GetDir()
      */
     public $app_path = null;
 
     /**
-     * @var string app_path 之前是魔术方法
+     * @var string app_url 之前是魔术方法，现在转入GetUrl()
      */
     public $app_url = null;
 
@@ -315,6 +315,11 @@ class App
         $appDirectory .= '/' . FormatString($this->id, '[filename]') . '/';
         $this->app_path = $appDirectory;
         return $this->app_path;
+    }
+
+    public function GetPath()
+    {
+        return $this->GetDir();
     }
 
     /**
@@ -773,7 +778,7 @@ class App
 
         $type = $xml['type'];
         $id = $xml->id;
-        $dir = $zbp->path . 'zb_users/' . $type . '/';
+        $dir = $zbp->userdir . $type . '/';
 
         ZbpErrorControl::SuspendErrorHook();
 
