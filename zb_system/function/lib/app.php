@@ -405,14 +405,10 @@ class App
         if ($type == 'backend') {
             $this->app_path = pathinfo($xmlfilepath, PATHINFO_DIRNAME);
             $this->app_path = rtrim($this->app_path, '/') . '/';
-        } else {
-            $appDirectory = $zbp->usersdir . FormatString($this->type, '[filename]');
-            $appDirectory .= '/' . FormatString($this->id, '[filename]') . '/';
-            $this->app_path = $appDirectory;
         }
         $this->app_url = $zbp->host . 'zb_users/' . $this->type . '/' . $this->id . '/';
 
-        $xmlPath = $this->app_path . FormatString($type, '[filename]') . '.xml';
+        $xmlPath = $this->GetDir() . FormatString($type, '[filename]') . '.xml';
         $this->isloaded = false;
 
         if (!is_readable($xmlPath)) {
