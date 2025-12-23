@@ -288,23 +288,22 @@ class ZBlogPHP
     /**
      * @var string 当前后台主题
      */
-    public $backend_theme = null;
+    public $backendtheme = null;
 
     /**
-     * @var App 当前主题类 $theme_app引用自themeapp
+     * @var App 当前主题类
      */
     public $themeapp = null;
-    public $theme_app = null;
 
     /**
      * @var App 所有后台主题类
      */
-    public $backend_apps = array();
+    public $backendapps = array();
 
     /**
      * @var App 当前后台主题类
      */
-    public $backend_app = null;
+    public $backendapp = null;
 
     /**
      * @var array() 当前后台主题版本信息
@@ -742,8 +741,6 @@ class ZBlogPHP
         $this->tagsbyname_type[0] = array();
         $this->tags = &$this->tags_type[0];
         $this->tagsbyname = &$this->tagsbyname_type[0];
-
-        $this->theme_app = &$this->themeapp;
 
         $this->user = new stdClass();
         foreach ($this->datainfo['Member'] as $key => $value) {
@@ -2436,18 +2433,18 @@ class ZBlogPHP
 
         $template_dirname = 'template';
         $theme = 'backend-legacy';
-        $backend_app_dirname = $this->systemdir . 'admin2/' . $theme . '/';
+        $backendapp_dirname = $this->systemdir . 'admin2/' . $theme . '/';
 
         //从ZC_BACKEND_ID取值
         $backend_id = $this->option['ZC_BACKEND_ID'];
-        if (isset($this->backend_apps[$backend_id]) && is_object($this->backend_apps[$backend_id])) {
-            $this->backend_app = &$this->backend_apps[$backend_id];
-            $theme = $this->backend_app->id;
-            $backend_app_dirname = $this->backend_app->app_path;
+        if (isset($this->backendapps[$backend_id]) && is_object($this->backendapps[$backend_id])) {
+            $this->backendapp = &$this->backendapps[$backend_id];
+            $theme = $this->backendapp->id;
+            $backendapp_dirname = $this->backendapp->app_path;
 
-            $this->backendinfo = $this->backend_app->GetInfoArray();
-            if (is_readable($this->backend_app->GetPath() . $this->backend_app->include)) {
-                require_once($this->backend_app->GetPath() . $this->backend_app->include);
+            $this->backendinfo = $this->backendapp->GetInfoArray();
+            if (is_readable($this->backendapp->GetPath() . $this->backendapp->include)) {
+                require_once($this->backendapp->GetPath() . $this->backendapp->include);
             }
         }
 
@@ -2460,10 +2457,10 @@ class ZBlogPHP
         $template_admin->template_dirname = $template_dirname;
 
         $template_admin->SetPath($this->cachedir . 'compiled/system/' . $theme . '/');
-        $template_admin->SetAppPath($backend_app_dirname);
+        $template_admin->SetAppPath($backendapp_dirname);
         $template_admin->LoadAdminTemplates();
         $this->autofill_template_htmltags = false;
-        $this->backend_theme = $template_admin->theme;
+        $this->backendtheme = $template_admin->theme;
 
         return $template_admin;
     }
@@ -5199,7 +5196,7 @@ class ZBlogPHP
         if (is_readable($app_file)) {
             $app->LoadInfoByXml('backend', $app_id, $app_file);
                 if ($app->isloaded == true) {
-                $this->backend_apps[$app_id] = $app;
+                $this->backendapps[$app_id] = $app;
                 return true;
             }
         }

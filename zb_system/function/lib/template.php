@@ -1055,9 +1055,11 @@ class Template
         $this->templateTags['name'] = htmlspecialchars($zbp->name);
         $this->templateTags['subname'] = htmlspecialchars($zbp->subname);
         $this->templateTags['theme'] = &$zbp->theme;
-        $this->templateTags['backend_theme'] = &$zbp->backend_theme;
         $this->templateTags['themeapp'] = &$zbp->themeapp;
         $this->templateTags['themeinfo'] = &$zbp->themeinfo;
+        $this->templateTags['backendapp'] = &$zbp->backendapp;
+        $this->templateTags['backendinfo'] = &$zbp->backendinfo;
+        $this->templateTags['backendtheme'] = &$zbp->backendtheme;
         $this->templateTags['style'] = &$zbp->style;
         $this->templateTags['language'] = $zbp->option['ZC_BLOG_LANGUAGE'];
         $this->templateTags['copyright'] = $zbp->option['ZC_BLOG_COPYRIGHT'];
