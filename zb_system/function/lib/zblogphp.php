@@ -1067,7 +1067,7 @@ class ZBlogPHP
     {
         if ($this->option['ZC_MANAGE_UI'] == 2) {
             $this->RegisterBackEndApp('backend-legacy', $this->systemdir . 'admin2/backend-legacy/backend.xml');
-            $this->RegisterBackEndApp('backend-nexus', $this->systemdir . 'admin2/backend-nexus/backend.xml');
+            //$this->RegisterBackEndApp('backend-nexus', $this->systemdir . 'admin2/backend-nexus/backend.xml');
             $this->RegisterBackEndApp('backend-toyean', $this->systemdir . 'admin2/backend-toyean/backend.xml');
             $this->template_admin = $this->PrepareTemplateAdmin();
         }
