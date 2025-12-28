@@ -2,11 +2,11 @@
 <div class="side">
 
             <div class="mobile-close"></div>
-            <div class="logo"><a href="#"><img src="{$host}zb_system/admin2/{$backendtheme}/style/images/logo-icon.svg" alt="后台管理"><img
+            <div class="logo"><a href="{$host}zb_system/admin2/"><img src="{$host}zb_system/admin2/{$backendtheme}/style/images/logo-icon.svg" alt="后台管理"><img
                         src="{$host}zb_system/admin2/{$backendtheme}/style/images/logo-light.svg" alt="" class="logolight"><img
                         src="{$host}zb_system/admin2/{$backendtheme}/style/images/logo-dark.svg" alt="" class="logodark"></a></div>
             <div class="menu">
-                <dl>
+                <dl><!--
                     <dt>概览</dt>
                     <dd><a href="index.html" class="on" data-title="仪表盘"><i class="ico ico-home"></i>仪表盘</a></dd>
                     <dt>内容管理</dt>
@@ -25,10 +25,12 @@
                     <dd><a href="" data-title="插件"><i class="ico ico-plugin"></i>插件</a></dd>
                     <dt>其它</dt>
                     <dd><a href="" data-title="应用中心"><i class="ico ico-appstore"></i>应用中心</a></dd>
+-->
+    {ResponseAdmin_LeftMenu()}
                 </dl>
             </div>
 
-<!--
-    {ResponseAdmin_LeftMenu()}
--->
+
+
+
 </div>
