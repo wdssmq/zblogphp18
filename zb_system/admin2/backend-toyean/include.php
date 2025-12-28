@@ -2,29 +2,6 @@
 
 //自定义函数
 
-function backend_toyean_MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $strIconClass = "")
-{
-    global $zbp;
-
-    static $AdminTopMenuCount = 0;
-    if ($zbp->CheckRights($requireAction) == false) {
-        return '';
-    }
-
-    $tmp = null;
-    if ($strTarget == "") {
-        $strTarget = "_self";
-    }
-    $AdminTopMenuCount = ($AdminTopMenuCount + 1);
-    if ($strLiId == "") {
-        $strLiId = "topmenu" . $AdminTopMenuCount;
-    }
-    $strIconElem = $strIconClass !== "" ? "<i class=\"" . $strIconClass . "\"></i><span>" : "<span>";
-    $tmp = "<li id=\"" . $strLiId . "\"><a href=\"" . $strUrl . "\" target=\"" . $strTarget . "\" title=\"" . htmlspecialchars($strName) . "\">" . $strIconElem . $strName . "</span></a></li>";
-
-    return $tmp;
-}
-
 //覆盖ResponseAdmin_TopMenu
 function ResponseAdmin_TopMenu()
 {
