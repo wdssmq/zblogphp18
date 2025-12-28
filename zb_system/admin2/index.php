@@ -1,9 +1,8 @@
 <?php
 require '../function/c_system_base.php';
-require 'function/admin2_function.php';
-
+$zbp->ismanage = true;
 $zbp->Load();
-
+require 'function/admin2_function.php';
 require '../function/c_system_admin_function.php';
 
 $zbp->action = GetVars('act', 'GET');
