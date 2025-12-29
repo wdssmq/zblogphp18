@@ -13,7 +13,7 @@ function ResponseAdmin_TopMenu()
     }
 
     //$topmenus[] = MakeTopMenu("admin", $zbp->lang['msg']['dashboard'], $zbp->cmdurl . "?act=admin", "", "", "icon-house-door-fill");
-    $topmenus[] = '<li><a href="" class="rebuild">清空缓存、重建编译</a></li>';
+    $topmenus[] = '<li><a href="" class="rebuild">清空缓存、编译模板</a></li>';
 
     //$topmenus[] = MakeTopMenu("SettingMng", @$zbp->lang['msg']['web_settings'], $zbp->cmdurl . "?act=SettingMng", "", "topmenu_setting", "icon-gear-fill");
 
