@@ -13,13 +13,13 @@ function ResponseAdmin_TopMenu()
     }
 
     //$topmenus[] = MakeTopMenu("admin", $zbp->lang['msg']['dashboard'], $zbp->cmdurl . "?act=admin", "", "", "icon-house-door-fill");
-    $topmenus[] = MakeTopMenu("SettingMng", @$zbp->lang['msg']['web_settings'], $zbp->cmdurl . "?act=SettingMng", "", "topmenu_setting", "icon-gear-fill");
+    $topmenus[] = '<li><a href="" class="rebuild">清空缓存、重建编译</a></li>';
+
+    //$topmenus[] = MakeTopMenu("SettingMng", @$zbp->lang['msg']['web_settings'], $zbp->cmdurl . "?act=SettingMng", "", "topmenu_setting", "icon-gear-fill");
 
     foreach ($GLOBALS['hooks']['Filter_Plugin_Admin_TopMenu'] as $fpname => &$fpsignal) {
         $fpname($topmenus);
     }
-
-    $topmenus[] = '<li><a href="" class="rebuild">清空缓存、重建编译</a></li>';
 
     foreach ($topmenus as $m) {
         echo $m;
@@ -83,10 +83,10 @@ function ResponseAdmin_LeftMenu()
 
     $leftmenus[] = '<li class="menutitle">系统管理</li>';
 
+    $leftmenus['nav_setting'] = backend_toyean_MakeLeftMenu("SettingMng", $zbp->lang['msg']['web_settings'], $zbp->cmdurl . "?act=SettingMng", "nav_setting", "aSettingMng", "", "icon-gear-fill");
     $leftmenus['nav_member'] = backend_toyean_MakeLeftMenu("MemberMng", $zbp->lang['msg']['member_manage'], $zbp->cmdurl . "?act=MemberMng", "nav_member", "aMemberMng", "", "icon-people-fill");
 
     //$leftmenus[] = "<li class='split'><hr/></li>";
-
     $leftmenus['nav_theme'] = backend_toyean_MakeLeftMenu("ThemeMng", $zbp->lang['msg']['theme_manage'], $zbp->cmdurl . "?act=ThemeMng", "nav_theme", "aThemeMng", "", "icon-grid-1x2-fill");
     $leftmenus['nav_module'] = backend_toyean_MakeLeftMenu("ModuleMng", $zbp->lang['msg']['module_manage'], $zbp->cmdurl . "?act=ModuleMng", "nav_module", "aModuleMng", "", "icon-grid-3x3-gap-fill");
     $leftmenus['nav_plugin'] = backend_toyean_MakeLeftMenu("PluginMng", $zbp->lang['msg']['plugin_manage'], $zbp->cmdurl . "?act=PluginMng", "nav_plugin", "aPluginMng", "", "icon-puzzle-fill");

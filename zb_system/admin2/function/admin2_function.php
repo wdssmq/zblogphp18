@@ -19,6 +19,7 @@ function zbp_admin2_GetActionInfo($action)
     "SubMenu" => "",
     "ActiveTopMenu" => "",
     "ActiveLeftMenu" => "",
+    "Action" => $action,
   );
   switch ($action) {
     case 'admin':
