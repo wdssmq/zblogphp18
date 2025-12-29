@@ -11,6 +11,10 @@ if (!defined('ZBP_PATH')) {
     exit('Access denied');
 }
 
+//定义全局变量
+$topmenus = array();
+$leftmenus = array();
+
 //###############################################################################################################
 
 /**
@@ -203,15 +207,10 @@ function Include_Admin_UpdateAppAfter()
 }
 }
 
-$topmenus = array();
-
-$leftmenus = array();
-
 /**
  * 后台管理左侧导航菜单.
  */
-if (!function_exists('ResponseAdmin_LeftMenu')){
-function ResponseAdmin_LeftMenu()
+function _ResponseAdmin_LeftMenu()
 {
     global $zbp;
     global $leftmenus;
@@ -242,13 +241,16 @@ function ResponseAdmin_LeftMenu()
         echo $m;
     }
 }
+if (!function_exists('ResponseAdmin_LeftMenu')){
+    function ResponseAdmin_LeftMenu() {
+        return _ResponseAdmin_LeftMenu();
+    }
 }
 
 /**
  * 后台管理顶部菜单.
  */
-if (!function_exists('ResponseAdmin_TopMenu')){
-function ResponseAdmin_TopMenu()
+function _ResponseAdmin_TopMenu()
 {
     global $zbp;
     global $topmenus;
@@ -271,6 +273,10 @@ function ResponseAdmin_TopMenu()
         echo $m;
     }
 }
+if (!function_exists('ResponseAdmin_TopMenu')){
+    function ResponseAdmin_TopMenu() {
+        return _ResponseAdmin_TopMenu();
+    }
 }
 
 /**
@@ -285,8 +291,7 @@ function ResponseAdmin_TopMenu()
  *
  * @return null|string
  */
-if (!function_exists('MakeSubMenu')){
-function MakeSubMenu($strName, $strUrl, $strClass = 'm-left', $strTarget = '', $strId = '', $strTitle = '', $strIconClass = '')
+function _MakeSubMenu($strName, $strUrl, $strClass = 'm-left', $strTarget = '', $strId = '', $strTitle = '', $strIconClass = '')
 {
     $s = '<a href="' . $strUrl . '" ';
     if ($strTarget) {
@@ -304,6 +309,10 @@ function MakeSubMenu($strName, $strUrl, $strClass = 'm-left', $strTarget = '', $
 
     return $s;
 }
+if (!function_exists('MakeSubMenu')){
+    function MakeSubMenu($strName, $strUrl, $strClass = 'm-left', $strTarget = '', $strId = '', $strTitle = '', $strIconClass = '') {
+        return _MakeSubMenu($strName, $strUrl, $strClass, $strTarget, $strId, $strTitle, $strIconClass);
+    }
 }
 
 /**
@@ -318,8 +327,7 @@ function MakeSubMenu($strName, $strUrl, $strClass = 'm-left', $strTarget = '', $
  *
  * @return null|string
  */
-if (!function_exists('MakeTopMenu')){
-function MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $strIconClass = "")
+function _MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $strIconClass = "")
 {
     global $zbp;
 
@@ -341,6 +349,10 @@ function MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $s
 
     return $tmp;
 }
+if (!function_exists('MakeTopMenu')){
+    function MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $strIconClass = "") {
+        return _MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $strIconClass);
+    }
 }
 
 /**
@@ -355,8 +367,7 @@ function MakeTopMenu($requireAction, $strName, $strUrl, $strTarget, $strLiId, $s
  *
  * @return null|string
  */
-if (!function_exists('MakeLeftMenu')){
-function MakeLeftMenu($requireAction, $strName, $strUrl, $strLiId, $strAId, $strImgUrl, $strIconClass = "")
+function _MakeLeftMenu($requireAction, $strName, $strUrl, $strLiId, $strAId, $strImgUrl, $strIconClass = "")
 {
     global $zbp;
 
@@ -378,6 +389,10 @@ function MakeLeftMenu($requireAction, $strName, $strUrl, $strLiId, $strAId, $str
 
     return $tmp;
 }
+if (!function_exists('MakeLeftMenu')){
+    function MakeLeftMenu($requireAction, $strName, $strUrl, $strLiId, $strAId, $strImgUrl, $strIconClass = "") {
+        return _MakeLeftMenu($requireAction, $strName, $strUrl, $strLiId, $strAId, $strImgUrl, $strIconClass);
+    }
 }
 
 //###############################################################################################################
