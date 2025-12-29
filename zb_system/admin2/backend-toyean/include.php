@@ -8,8 +8,12 @@ function ResponseAdmin_TopMenu()
     global $zbp;
     global $topmenus;
 
+    if ($zbp->isbackend_ui === false) {
+        return _ResponseAdmin_TopMenu();
+    }
+
     //$topmenus[] = MakeTopMenu("admin", $zbp->lang['msg']['dashboard'], $zbp->cmdurl . "?act=admin", "", "", "icon-house-door-fill");
-    $topmenus[] = MakeTopMenu("SettingMng", @$zbp->lang['msg']['web_settings'], $zbp->cmdurl . "?act=SettingMng", "", "", "icon-gear-fill");
+    $topmenus[] = MakeTopMenu("SettingMng", @$zbp->lang['msg']['web_settings'], $zbp->cmdurl . "?act=SettingMng", "", "topmenu_setting", "icon-gear-fill");
 
     foreach ($GLOBALS['hooks']['Filter_Plugin_Admin_TopMenu'] as $fpname => &$fpsignal) {
         $fpname($topmenus);
@@ -54,21 +58,23 @@ function ResponseAdmin_LeftMenu()
     global $zbp;
     global $leftmenus;
 
+    if ($zbp->isbackend_ui === false) {
+        return _ResponseAdmin_LeftMenu();
+    }
+
     $leftmenus[] = '<li class="menutitle">概览</li>';
 
-//<dd><a href="index.html" class="on" data-title="仪表盘"><i class="ico ico-home"></i>仪表盘</a></dd>
-
-    $leftmenus['nav_new'] = backend_toyean_MakeLeftMenu("ArticleEdt", $zbp->lang['msg']['new_article'], $zbp->cmdurl . "?act=ArticleEdt", "nav_new", "aArticleEdt", "", "icon-pencil-square-fill");
+    $leftmenus[] = '<li id="nav_dashboard"><a id="aDashboard" href="' . $zbp->cmdurl . "?act=admin" . '" data-title="仪表盘"><span><i class="ico ico-home"></i>仪表盘</span></a></li>';
 
     $leftmenus[] = '<li class="menutitle">内容管理</li>';
+
+    $leftmenus['nav_new'] = backend_toyean_MakeLeftMenu("ArticleEdt", $zbp->lang['msg']['new_article'], $zbp->cmdurl . "?act=ArticleEdt", "nav_new", "aArticleEdt", "", "icon-pencil-square-fill");
 
     $leftmenus['nav_new'] = backend_toyean_MakeLeftMenu("ArticleEdt", $zbp->lang['msg']['new_article'], $zbp->cmdurl . "?act=ArticleEdt", "nav_new", "aArticleEdt", "", "icon-pencil-square-fill");
     $leftmenus['nav_article'] = backend_toyean_MakeLeftMenu("ArticleMng", $zbp->lang['msg']['article_manage'], $zbp->cmdurl . "?act=ArticleMng", "nav_article", "aArticleMng", "", "icon-stickies");
     $leftmenus['nav_page'] = backend_toyean_MakeLeftMenu("PageMng", $zbp->lang['msg']['page_manage'], $zbp->cmdurl . "?act=PageMng", "nav_page", "aPageMng", "", "icon-stickies-fill");
 
     //$leftmenus[] = "<li class='split'><hr/></li>";
-
-
 
     $leftmenus['nav_category'] = backend_toyean_MakeLeftMenu("CategoryMng", $zbp->lang['msg']['category_manage'], $zbp->cmdurl . "?act=CategoryMng", "nav_category", "aCategoryMng", "", "icon-folder-fill");
     $leftmenus['nav_tags'] = backend_toyean_MakeLeftMenu("TagMng", $zbp->lang['msg']['tag_manage'], $zbp->cmdurl . "?act=TagMng", "nav_tags", "aTagMng", "", "icon-tags-fill");

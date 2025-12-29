@@ -4,7 +4,7 @@
         <a href="{$zbp->host}" class="backhome">浏览网站</a>
         <a href="" class="theme light"></a>
         <div class="user">
-          <div class="userlink"><span class="userimg"><img src="{$host}zb_system/admin2/{$backendtheme}/style/images/userimg.jpg"
+          <div class="userlink"><span class="userimg"><img src="{$zbp->user->Avatar}"
                 alt=""></span><span class="username"><strong>{$zbp->user->StaticName}</strong><em>{$zbp->user->LevelName}</em></span></div>
           <div class="usermenu">
             <ul>
