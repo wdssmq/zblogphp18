@@ -10,7 +10,7 @@
 	<script src="../../zb_system/script/zblogphp.js"></script>
 	<script src="../../zb_system/script/c_html_js_add.php"></script>
 	<script src="../script/common.js"></script>
-	<script>window.toyean = window.toyean || {};Object.assign(window.toyean || {},{night:true,setnightstart:'22',setnightover:'6',backtotop:true,backtotopvalue:500,version:'1.0'});</script>
+	<script>window.toyean = Object.assign(window.toyean || {}, { night: true, setnightstart: '22', setnightover: '6', backtotop: true, backtotopvalue: 500, version: '1.0' });</script>
 </head>
 <body>
 <div class="wrapper">
@@ -63,7 +63,146 @@
 			<div class="title">
 				<h2><span>文章</span></h2>
 			</div>
-
+			<div class="sub">
+				<form action="">
+					<select name="" id="">
+						<option value="">所有分类</option>
+						<option value="">未分类</option>
+					</select>
+					<select name="" id="">
+						<option value="">所有类型</option>
+						<option value="">公开</option>
+						<option value="">草稿</option>
+						<option value="">审核</option>
+					</select>
+					<label for="istop"><input type="checkbox" id="istop">置顶</label>
+					<input type="text" placeholder="输入关键词搜索" class="search">
+					<button>搜索</button>
+					<label class="filter">已筛选：</label>
+					<a href="" class="filter">未分类</a>
+					<a href="" class="filter">admin</a>
+				</form>
+			</div>
+			<div class="postlist">
+				<div class="tr thead">
+					<div class="td-id">ID</div>
+					<div class="td-cate">分类</div>
+					<div class="td-author">作者</div>
+					<div class="td-title">标题</div>
+					<div class="td-date">日期</div>
+					<div class="td-view">浏览</div>
+					<div class="td-cmt">评论</div>
+					<div class="td-status">状态</div>
+					<div class="td-action">操作</div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span>公开</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span class="draft">草稿</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span class="review">审核</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span>公开</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span class="draft">草稿</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span class="review">审核</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span>公开</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span class="draft">草稿</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+				<div class="tr">
+					<div class="td-id">999</div>
+					<div class="td-cate"><a href="">未分类</a></div>
+					<div class="td-author"><a href="">admin</a></div>
+					<div class="td-title"><a href="">欢迎使用Z-BlogPHP1.8</a></div>
+					<div class="td-date">2026-01-01 00:00</div>
+					<div class="td-cmt">999</div>
+					<div class="td-cmt">99</div>
+					<div class="td-status"><span class="review">审核</span></div>
+					<div class="td-action"><a href="" class="edit">编辑</a><a href="" class="del">删除</a></div>
+				</div>
+			</div>
+			<p class="pagebar">
+				<a href="">Prev</a>
+				<span class="now-page">1</span>
+				<a href="">2</a>
+				<a href="">3</a>
+				<a href="">4</a>
+				<a href="">Next</a>
+			</p>
 		</div>
 	</div>
 </div>
