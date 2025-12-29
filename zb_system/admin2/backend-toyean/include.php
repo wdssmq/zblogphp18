@@ -37,11 +37,11 @@ function backend_toyean_MakeLeftMenu($requireAction, $strName, $strUrl, $strLiId
     $tmp = null;
 
     if ($strIconClass != "") {
-        $tmp = "<dd id=\"" . $strLiId . "\"><a id=\"" . $strAId . "\" href=\"" . $strUrl . "\" title=\"" . strip_tags($strName) . "\"><span><i class=\"" . $strIconClass . "\"></i>" . $strName . "</span></a></dd>";
+        $tmp = "<li id=\"" . $strLiId . "\"><a id=\"" . $strAId . "\" href=\"" . $strUrl . "\" title=\"" . strip_tags($strName) . "\"><span><i class=\"" . $strIconClass . "\"></i>" . $strName . "</span></a></li>";
     } elseif ($strImgUrl != "") {
-        $tmp = "<dd id=\"" . $strLiId . "\"><a id=\"" . $strAId . "\" href=\"" . $strUrl . "\" title=\"" . strip_tags($strName) . "\"><span class=\"bgicon\" style=\"background-image:url('" . $strImgUrl . "')\">" . $strName . "</span></a></dd>";
+        $tmp = "<li id=\"" . $strLiId . "\"><a id=\"" . $strAId . "\" href=\"" . $strUrl . "\" title=\"" . strip_tags($strName) . "\"><span class=\"bgicon\" style=\"background-image:url('" . $strImgUrl . "')\">" . $strName . "</span></a></li>";
     } else {
-        $tmp = "<dd id=\"" . $strLiId . "\"><a id=\"" . $strAId . "\" href=\"" . $strUrl . "\" title=\"" . strip_tags($strName) . "\"><span><i class=\"icon-window-fill\"></i>" . $strName . "</span></a></dd>";
+        $tmp = "<li id=\"" . $strLiId . "\"><a id=\"" . $strAId . "\" href=\"" . $strUrl . "\" title=\"" . strip_tags($strName) . "\"><span><i class=\"icon-window-fill\"></i>" . $strName . "</span></a></li>";
     }
 
     return $tmp;
@@ -54,13 +54,13 @@ function ResponseAdmin_LeftMenu()
     global $zbp;
     global $leftmenus;
 
-    $leftmenus[] = '<dt>概览</dt>';
+    $leftmenus[] = '<li class="menutitle">概览</li>';
 
 //<dd><a href="index.html" class="on" data-title="仪表盘"><i class="ico ico-home"></i>仪表盘</a></dd>
 
     $leftmenus['nav_new'] = backend_toyean_MakeLeftMenu("ArticleEdt", $zbp->lang['msg']['new_article'], $zbp->cmdurl . "?act=ArticleEdt", "nav_new", "aArticleEdt", "", "icon-pencil-square-fill");
 
-    $leftmenus[] = '<dt>内容管理</dt>';
+    $leftmenus[] = '<li class="menutitle">内容管理</li>';
 
     $leftmenus['nav_new'] = backend_toyean_MakeLeftMenu("ArticleEdt", $zbp->lang['msg']['new_article'], $zbp->cmdurl . "?act=ArticleEdt", "nav_new", "aArticleEdt", "", "icon-pencil-square-fill");
     $leftmenus['nav_article'] = backend_toyean_MakeLeftMenu("ArticleMng", $zbp->lang['msg']['article_manage'], $zbp->cmdurl . "?act=ArticleMng", "nav_article", "aArticleMng", "", "icon-stickies");
@@ -75,7 +75,7 @@ function ResponseAdmin_LeftMenu()
     $leftmenus['nav_comment1'] = backend_toyean_MakeLeftMenu("CommentMng", $zbp->lang['msg']['comment_manage'], $zbp->cmdurl . "?act=CommentMng", "nav_comment", "aCommentMng", "", "icon-chat-text-fill");
     $leftmenus['nav_upload'] = backend_toyean_MakeLeftMenu("UploadMng", $zbp->lang['msg']['upload_manage'], $zbp->cmdurl . "?act=UploadMng", "nav_upload", "aUploadMng", "", "icon-inboxes-fill");
 
-    $leftmenus[] = '<dt>系统管理</dt>';
+    $leftmenus[] = '<li class="menutitle">系统管理</li>';
 
     $leftmenus['nav_member'] = backend_toyean_MakeLeftMenu("MemberMng", $zbp->lang['msg']['member_manage'], $zbp->cmdurl . "?act=MemberMng", "nav_member", "aMemberMng", "", "icon-people-fill");
 
@@ -84,15 +84,15 @@ function ResponseAdmin_LeftMenu()
     $leftmenus['nav_theme'] = backend_toyean_MakeLeftMenu("ThemeMng", $zbp->lang['msg']['theme_manage'], $zbp->cmdurl . "?act=ThemeMng", "nav_theme", "aThemeMng", "", "icon-grid-1x2-fill");
     $leftmenus['nav_module'] = backend_toyean_MakeLeftMenu("ModuleMng", $zbp->lang['msg']['module_manage'], $zbp->cmdurl . "?act=ModuleMng", "nav_module", "aModuleMng", "", "icon-grid-3x3-gap-fill");
     $leftmenus['nav_plugin'] = backend_toyean_MakeLeftMenu("PluginMng", $zbp->lang['msg']['plugin_manage'], $zbp->cmdurl . "?act=PluginMng", "nav_plugin", "aPluginMng", "", "icon-puzzle-fill");
-    $leftmenus[] = '<dt>其它</dt>';
+    $leftmenus[] = '<li class="menutitle">其它</li>';
 
     foreach ($GLOBALS['hooks']['Filter_Plugin_Admin_LeftMenu'] as $fpname => &$fpsignal) {
         $fpname($leftmenus);
     }
 
     foreach ($leftmenus as $m) {
-        $m = str_replace('<li', '<dd', $m);
-        $m = str_replace('</li>', '</dd>', $m);
+        //$m = str_replace('<li', '<dd', $m);
+        //$m = str_replace('</li>', '</dd>', $m);
         echo $m;
     }
 }

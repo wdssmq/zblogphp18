@@ -6,7 +6,7 @@
                         src="{$host}zb_system/admin2/{$backendtheme}/style/images/logo-light.svg" alt="" class="logolight"><img
                         src="{$host}zb_system/admin2/{$backendtheme}/style/images/logo-dark.svg" alt="" class="logodark"></a></div>
             <div class="menu">
-                <dl><!--
+                <ul><!--
                     <dt>概览</dt>
                     <dd><a href="index.html" class="on" data-title="仪表盘"><i class="ico ico-home"></i>仪表盘</a></dd>
                     <dt>内容管理</dt>
@@ -27,7 +27,7 @@
                     <dd><a href="" data-title="应用中心"><i class="ico ico-appstore"></i>应用中心</a></dd>
 -->
     {ResponseAdmin_LeftMenu()}
-                </dl>
+                </ul>
             </div>
 
 
