@@ -379,6 +379,8 @@ class ZBlogPHP
 
     public $ismanage = false; //是否加载管理模式
 
+    public $isbackend_ui = false; //是否加载后台UI模板化
+
     public $isapi = false; //是否加载API模式
 
     public $iscmd = false; //是否加载CMD模式

@@ -6,6 +6,7 @@ require __DIR__ . "/admin2_view.php";
 require __DIR__ . "/admin2_misc.php";
 
 $zbp->ismanage = true;
+$zbp->isbackend_ui = true;
 
 // admin2 后台主要函数 管理页面
 function zbp_admin2_GetActionInfo($action)
