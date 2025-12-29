@@ -177,7 +177,8 @@ function zbp_admin2_GetActionInfo($action)
       break;
   }
 
-  //$main->SubMenu = zbp_admin2_GenSubMenu($action);
+  //返回原SubMenu接口设置的菜单
+  $main->SubMenu = zbp_admin2_GenSubMenu($action);
   return $main;
 }
 
