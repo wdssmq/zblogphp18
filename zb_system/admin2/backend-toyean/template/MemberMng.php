@@ -1,5 +1,5 @@
 <?php die(); ?>
-<!-- 2026-01-01 -->
+<!-- 20260101003618 -->
 <!-- 搜索 -->
 <div class="sub">
 <form class="search" id="search" method="post" action="#">

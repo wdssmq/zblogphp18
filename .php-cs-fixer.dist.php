@@ -1,32 +1,39 @@
 <?php
-
+// 20260101003610
 declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
-use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+
+$finder = (new Finder())
+    ->in(__DIR__)
+    ->exclude(['node_modules', 'vendor']);
 
 return (new Config())
-    ->setParallelConfig(ParallelConfigFactory::detect()) // @TODO 4.0 no need to call this manually
     ->setRiskyAllowed(true)
     ->setRules([
-        '@auto' => true,
-        '@auto:risky' => true,
-        '@PhpCsFixer:risky' => true
+        '@PSR12' => true,
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
+        '@PHP73Migration' => true,
+        '@PHP73Migration:risky' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'list_syntax' => ['syntax' => 'short'],
+        'trailing_comma_in_multiline' => ['elements' => ['arrays', 'arguments']],
+        'declare_strict_types' => true,
+        'native_function_invocation' => [
+            'scope' => 'namespaced',
+            'include' => ['@all'],
+            'strict' => true,
+        ],
+        'no_superfluous_phpdoc_tags' => [
+            'allow_mixed' => true,
+            'remove_inheritdoc' => false,
+        ],
+        'phpdoc_align' => ['align' => 'vertical'],
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'single_import_per_statement' => true,
+        'single_line_comment_style' => ['comment_types' => ['hash']],
     ])
-    // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
-    ->setFinder(
-        (new Finder())
-            // 💡 root folder to check
-            ->in(__DIR__)
-            // 💡 additional files, eg bin entry file
-            // ->append([__DIR__.'/bin-entry-file'])
-            // 💡 folders to exclude, if any
-            ->exclude(['node_modules'])
-            // 💡 path patterns to exclude, if any
-            // ->notPath([/* ... */])
-            // 💡 extra configs
-            // ->ignoreDotFiles(false) // true by default in v3, false in v4 or future mode
-            // ->ignoreVCS(true) // true by default
-    )
+    ->setFinder($finder)
 ;
