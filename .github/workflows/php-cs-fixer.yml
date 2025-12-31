@@ -41,7 +41,7 @@ jobs:
       - name: Run php-cs-fixer on changed files
         if: steps.changed.outputs.any_changed == 'true'
         run: |
-          echo "${{ steps.changed.outputs.all_changed_files }}" | tr '\n' '\0' | xargs -0 -r php vendor/bin/php-cs-fixer fix --allow-risky=yes --config=.php-cs-fixer.dist.php --path-mode=intersection --
+          printf '%s\0' "${{ steps.changed.outputs.all_changed_files }}" | xargs -0 -r php vendor/bin/php-cs-fixer fix --allow-risky=yes --config=.php-cs-fixer.dist.php --path-mode=intersection --
 
       # - name: Fail if formatting changes are needed
       #   run: |
