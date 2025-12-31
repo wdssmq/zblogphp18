@@ -1,4 +1,6 @@
-<?php die(); ?>
+<?php declare(strict_types=1);
+
+exit(); ?>
 <!-- 20260101010731 -->
 <!-- 搜索 -->
 <div class="sub">

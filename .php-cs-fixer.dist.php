@@ -1,4 +1,5 @@
 <?php
+
 // 20260101010726
 declare(strict_types=1);
 
@@ -7,7 +8,8 @@ use PhpCsFixer\Finder;
 
 $finder = (new Finder())
     ->in(__DIR__)
-    ->exclude(['node_modules', 'vendor']);
+    ->exclude(['node_modules', 'vendor'])
+;
 
 return (new Config())
     ->setRiskyAllowed(true)
