@@ -14,9 +14,8 @@
 	<p><input type="text" name="inpHomePage" id="inpHomePage" class="text" value="{$user.HomePage}" size="28" tabindex="3" /> <label for="inpHomePage">{$lang['msg']['homepage']}</label></p>
 	{template:commentpost-verify}
 {/if}
-	<p style="display:none;"><label for="txaArticle">{$lang['msg']['content']}(*)</label></p>
-	<p><textarea name="txaArticle" id="txaArticle" class="text" cols="50" rows="4" tabindex="5" ></textarea></p>
-	<p><input name="sumbit" type="submit" tabindex="6" value="提交" onclick="return zbp.comment.post()" class="button" /></p>
+	<p><textarea name="txaArticle" id="txaArticle" class="text" cols="50" rows="4" tabindex="5" ></textarea> <label for="txaArticle">{$lang['msg']['content']}(*)</label></p>
+	<p><input name="sumbit" type="submit" tabindex="6" value="{$lang['msg']['submit']}" onclick="return zbp.comment.post()" class="button" /></p>
 	</form>
 	<p class="postbottom">{$lang['default']['reply_notice']}</p>
 </div>
