@@ -1,5 +1,5 @@
 <?php
-// 20260101005713
+// 20260101005917
 declare(strict_types=1);
 
 use PhpCsFixer\Config;
@@ -15,8 +15,6 @@ return (new Config())
         '@PSR12' => true,
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
-        '@PHP73Migration' => true,
-        '@PHP73Migration:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
         'list_syntax' => ['syntax' => 'short'],
         'trailing_comma_in_multiline' => ['elements' => ['arrays', 'arguments']],
