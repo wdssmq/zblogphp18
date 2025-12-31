@@ -41,7 +41,7 @@ jobs:
       - name: Run php-cs-fixer on changed files
         if: steps.changed.outputs.any_changed == 'true'
         run: |
-          vendor/bin/php-cs-fixer fix ${{ steps.changed.outputs.all_changed_files }}
+          vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php ${{ steps.changed.outputs.all_changed_files }}
 
       # - name: Fail if formatting changes are needed
       #   run: |
