@@ -384,23 +384,16 @@ $(function(){
 		hideTooltip();
 	});
 
-	// 窗口大小变化重新计算
-	$(window).on('resize', function() {
-		if ($tooltip.is(':visible')) {
-			let $activeLink = null;
-			// 找到当前鼠标所在的菜单项
-			$menuItems.each(function() {
-				const $link = $(this);
-				if ($link.is(':hover')) {
-					$activeLink = $link;
-					return false; // 退出循环
-				}
-			});
-			if ($activeLink) {
-				showTooltip($activeLink);
-			} else {
-				hideTooltip();
-			}
-		}
-	});
+	//最新动态时间分离
+  $('.listcard.two a').each(function() {
+        const UpInfotext = $(this).html();
+        // 匹配日期格式 (YYYY-MM-DD)
+        const dateRegex = /\((\d{4}-\d{2}-\d{2})\)/g;
+        const newUpInfotext = UpInfotext.replace(dateRegex, '<span>$1</span>');
+        // 更新链接内容
+        if (newUpInfotext !== UpInfotext) {
+            $(this).html(newUpInfotext);
+        }
+  });
+  
 });
