@@ -57,16 +57,16 @@
             <ul class="configinfo">
               <li><em>当前版本</em><span>{$current_version}</span></li>
               <li><em>当前主题</em><span>{$current_theme} {$current_theme_version}/{$current_style}</span></li>
-              <li><em>系统环境</em><span>{$system_environment1}</span></li>
-              <li><em></em><span>{$system_environment2}</span></li>
+              <li><em>系统环境</em><span>{$system_environment1};{$system_environment2}</span></li>
               <li><em>API协议地址</em><span>http://localhost/zb_system/api.php</span></li>
-    {if $zbp.isdebug}
-    <!--debug_mode_note-->
-    <li><em>调试模式</em><span class="on">已启用</span></li>
-    {else}
-    <li><em>调试模式</em><span class="off">关闭</span></li>
-    {/if}
-            </ul>            
+              <li><em>服务器IP</em><span>{gethostbyname(gethostname())}</span></li>
+              {if $zbp.isdebug}
+              <!--debug_mode_note-->
+              <li><em>调试模式</em><span class="on">已启用</span></li>
+              {else}
+              <li><em>调试模式</em><span class="off">关闭</span></li>
+              {/if}
+            </ul>
           </dd>
   </dl>
 </div>
