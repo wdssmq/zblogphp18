@@ -310,14 +310,14 @@ $(function(){
 	$(document).on('click', '.menuico', function (e) {
 		e.stopPropagation();
 		const flag = !$('.side').hasClass('on');   // 点击后要变成的状态
-		$(".side,.fademask").toggleClass('on', flag);
+		$(".side,.fademask,.main").toggleClass('on', flag);
 		zbp.cookie.set('side', flag ? '1' : '0');   // 你自己的封装
 	});
 
 	$(document).on('click', '.sideclose,.fademask', function (e) {
 		e.stopPropagation();
 		const flag = !$('.side').hasClass('on');   // 点击后要变成的状态
-		$(".side,.fademask").toggleClass('on', flag);
+		$(".side,.fademask,.main").toggleClass('on', flag);
 		zbp.cookie.set('side', flag ? '1' : '0');   // 你自己的封装
 	});
 
@@ -326,6 +326,7 @@ $(function(){
 	if (stored === '1') {
 		$('.side').addClass('on');
 		$('.fademask').addClass('on');
+		$('.main').addClass('on');
 	}
 
 	//主菜单tips
@@ -395,5 +396,5 @@ $(function(){
             $(this).html(newUpInfotext);
         }
   });
-  
+
 });
