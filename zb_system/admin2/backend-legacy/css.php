@@ -270,8 +270,8 @@ header div.logo img{
     background-position: -5px -5px;
 }
 .pagebar a{border:1px solid white;}
-body[class~=body-login],body[class~=error],body[class~=short]{background:none;}
-body[class~=body-login] div.bg,body[class~=error] div.bg,body[class~=short] div.bg {background: #3399cc;}
+body[class~=body-login],body[class~=body-error],body[class~=short]{background:none;}
+body[class~=body-login] div.bg,body[class~=body-error] div.bg,body[class~=short] div.bg {background: #3399cc;}
 body[class~=body-login] input[type="text"], body[class~=body-login] input[type="password"] {border-color:#3399cc}
 body[class~=body-login] input.button, input[type="submit"], input[type="button"] {border-color: #3399cc;}
 body[class~=body-login] input.button, body[class~=body-login] input[type="submit"], body[class~=body-login] input[type="button"] {background-color: #3399cc;}
