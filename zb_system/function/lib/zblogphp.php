@@ -2234,6 +2234,9 @@ class ZBlogPHP
                     $this->backendapp = &$this->backendapps[$backend_id];
                     $languagePath = $this->backendapp->GetPath() . 'language/';
                     $languagePtr = &$this->lang[$id];
+                } else {
+                    $languagePath .= 'zb_system/admin2/' . $id . '/language/';
+                    $languagePtr = &$this->lang[$id];
                 }
                 break;
             default:
