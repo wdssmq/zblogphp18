@@ -14,7 +14,7 @@
     <meta charset="utf-8" />
     <meta name="generator" content="{$zblogphp}" />
     <title>{$name} - {$title}</title>
-    <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/style.css?v={$version}">
+    <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/{$backendtheme}.css?v={$version}">
     <link rel="stylesheet" href="{$host}zb_system/image/icon/icon.css?v={$version}">
     <link rel="stylesheet" href="{$host}zb_system/css/jquery-ui.custom.css?v={$version}" />
     <script src="{$host}zb_system/script/jquery-2.2.4.min.js?v={$version}"></script>
