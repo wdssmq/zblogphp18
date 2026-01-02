@@ -234,10 +234,11 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
     <!-- divEditRight -->
 </form>
 <script>
-    const tag_loaded = false; // 是否已经ajax读取过TAGS
-    const sContent = "",
+    let sContent = "",
         sIntro = ""; // 原内容与摘要
-    const isSubmit = false; // 是否提交保存
+    let tag_loaded = false; // 是否已经ajax读取过TAGS
+    let isSubmit = false; // 是否提交保存
+
     const contentBarBtn = [],
         introBarBtn = [],
         contentReady = [],
@@ -448,7 +449,7 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
     (function() {
         const $idElement = $('#edtID');
         const articleKey = 'zblogphp_article_' + $idElement.val();
-        const isFirstOpenPage = true;
+        let isFirstOpenPage = true;
         const hint = "{$lang['error']['93']}";
         const currentStatus = {
             time: new Date().getTime(),
