@@ -11,7 +11,7 @@ function ActivePlugin_backend_legacy()
 {
     global $zbp;
     Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'AdminColor_submenu');
-    if ($zbp->Config('AdminColor')->Enable === true) {
+    if (true === $zbp->Config('AdminColor')->Enable) {
         Add_Filter_Plugin('Filter_Plugin_Login_Header', 'AdminColor_Css');
         Add_Filter_Plugin('Filter_Plugin_Other_Header', 'AdminColor_Css');
         Add_Filter_Plugin('Filter_Plugin_Admin_Header', 'AdminColor_Css');
