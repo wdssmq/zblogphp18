@@ -2342,16 +2342,17 @@ class ZBlogPHP
             $fpname($template->templateTags);
         }
 
-        //此处增加接口可以在Load时，对$theme, $template_dirname参数可以进行修改
-        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_PrepareTemplate'] as $fpname => &$fpsignal) {
-            $fpname($theme, $template_dirname);
-        }
-
         $template->theme = $theme;
         $template->template_dirname = $template_dirname;
 
         $template->SetPath();
         $template->LoadTemplates();
+
+        //从1.8起，传参变成 $template 对象
+        //***此处增加接口可以在Load时，对$theme, $template_dirname参数可以进行修改
+        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_PrepareTemplate'] as $fpname => &$fpsignal) {
+            $fpname($template);
+        }
 
         return $template;
     }
@@ -2477,6 +2478,10 @@ class ZBlogPHP
         $template_admin->LoadAdminTemplates();
         $this->autofill_template_htmltags = false;
         $this->backendtheme = $template_admin->theme;
+
+        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_PrepareTemplateAdmin'] as $fpname => &$fpsignal) {
+            $fpname($template_admin);
+        }
 
         return $template_admin;
     }
