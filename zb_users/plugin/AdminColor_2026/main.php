@@ -17,6 +17,7 @@ if (!$zbp->CheckPlugin('AdminColor_2026')) {
 }
 
 $blogtitle = '后台配色器_2026';
+$content = $zbp->template_admin->Output("plugin_AdminColor_2026_Content");
 $ActionInfo = (object) [
     'Title' => $blogtitle,
     'Header' => $blogtitle,
@@ -25,7 +26,7 @@ $ActionInfo = (object) [
     'ActiveTopMenu' => '',
     'ActiveLeftMenu' => '',
     'Action' => $zbp->action,
-    'Content' => "",
+    'Content' => $content,
 ];
 
 $zbp->template_admin->SetTags('title', $ActionInfo->Title);
@@ -33,4 +34,3 @@ $zbp->template_admin->SetTags('main', $ActionInfo);
 $zbp->template_admin->Display('index');
 
 RunTime();
-?>

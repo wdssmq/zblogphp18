@@ -4,6 +4,12 @@ RegisterPlugin("AdminColor_2026", "ActivePlugin_AdminColor_2026");
 function ActivePlugin_AdminColor_2026()
 {
     Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'AdminColor_2026_submenu');
+    Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplate_Admin', 'AdminColor_2026_GenTpl');
+}
+function AdminColor_2026_GenTpl(&$templates)
+{
+    $tplCont = file_get_contents(AdminColor_2026_Path("tpl-Content"));
+    $templates["plugin_AdminColor_2026_Content"] = $tplCont;
 }
 
 function AdminColor_2026_submenu()
@@ -17,6 +23,9 @@ function AdminColor_2026_Path($file, $t = 'path')
     global $zbp;
     $result = $zbp->$t . 'zb_users/plugin/AdminColor_2026/';
     switch ($file) {
+        case 'tpl-Content':
+            return $result . 'tpl/Content.php';
+            break;
         case 'usr':
             return $result . 'usr/';
             break;
