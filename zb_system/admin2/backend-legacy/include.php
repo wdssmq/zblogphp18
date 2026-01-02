@@ -14,8 +14,8 @@ function ActivePlugin_backend_legacy()
     Add_Filter_Plugin('Filter_Plugin_Other_Header', 'AdminColor_Css');
     Add_Filter_Plugin('Filter_Plugin_Admin_Header', 'AdminColor_Css');
     Add_Filter_Plugin('Filter_Plugin_Admin_Js_Add', 'AdminColor_AddJS');
-    if($zbp->HasConfig('AdminColor') && isset($zbp->admin_js_hash)){
-        $zbp->admin_js_hash .= hash('crc32b', (string)$zbp->Config('AdminColor'));
+    if ($zbp->HasConfig('AdminColor') && isset($zbp->admin_js_hash)) {
+        $zbp->admin_js_hash .= hash('crc32b', (string) $zbp->Config('AdminColor'));
     }
     Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'AdminColor_submenu');
 }
@@ -23,7 +23,7 @@ function ActivePlugin_backend_legacy()
 function AdminColor_submenu()
 {
     global $zbp;
-    echo MakeSubMenu('后台配色', $zbp->host . 'zb_system/admin2/backend-legacy/main.php', 'm-right', null, null, null, 'icon-brush-fill');
+    echo MakeSubMenu('后台配色', $zbp->host.'zb_system/admin2/backend-legacy/main.php', 'm-right', null, null, null, 'icon-brush-fill');
 }
 
 function AdminColor_Css()
@@ -33,33 +33,35 @@ function AdminColor_Css()
     //if (stripos($zbp->currenturl, 'phpinfo') !== false) {
     //    return;
     //}
-    if(0 == (int)$zbp->Config('AdminColor')->FontSize)
+    if (0 == (int) $zbp->Config('AdminColor')->FontSize) {
         $zbp->Config('AdminColor')->FontSize = 14;
+    }
 
     $app = $zbp->LoadApp('plugin', 'AdminColor');
-    echo '<link rel="stylesheet" type="text/css" href="' . $zbp->host . 'zb_system/admin2/backend-legacy/css.php?id=' . $zbp->Config('AdminColor')->ColorID . '&hash=' . hash('crc32b', $zbp->Config('AdminColor')) . '&v=' . $app->modified . '"/>' . "\r\n";
+    echo '<link rel="stylesheet" type="text/css" href="'.$zbp->host.'zb_system/admin2/backend-legacy/css.php?id='.$zbp->Config('AdminColor')->ColorID.'&hash='.hash('crc32b', $zbp->Config('AdminColor')).'&v='.$app->modified.'"/>'."\r\n";
 
-    list($fontsize, $leftwidth, $rightwidth, $background_positionX, $background_color) = AdminColor_GetValue();
+    [$fontsize, $leftwidth, $rightwidth, $background_positionX, $background_color] = AdminColor_GetValue();
 
-    echo '<script>var lang_admincolor_closemenu2 = "' . $zbp->lang['msg']['closemenu'] . '";var lang_admincolor_closemenu = "<i class=icon-caret-left-fill></i>' . $zbp->lang['msg']['closemenu'] . '";var lang_admincolor_expandmenu2 = "' . $zbp->lang['msg']['expandmenu'] . '";var lang_admincolor_expandmenu = "<i class=icon-caret-right-fill></i>' . $zbp->lang['msg']['expandmenu'] . '"</script>' . "\r\n";
+    echo '<script>var lang_admincolor_closemenu2 = "'.$zbp->lang['msg']['closemenu'].'";var lang_admincolor_closemenu = "<i class=icon-caret-left-fill></i>'.$zbp->lang['msg']['closemenu'].'";var lang_admincolor_expandmenu2 = "'.$zbp->lang['msg']['expandmenu'].'";var lang_admincolor_expandmenu = "<i class=icon-caret-right-fill></i>'.$zbp->lang['msg']['expandmenu'].'"</script>'."\r\n";
 
     if ($zbp->Config('AdminColor')->ColorID < 10) {
         Add_Filter_Plugin('Filter_Plugin_Admin_LeftMenu', 'AdminColor_Add_Button');
         $hm = GetVars('admincolor_hm', 'COOKIE');
-        if ($hm == '1') {
+        if ('1' == $hm) {
             echo '<style>.left{width:36px;background-color:#ededed;}.left #leftmenu span{margin-left:11px;font-size:0;}.left #leftmenu span i{font-size:'.$fontsize.'px;}div.main,section.main{padding-left:46px;}.left #leftmenu li,.left #leftmenu a{width:'.$leftwidth.'px}';
-            if ($zbp->Config('AdminColor')->ColorID == 9)
+            if (9 == $zbp->Config('AdminColor')->ColorID) {
                 echo '.left{background-color:rgb(227, 234, 243);}';
+            }
             echo '</style>';
-        }else{
+        } else {
             echo '<style>.left{width:'.$leftwidth.'px}.main{padding-left:'.$rightwidth.'px}.left #leftmenu li,.left #leftmenu a{width:'.$leftwidth.'px}</style>';
         }
-    } elseif ($zbp->Config('AdminColor')->ColorID == 10) {
+    } elseif (10 == $zbp->Config('AdminColor')->ColorID) {
         Add_Filter_Plugin('Filter_Plugin_Admin_LeftMenu', 'AdminColor_Add_Button');
         $hm = GetVars('admincolor_hm', 'COOKIE');
-        if ($hm == '1') {
+        if ('1' == $hm) {
             echo '<style>.left{width:36px;background-color:#333333;}.left #leftmenu span{margin-left:11px;font-size:0;}.left #leftmenu span i{font-size:'.$fontsize.'px;}div.main,section.main{padding-left:46px;}body{background-position:-964px top;}.left #leftmenu #nav_admincolor2 span{margin-left:11px;}.left #leftmenu li,.left #leftmenu a{width:'.$leftwidth.'px}</style>';
-        }else{
+        } else {
             echo '<style>.left{width:'.$leftwidth.'px}.main{padding-left:'.$rightwidth.'px}body{background-position:'.$background_positionX.'px top;}.left #leftmenu li,.left #leftmenu a{width:'.$leftwidth.'px}</style>';
         }
     }
@@ -67,20 +69,19 @@ function AdminColor_Css()
     foreach ($GLOBALS['hooks']['Filter_Plugin_AdminColor_CSS'] as $fpname => &$fpsignal) {
         $fpname();
     }
-
 }
 
 function AdminColor_Add_Button(&$leftmenus)
 {
     global $zbp;
-    if ($zbp->Config('AdminColor')->SlidingButton == false) {
+    if (false == $zbp->Config('AdminColor')->SlidingButton) {
         return;
     }
     $hm = GetVars('admincolor_hm', 'COOKIE');
-    if ($hm == '1') {
-        $leftmenus['nav_admincolor'] = MakeLeftMenu(5, $zbp->lang['msg']['expandmenu'], "javascript:admincolor_showMenu();", "nav_admincolor", "aAdminColor", $zbp->host . "zb_system/admin2/backend-legacy/images/arror2.png", 'icon-caret-right-fill');
+    if ('1' == $hm) {
+        $leftmenus['nav_admincolor'] = MakeLeftMenu(5, $zbp->lang['msg']['expandmenu'], 'javascript:admincolor_showMenu();', 'nav_admincolor', 'aAdminColor', $zbp->host.'zb_system/admin2/backend-legacy/images/arror2.png', 'icon-caret-right-fill');
     } else {
-        $leftmenus['nav_admincolor'] = MakeLeftMenu(5, $zbp->lang['msg']['closemenu'], "javascript:admincolor_hideMenu();", "nav_admincolor", "aAdminColor", $zbp->host . "zb_system/admin2/backend-legacy/images/arror.png", 'icon-caret-left-fill');
+        $leftmenus['nav_admincolor'] = MakeLeftMenu(5, $zbp->lang['msg']['closemenu'], 'javascript:admincolor_hideMenu();', 'nav_admincolor', 'aAdminColor', $zbp->host.'zb_system/admin2/backend-legacy/images/arror.png', 'icon-caret-left-fill');
     }
 }
 
@@ -90,58 +91,64 @@ function AdminColor_ColorButton()
 
     $s = '';
 
-    for ($i = 0; $i < count($GLOBALS['AdminColor_NormalColor']); $i++) {
-        $s .= "&nbsp;&nbsp;<a href='" . $zbp->host . "zb_system/admin2/backend-legacy/main.php?setcolor=" . $i . "' title='" . $GLOBALS['AdminColor_Title'][$i] . "'><span style='height:16px;width:16px;background:" . $GLOBALS['AdminColor_Square'][$i] . "'><img src='" . $zbp->host . "zb_system/image/admin/none.gif' width='16' height='16' alt='' /></span></a>&nbsp;&nbsp;";
+    for ($i = 0; $i < count($GLOBALS['AdminColor_NormalColor']); ++$i) {
+        $s .= "&nbsp;&nbsp;<a href='".$zbp->host.'zb_system/admin2/backend-legacy/main.php?setcolor='.$i."' title='".$GLOBALS['AdminColor_Title'][$i]."'><span style='height:16px;width:16px;background:".$GLOBALS['AdminColor_Square'][$i]."'><img src='".$zbp->host."zb_system/image/admin/none.gif' width='16' height='16' alt='' /></span></a>&nbsp;&nbsp;";
     }
 
-    echo "<div id='admin_color'>" . $s . "</div>";
+    echo "<div id='admin_color'>".$s.'</div>';
 }
 
-function AdminColor_GetValue() {
+function AdminColor_GetValue()
+{
     global $zbp;
-    $fontsize = (int)$zbp->Config('AdminColor')->FontSize;
-    if(0 == $fontsize)$fontsize = 14;
+    $fontsize = (int) $zbp->Config('AdminColor')->FontSize;
+    if (0 == $fontsize) {
+        $fontsize = 14;
+    }
     $leftwidth = $zbp->Config('AdminColor')->LeftWidth;
-    if(0 == $leftwidth)$leftwidth = 140;
+    if (0 == $leftwidth) {
+        $leftwidth = 140;
+    }
     $background_positionX = 0;
     $background_color = '';
 
     if ($zbp->Config('AdminColor')->ColorID < 9) {
         $background_color = '#ededed';
-    } elseif ($zbp->Config('AdminColor')->ColorID == 9) {
+    } elseif (9 == $zbp->Config('AdminColor')->ColorID) {
         $background_color = '#e3eaf3';
-    } elseif ($zbp->Config('AdminColor')->ColorID == 10) {
+    } elseif (10 == $zbp->Config('AdminColor')->ColorID) {
         $background_color = '#333333';
     }
 
-    if($fontsize == 12){
-        $leftwidth = $leftwidth -8 -8;
-        $rightwidth = $leftwidth +10;
-        $background_positionX = 0 -1000 +$leftwidth;
+    if (12 == $fontsize) {
+        $leftwidth = $leftwidth - 8 - 8;
+        $rightwidth = $leftwidth + 10;
+        $background_positionX = 0 - 1000 + $leftwidth;
     }
-    if($fontsize == 13){
-        $leftwidth = $leftwidth -8;
-        $rightwidth = $leftwidth +10;
-        $background_positionX = 0 -1000 +$leftwidth;
+    if (13 == $fontsize) {
+        $leftwidth = $leftwidth - 8;
+        $rightwidth = $leftwidth + 10;
+        $background_positionX = 0 - 1000 + $leftwidth;
     }
-    if($fontsize == 14){
+    if (14 == $fontsize) {
         $leftwidth = $leftwidth;
-        $rightwidth = $leftwidth +10;
-        $background_positionX = 0 -1000 +$leftwidth -0;
+        $rightwidth = $leftwidth + 10;
+        $background_positionX = 0 - 1000 + $leftwidth - 0;
     }
-    if($zbp->Config('AdminColor')->ColorID == 10){
-        $leftwidth = $leftwidth +20;
-        $rightwidth = $leftwidth +10;
+    if (10 == $zbp->Config('AdminColor')->ColorID) {
+        $leftwidth = $leftwidth + 20;
+        $rightwidth = $leftwidth + 10;
         $background_positionX += 20;
     }
-    return array($fontsize, $leftwidth, $rightwidth, $background_positionX, $background_color);
+
+    return [$fontsize, $leftwidth, $rightwidth, $background_positionX, $background_color];
 }
 
 function AdminColor_AddJS()
 {
     global $zbp;
 
-    list($fontsize, $leftwidth, $rightwidth, $background_positionX, $background_color) = AdminColor_GetValue();
+    [$fontsize, $leftwidth, $rightwidth, $background_positionX, $background_color] = AdminColor_GetValue();
 
     $js1 = <<<EOD
 function admincolor_hideMenu(){
@@ -175,7 +182,6 @@ function admincolor_showMenu(){
 }
 EOD;
 
-
     $js2 = <<<EOD
 function admincolor_hideMenu(){
  $("#aAdminColor").attr('href','javascript:admincolor_showMenu()');
@@ -208,7 +214,7 @@ function admincolor_showMenu(){
 }
 EOD;
 
-    $js_common = <<<EOD
+    $js_common = <<<'EOD'
 function admincolor_tooptip(){
     $("#leftmenu a").tooltip({
       disabled:false,
@@ -233,7 +239,7 @@ EOD;
 
     if ($zbp->Config('AdminColor')->ColorID < 10) {
         echo $js1;
-    } elseif ($zbp->Config('AdminColor')->ColorID == 10) {
+    } elseif (10 == $zbp->Config('AdminColor')->ColorID) {
         echo $js2;
     }
 
@@ -242,8 +248,6 @@ EOD;
     foreach ($GLOBALS['hooks']['Filter_Plugin_AdminColor_AddJS'] as $fpname => &$fpsignal) {
         $fpname();
     }
-
-
 }
 
 //深色 标准色 浅色 高光色 反色 标题 方块颜色

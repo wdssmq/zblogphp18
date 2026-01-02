@@ -5,13 +5,12 @@ require '../../../zb_system/function/c_system_base.php';
 $id = (int) $zbp->Config('AdminColor')->ColorID;
 $fontSize = (int) $zbp->Config('AdminColor')->FontSize;
 
-
 if ($fontSize < 12 || $fontSize > 14) {
     $fontSize = 14;
 }
 $fontSizePlus2 = $fontSize + 2;
 
-$css = array();
+$css = [];
 
 $css[] = '/*admincolor*/';
 $css[] = <<<CSS
@@ -199,7 +198,7 @@ CSS;
 */
 
 // zbdk
-$css[] = <<<CSS
+$css[] = <<<'CSS'
 #divMain .DIVBlogConfignav ul li a:hover {
   background-color: #3399cc !important;
 }
@@ -297,8 +296,7 @@ table {
 }
 CSS;
 
-
-if ($zbp->Config('AdminColor')->HeaderPathUse == true) {
+if (true == $zbp->Config('AdminColor')->HeaderPathUse) {
     if ($zbp->Config('AdminColor')->HeaderPath) {
         $headerPath = $zbp->Config('AdminColor')->HeaderPath;
         $css[] = <<<CSS
@@ -315,8 +313,8 @@ CSS;
     }
 }
 
-if ($zbp->Config('AdminColor')->HeaderPathUse == false && $id == 10) {
-    $css[] = <<<CSS
+if (false == $zbp->Config('AdminColor')->HeaderPathUse && 10 == $id) {
+    $css[] = <<<'CSS'
 header,
 .header {
   background-image: none;
@@ -333,9 +331,8 @@ if ($zbp->Config('AdminColor')->LogoPath) {
 CSS;
 }
 
-
 if ($zbp->Config('AdminColor')->TableShadow) {
-    $css[] = <<<CSS
+    $css[] = <<<'CSS'
 table,
 .pane,
 .theme,
@@ -344,7 +341,7 @@ form.search {
 }
 CSS;
 } else {
-    $css[] = <<<CSS
+    $css[] = <<<'CSS'
 table,
 .pane,
 .theme,
@@ -354,8 +351,8 @@ form.search {
 CSS;
 }
 
-if ($id == 9) {
-    $css[] = <<<CSS
+if (9 == $id) {
+    $css[] = <<<'CSS'
 
 header,
 .header {
@@ -394,8 +391,8 @@ body {
 CSS;
 }
 
-if ($id == 10) {
-    $css[] = <<<CSS
+if (10 == $id) {
+    $css[] = <<<'CSS'
 
 .header .menu {
   height: 60px;
@@ -581,13 +578,13 @@ header div.logo img { background: url("images/logo.svg"); }
 CSS;
 }
 
-$AdminColor_Old_Colors = $AdminColor_Colors = array();
+$AdminColor_Old_Colors = $AdminColor_Colors = [];
 
-$AdminColor_Old_Colors['Blod'] = "#1d4c7d";
-$AdminColor_Old_Colors['Normal'] = "#3a6ea5";
-$AdminColor_Old_Colors['Light'] = "#b0cdee";
-$AdminColor_Old_Colors['High'] = "#3399cc";
-$AdminColor_Old_Colors['Anti'] = "#d60000";
+$AdminColor_Old_Colors['Blod'] = '#1d4c7d';
+$AdminColor_Old_Colors['Normal'] = '#3a6ea5';
+$AdminColor_Old_Colors['Light'] = '#b0cdee';
+$AdminColor_Old_Colors['High'] = '#3399cc';
+$AdminColor_Old_Colors['Anti'] = '#d60000';
 
 $AdminColor_Colors['Blod'] = $zbp->Config('AdminColor')->BlodColor;
 $AdminColor_Colors['Normal'] = $zbp->Config('AdminColor')->NormalColor;
@@ -603,18 +600,19 @@ foreach ($GLOBALS['hooks']['Filter_Plugin_AdminColor_CSS_Pre'] as $fpname => &$f
 
 $c = str_ireplace($AdminColor_Old_Colors, $AdminColor_Colors, $c);
 
-$m = 'W/' . md5($c);
+$m = 'W/'.md5($c);
 
 header('Content-Type: text/css; Charset=utf-8');
-header('Etag: ' . $m);
+header('Etag: '.$m);
 
-if (isset($_SERVER["HTTP_IF_NONE_MATCH"]) && $_SERVER["HTTP_IF_NONE_MATCH"] == $m) {
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $m) {
     if (isset($zbp->option['ZC_JS_304_ENABLE']) && $zbp->option['ZC_JS_304_ENABLE']) {
         SetHttpStatusCode(304);
-        die;
+
+        exit;
     }
 }
 
 echo $c;
 
-die();
+exit();

@@ -1,6 +1,8 @@
 <?php
 require '../../function/c_system_base.php';
+
 require '../function/admin2_function.php';
+
 require '../../function/c_system_admin_function.php';
 $zbp->ismanage = true;
 $zbp->Load();
@@ -8,109 +10,110 @@ $zbp->Load();
 //main.php是一个配置示例页，展示了如何调用admin2后台模板系统去实现配置页面的显示和保存
 //主要由LoadConfig函数和SaveConfig函数组成
 
-
 //老规矩 权限验证
 $zbp->action = 'root';
 if (!$zbp->CheckRights($zbp->action)) {
     $zbp->ShowError(6, __FILE__, __LINE__);
-    die();
-}
 
+    exit();
+}
 
 //保存配置
 AdminColor_SaveConfig();
 
-
 //显示配置页面
-$ActionInfo = (object) array(
-    "Title" => '后台配色器-设置',
-    "Header" => "后台配色器-设置",
-    "HeaderIcon" => "icon-brush-fill",
-    "SubMenu" => "",
-    "ActiveTopMenu" => "",
-    "ActiveLeftMenu" => "",
-    "Action" => $zbp->action,
-    "Content" => AdminColor_LoadConfig(),//输出配置页的内容
-  );
-$zbp->template_admin->SetTags("title", $ActionInfo->Title);
-$zbp->template_admin->SetTags("main", $ActionInfo);
-$zbp->template_admin->Display("index");
+$ActionInfo = (object) [
+    'Title' => '后台配色器-设置',
+    'Header' => '后台配色器-设置',
+    'HeaderIcon' => 'icon-brush-fill',
+    'SubMenu' => '',
+    'ActiveTopMenu' => '',
+    'ActiveLeftMenu' => '',
+    'Action' => $zbp->action,
+    'Content' => AdminColor_LoadConfig(), //输出配置页的内容
+];
+$zbp->template_admin->SetTags('title', $ActionInfo->Title);
+$zbp->template_admin->SetTags('main', $ActionInfo);
+$zbp->template_admin->Display('index');
 
 RunTime();
 //页面结束
 
-function AdminColor_SaveConfig() {
-  global $zbp;
-  if (isset($_GET['setcolor'])) {
-      $zbp->Load();
-      $action = 'root';
-      if ($zbp->CheckRights($action)) {
-          $i = (int) $_GET['setcolor'];
-          $zbp->Config('AdminColor')->ColorID = $i;
-          $zbp->Config('AdminColor')->BlodColor = (string) $GLOBALS['AdminColor_BlodColor'][$i];
-          $zbp->Config('AdminColor')->NormalColor = (string) $GLOBALS['AdminColor_NormalColor'][$i];
-          $zbp->Config('AdminColor')->LightColor = (string) $GLOBALS['AdminColor_LightColor'][$i];
-          $zbp->Config('AdminColor')->HighColor = (string) $GLOBALS['AdminColor_HighColor'][$i];
-          $zbp->Config('AdminColor')->AntiColor = (string) $GLOBALS['AdminColor_AntiColor'][$i];
-          if($i == 9) {
-            $zbp->Config('AdminColor')->HeaderPathUse = true;
-          } else {
-            $zbp->Config('AdminColor')->HeaderPathUse = false;
-          }
-          $zbp->Config('AdminColor')->LeftWidth = 140;
-          $zbp->SaveConfig('AdminColor');
-          Redirect('./main.php');
-      }
-  }
+function AdminColor_SaveConfig()
+{
+    global $zbp;
+    if (isset($_GET['setcolor'])) {
+        $zbp->Load();
+        $action = 'root';
+        if ($zbp->CheckRights($action)) {
+            $i = (int) $_GET['setcolor'];
+            $zbp->Config('AdminColor')->ColorID = $i;
+            $zbp->Config('AdminColor')->BlodColor = (string) $GLOBALS['AdminColor_BlodColor'][$i];
+            $zbp->Config('AdminColor')->NormalColor = (string) $GLOBALS['AdminColor_NormalColor'][$i];
+            $zbp->Config('AdminColor')->LightColor = (string) $GLOBALS['AdminColor_LightColor'][$i];
+            $zbp->Config('AdminColor')->HighColor = (string) $GLOBALS['AdminColor_HighColor'][$i];
+            $zbp->Config('AdminColor')->AntiColor = (string) $GLOBALS['AdminColor_AntiColor'][$i];
+            if (9 == $i) {
+                $zbp->Config('AdminColor')->HeaderPathUse = true;
+            } else {
+                $zbp->Config('AdminColor')->HeaderPathUse = false;
+            }
+            $zbp->Config('AdminColor')->LeftWidth = 140;
+            $zbp->SaveConfig('AdminColor');
+            Redirect('./main.php');
+        }
+    }
 
-  if (GetVars('act') == 'save') {
-      CheckIsRefererValid();
-      $zbp->Config('AdminColor')->LogoPath = (string) GetVars("ac_LogoPath");
-      $zbp->Config('AdminColor')->BlodColor = (string) GetVars("ac_BlodColor");
-      $zbp->Config('AdminColor')->NormalColor = (string) GetVars("ac_NormalColor");
-      $zbp->Config('AdminColor')->LightColor = (string) GetVars("ac_LightColor");
-      $zbp->Config('AdminColor')->HighColor = (string) GetVars("ac_HighColor");
-      $zbp->Config('AdminColor')->AntiColor = (string) GetVars("ac_AntiColor");
-      $zbp->Config('AdminColor')->HeaderPath = (string) GetVars("ac_HeaderPath");
-      $zbp->Config('AdminColor')->SlidingButton = (bool) GetVars("ac_SlidingButton");
-      $zbp->Config('AdminColor')->HeaderPathUse = (bool) GetVars("ac_HeaderPathUse");
-      $zbp->Config('AdminColor')->TableShadow = (bool) GetVars("ac_TableShadow");
-      $zbp->Config('AdminColor')->FontSize = (int) GetVars("ac_FontSize");
-      $zbp->Config('AdminColor')->LeftWidth = (int) GetVars("ac_LeftWidth");
-      if($zbp->Config('AdminColor')->LeftWidth<80)$zbp->Config('AdminColor')->LeftWidth=80;
-      //if ( $zbp->Config('AdminColor')->ColorID == 10 )
-      //    $zbp->Config('AdminColor')->HeaderPathUse = true;
-      $zbp->SaveConfig('AdminColor');
+    if ('save' == GetVars('act')) {
+        CheckIsRefererValid();
+        $zbp->Config('AdminColor')->LogoPath = (string) GetVars('ac_LogoPath');
+        $zbp->Config('AdminColor')->BlodColor = (string) GetVars('ac_BlodColor');
+        $zbp->Config('AdminColor')->NormalColor = (string) GetVars('ac_NormalColor');
+        $zbp->Config('AdminColor')->LightColor = (string) GetVars('ac_LightColor');
+        $zbp->Config('AdminColor')->HighColor = (string) GetVars('ac_HighColor');
+        $zbp->Config('AdminColor')->AntiColor = (string) GetVars('ac_AntiColor');
+        $zbp->Config('AdminColor')->HeaderPath = (string) GetVars('ac_HeaderPath');
+        $zbp->Config('AdminColor')->SlidingButton = (bool) GetVars('ac_SlidingButton');
+        $zbp->Config('AdminColor')->HeaderPathUse = (bool) GetVars('ac_HeaderPathUse');
+        $zbp->Config('AdminColor')->TableShadow = (bool) GetVars('ac_TableShadow');
+        $zbp->Config('AdminColor')->FontSize = (int) GetVars('ac_FontSize');
+        $zbp->Config('AdminColor')->LeftWidth = (int) GetVars('ac_LeftWidth');
+        if ($zbp->Config('AdminColor')->LeftWidth < 80) {
+            $zbp->Config('AdminColor')->LeftWidth = 80;
+        }
+        //if ( $zbp->Config('AdminColor')->ColorID == 10 )
+        //    $zbp->Config('AdminColor')->HeaderPathUse = true;
+        $zbp->SaveConfig('AdminColor');
 
-      $zbp->SetHint('good');
-      Redirect('./main.php');
-  }
+        $zbp->SetHint('good');
+        Redirect('./main.php');
+    }
 }
 
-function AdminColor_LoadConfig() {
-  global $zbp;
+function AdminColor_LoadConfig()
+{
+    global $zbp;
 
-  if ($zbp->HasConfig('AdminColor') == false) {
-      $zbp->Config('AdminColor')->ColorID = 0;
-      $zbp->Config('AdminColor')->BlodColor = (string) $GLOBALS['AdminColor_BlodColor'][0];
-      $zbp->Config('AdminColor')->NormalColor = (string) $GLOBALS['AdminColor_NormalColor'][0];
-      $zbp->Config('AdminColor')->LightColor = (string) $GLOBALS['AdminColor_LightColor'][0];
-      $zbp->Config('AdminColor')->HighColor = (string) $GLOBALS['AdminColor_HighColor'][0];
-      $zbp->Config('AdminColor')->AntiColor = (string) $GLOBALS['AdminColor_AntiColor'][0];
-      $zbp->Config('AdminColor')->HeaderPath = (string) 'images/banner.jpg';
-      $zbp->Config('AdminColor')->SlidingButton = (bool) 1;
-      $zbp->Config('AdminColor')->FontSize = (int) 14;
-      $zbp->Config('AdminColor')->LeftWidth = (int) 140;
-      $zbp->SaveConfig('AdminColor');
-  }
+    if (false == $zbp->HasConfig('AdminColor')) {
+        $zbp->Config('AdminColor')->ColorID = 0;
+        $zbp->Config('AdminColor')->BlodColor = (string) $GLOBALS['AdminColor_BlodColor'][0];
+        $zbp->Config('AdminColor')->NormalColor = (string) $GLOBALS['AdminColor_NormalColor'][0];
+        $zbp->Config('AdminColor')->LightColor = (string) $GLOBALS['AdminColor_LightColor'][0];
+        $zbp->Config('AdminColor')->HighColor = (string) $GLOBALS['AdminColor_HighColor'][0];
+        $zbp->Config('AdminColor')->AntiColor = (string) $GLOBALS['AdminColor_AntiColor'][0];
+        $zbp->Config('AdminColor')->HeaderPath = (string) 'images/banner.jpg';
+        $zbp->Config('AdminColor')->SlidingButton = (bool) 1;
+        $zbp->Config('AdminColor')->FontSize = (int) 14;
+        $zbp->Config('AdminColor')->LeftWidth = (int) 140;
+        $zbp->SaveConfig('AdminColor');
+    }
 
-  ob_start();
+    ob_start();
 
-  echo '<link href="source/evol.colorpicker.css" rel="stylesheet" />
+    echo '<link href="source/evol.colorpicker.css" rel="stylesheet" />
 <script src="source/evol.colorpicker.min.js" type="text/javascript"></script>
 <script src="source/custom.js" type="text/javascript"></script>
-';
-?>
+'; ?>
             <form action="?act=save" method="post">
               <input type="hidden" name="csrfToken" value="<?php echo $zbp->GetCsrfToken(); ?>">
               <table width="100%" border="0">
@@ -122,7 +125,7 @@ function AdminColor_LoadConfig() {
                   <td width="30%" align="left"><p><b>· 预置色彩方案</b>
                       <span class="note">&nbsp;&nbsp; </span></p></td>
                   <td>
-<?php  AdminColor_ColorButton(); ?>
+<?php AdminColor_ColorButton(); ?>
                   </td>
                 </tr>
                 <tr height="32">
@@ -179,14 +182,13 @@ function AdminColor_LoadConfig() {
                   <td>
 <?php
 $fontsize_12 = $fontsize_13 = $fontsize_14 = '';
-$fontsize = 'fontsize_' . $zbp->Config('AdminColor')->FontSize;
-$$fontsize = 'checked="checked"';
-?>
-<input class="radio" type="radio" name="ac_FontSize" id="ac_FontSize_12" value="12" <?php echo $fontsize_12;?> />
+    $fontsize = 'fontsize_'.$zbp->Config('AdminColor')->FontSize;
+    ${$fontsize} = 'checked="checked"'; ?>
+<input class="radio" type="radio" name="ac_FontSize" id="ac_FontSize_12" value="12" <?php echo $fontsize_12; ?> />
 <label for="ac_FontSize_12">12px</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input class="radio" type="radio" name="ac_FontSize" id="ac_FontSize_13" value="13" <?php echo $fontsize_13;?>/>
+<input class="radio" type="radio" name="ac_FontSize" id="ac_FontSize_13" value="13" <?php echo $fontsize_13; ?>/>
 <label for="ac_FontSize_13">13px</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input class="radio" type="radio" name="ac_FontSize" id="ac_FontSize_14" value="14" <?php echo $fontsize_14;?>/>
+<input class="radio" type="radio" name="ac_FontSize" id="ac_FontSize_14" value="14" <?php echo $fontsize_14; ?>/>
 <label for="ac_FontSize_14">14px</label>
                   </td>
                 </tr>
@@ -220,5 +222,5 @@ $$fontsize = 'checked="checked"';
 
   $content = ob_get_clean();
 
-  return $content;
+    return $content;
 }
