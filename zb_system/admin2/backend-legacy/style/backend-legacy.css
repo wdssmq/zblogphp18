@@ -95,6 +95,10 @@ i.icon-arrow-repeat.loading-status:before {
   color: #4e6b9e;
 }
 
+.hidden {
+  display: none;
+}
+
 /*! 布局组件 */
 body.admin {
   display: grid;
@@ -725,4 +729,30 @@ textarea {
 }
 .siderbar .roll {
   display: none;
+}
+
+/* 使用 Grid 布局：主内容 + 侧栏 */
+form#edit {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  max-width: fit-content;
+}
+
+#divEditLeft {
+  /* 主栏内元素占据第一列 (默认) */
+}
+#divEditLeft label {
+  vertical-align: middle;
+}
+
+#divEditRight {
+  /* 侧栏在第二列 */
+  justify-self: end;
+  text-align: right;
+}
+#divEditRight .editmod > select,
+#divEditRight .editmod > input[type=text],
+#divEditRight #btnPost {
+  width: 180px;
+  height: 38px;
 }
