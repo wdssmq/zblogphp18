@@ -1,4 +1,4 @@
-<?php exit(); ?>
+<?php exit; ?>
 
 
  <form action="{php}<?php echo BuildSafeURL('main.php?act=save'); ?>{/php}" method="post">

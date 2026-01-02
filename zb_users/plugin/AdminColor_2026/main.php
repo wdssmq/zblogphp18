@@ -1,7 +1,10 @@
 <?php
+
 // 引入系统
 require '../../../zb_system/function/c_system_base.php';
+
 require '../../../zb_system/function/c_system_admin_function.php';
+
 require '../../../zb_system/admin2/function/admin2_function.php';
 
 // 加载系统
@@ -11,17 +14,19 @@ $zbp->Load();
 $action = 'root';
 if (!$zbp->CheckRights($action)) {
     $zbp->ShowError(6);
-    die();
+
+    exit;
 }
 // 插件启用验证
 if (!$zbp->CheckPlugin('AdminColor_2026')) {
     $zbp->ShowError(48);
-    die();
+
+    exit;
 }
 
 // 显示内容构建
 $blogtitle = '后台配色器_2026';
-$content = $zbp->template_admin->Output("plugin_AdminColor_2026_Content");
+$content = $zbp->template_admin->Output('plugin_AdminColor_2026_Content');
 $ActionInfo = (object) [
     'Title' => $blogtitle,
     'Header' => $blogtitle,

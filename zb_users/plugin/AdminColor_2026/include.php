@@ -1,5 +1,6 @@
 <?php
-RegisterPlugin("AdminColor_2026", "ActivePlugin_AdminColor_2026");
+
+RegisterPlugin('AdminColor_2026', 'ActivePlugin_AdminColor_2026');
 
 function ActivePlugin_AdminColor_2026()
 {
@@ -8,35 +9,44 @@ function ActivePlugin_AdminColor_2026()
 }
 function AdminColor_2026_GenTpl(&$templates)
 {
-    $tplCont = file_get_contents(AdminColor_2026_Path("tpl-Content"));
-    $templates["plugin_AdminColor_2026_Content"] = $tplCont;
+    $tplCont = file_get_contents(AdminColor_2026_Path('tpl-Content'));
+    $templates['plugin_AdminColor_2026_Content'] = $tplCont;
 }
 
 function AdminColor_2026_submenu()
 {
     global $zbp;
-    echo MakeSubMenu('后台配色_2026', AdminColor_2026_Path('main', "host"), 'm-right', null, null, null, 'icon-brush-fill');
+    echo MakeSubMenu('后台配色_2026', AdminColor_2026_Path('main', 'host'), 'm-right', null, null, null, 'icon-brush-fill');
 }
 
 function AdminColor_2026_Path($file, $t = 'path')
 {
     global $zbp;
-    $result = $zbp->$t . 'zb_users/plugin/AdminColor_2026/';
+    $result = $zbp->{$t}.'zb_users/plugin/AdminColor_2026/';
+
     switch ($file) {
         case 'tpl-Content':
-            return $result . 'tpl/Content.php';
+            return $result.'tpl/Content.php';
+
             break;
+
         case 'usr':
-            return $result . 'usr/';
+            return $result.'usr/';
+
             break;
+
         case 'var':
-            return $result . 'var/';
+            return $result.'var/';
+
             break;
+
         case 'main':
-            return $result . 'main.php';
+            return $result.'main.php';
+
             break;
+
         default:
-            return $result . $file;
+            return $result.$file;
     }
 }
 
