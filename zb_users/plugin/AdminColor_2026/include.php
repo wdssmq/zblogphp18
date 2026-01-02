@@ -50,6 +50,10 @@ function AdminColor_2026_Path($file, $t = 'path')
     }
 }
 
-function InstallPlugin_AdminColor_2026() {}
+function InstallPlugin_AdminColor_2026()
+{
+}
 
-function UninstallPlugin_AdminColor_2026() {}
+function UninstallPlugin_AdminColor_2026()
+{
+}
