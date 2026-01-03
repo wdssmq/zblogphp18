@@ -2337,7 +2337,7 @@ class ZBlogPHP
         $template->LoadTemplates();
 
         //从1.8起，传参变成 $template 对象
-        //***此处增加接口可以在Load时，对$theme, $template_dirname参数可以进行修改
+        //1.8之前传参（$theme, $template_dirname） 
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_PrepareTemplate'] as $fpname => &$fpsignal) {
             $fpname($template);
         }
@@ -2353,8 +2353,6 @@ class ZBlogPHP
      */
     public function BuildTemplate()
     {
-        $this->template->LoadTemplates();
-
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplate'] as $fpname => &$fpsignal) {
             $fpname($this->template->templates);
         }
@@ -2487,8 +2485,6 @@ class ZBlogPHP
      */
     public function BuildTemplateAdmin()
     {
-        $this->template_admin->LoadAdminTemplates();
-
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplateAdmin'] as $fpname => &$fpsignal) {
             $fpname($this->template_admin->templates);
         }
@@ -2499,6 +2495,7 @@ class ZBlogPHP
         $md5 = md5($s);
         $this->cache->templates_admin_md5_array = serialize([$this->template_admin->template_dirname => $md5]);
         $this->SaveCache();
+
 
         return $b;
     }

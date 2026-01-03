@@ -186,7 +186,7 @@ class Template
             }
         }
 
-        return $this->path.$name.'.php';
+        return $this->path . $name . '.php';
     }
 
     /**
@@ -386,7 +386,7 @@ class Template
             $fpname($this, $entryPage);
         }
 
-        $file = $this->path.$entryPage.'.php';
+        $file = $this->path . $entryPage . '.php';
 
         if (!is_readable($file)) {
             $zbp->ShowError(86, __FILE__, __LINE__, ['lost_file' => $file]);
@@ -538,10 +538,11 @@ class Template
     public function AddTemplate($name, $content)
     {
         $this->templates[$name] = $content;
+        return true;
     }
 
     /**
-     * 添加模板Info ($name名称ID,$title标题, $type类型).
+     * 添加模板Info ($name名称ID, $title标题, $type类型).
      *
      * @param mixed $name
      * @param mixed $title
@@ -551,6 +552,7 @@ class Template
     {
         $this->templates_Name[$name] = $title;
         $this->templates_Type[$name] = $type;
+        return true;
     }
 
     /**

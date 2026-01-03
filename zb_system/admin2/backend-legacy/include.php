@@ -3,23 +3,23 @@
 //自定义函数
 
 //注册插件
-DefinePluginFilter('Filter_Plugin_AdminColor_CSS_Pre');
-DefinePluginFilter('Filter_Plugin_AdminColor_CSS');
-DefinePluginFilter('Filter_Plugin_AdminColor_AddJS');
+//DefinePluginFilter('Filter_Plugin_AdminColor_CSS_Pre');
+//DefinePluginFilter('Filter_Plugin_AdminColor_CSS');
+//DefinePluginFilter('Filter_Plugin_AdminColor_AddJS');
 
 function ActivePlugin_backend_legacy()
 {
-    global $zbp;
-    Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'AdminColor_submenu');
-    if (true === $zbp->Config('AdminColor')->Enable) {
-        Add_Filter_Plugin('Filter_Plugin_Login_Header', 'AdminColor_Css');
-        Add_Filter_Plugin('Filter_Plugin_Other_Header', 'AdminColor_Css');
-        Add_Filter_Plugin('Filter_Plugin_Admin_Header', 'AdminColor_Css');
-        Add_Filter_Plugin('Filter_Plugin_Admin_Js_Add', 'AdminColor_AddJS');
-        if ($zbp->HasConfig('AdminColor') && isset($zbp->admin_js_hash)) {
-            $zbp->admin_js_hash .= hash('crc32b', (string) $zbp->Config('AdminColor'));
-        }
-    }
+    //global $zbp;
+    //Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'AdminColor_submenu');
+    //if (true === $zbp->Config('AdminColor')->Enable) {
+    //    Add_Filter_Plugin('Filter_Plugin_Login_Header', 'AdminColor_Css');
+    //    Add_Filter_Plugin('Filter_Plugin_Other_Header', 'AdminColor_Css');
+    //    Add_Filter_Plugin('Filter_Plugin_Admin_Header', 'AdminColor_Css');
+    //    Add_Filter_Plugin('Filter_Plugin_Admin_Js_Add', 'AdminColor_AddJS');
+    //    if ($zbp->HasConfig('AdminColor') && isset($zbp->admin_js_hash)) {
+    //        $zbp->admin_js_hash .= hash('crc32b', (string) $zbp->Config('AdminColor'));
+    //    }
+    //}
 }
 
 function AdminColor_submenu()
