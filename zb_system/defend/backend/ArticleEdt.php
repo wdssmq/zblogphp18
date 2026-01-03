@@ -377,7 +377,7 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
 
     // 提取摘要
     function AutoIntro() {
-        const s = editor_api.editor.content.get();
+        let s = editor_api.editor.content.get();
         if (s.indexOf("<hr class=\"more\" />") > -1) {
             editor_api.editor.intro.put(s.split("<hr class=\"more\" />")[0]);
         } else {
