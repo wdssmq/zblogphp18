@@ -168,13 +168,11 @@ function zbp_admin2_GetActionInfo($action)
       break;
 
     case 'ArticleEdt':
-      $blogtitle = $lang['msg']['article_edit'];
-      if (empty(GetVars('id'))) {
-          $main->ActiveLeftMenu = 'aArticleEdt';
-      } else {
-          $main->ActiveLeftMenu = 'aArticleMng';
-      }
-      $main->Content = zbp_admin2_ArticleEdt();
+    case 'PageEdt':
+      $isPage = ($action === 'PageEdt');
+      $blogtitle = $lang['msg'][$isPage ? 'page_edit' : 'article_edit'];
+      $main->ActiveLeftMenu = empty(GetVars('id')) ? ($isPage ? 'aPageEdt' : 'aArticleEdt') : 'aPageMng';
+      $main->Content = zbp_admin2_ArticleEdt($isPage);
       $main->Header = $blogtitle;
       $main->HeaderIcon = 'icon-pencil-square-fill';
       $main->Title = $blogtitle;

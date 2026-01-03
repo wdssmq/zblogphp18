@@ -847,18 +847,14 @@ function zbp_admin2_ModuleEdt()
 }
 
 
-
-
-function zbp_admin2_ArticleEdt()
+function zbp_admin2_ArticleEdt(bool $ispage = false)
 {
-  global $zbp, $action, $lang;
+  global $zbp;
 
   $article = new Post();
   $article->AuthorID = $zbp->user->ID;
 
-  $ispage = false;
-  if ($action == 'PageEdt') {
-      $ispage = true;
+  if ($ispage) {
       $article->Type = ZC_POST_TYPE_PAGE;
   }
 
@@ -870,34 +866,20 @@ function zbp_admin2_ArticleEdt()
       $article = $zbp->GetPostByID((int) GetVars('id', 'GET'));
   } else {
       // new Post
-      $new_action = 'ArticleNew';
-      if ($action == 'ArticleEdt') {
-          $new_action = 'ArticleNew';
-      }
-      if ($action == 'PageEdt') {
-          $new_action = 'PageNew';
-      }
+      $new_action = $ispage ? 'PageNew' : 'ArticleNew';
       if (!$zbp->CheckRights($new_action)) {
           $zbp->ShowError(6, __FILE__, __LINE__);
           die();
       }
   }
 
-  if ($ispage) {
-      $blogtitle = $lang['msg']['page_edit'];
-      if (!$zbp->CheckRights('PageAll') && $article->AuthorID != $zbp->user->ID) {
-          $zbp->ShowError(6, __FILE__, __LINE__);
-          die();
-      }
-  } else {
-      $blogtitle = $lang['msg']['article_edit'];
-      if (!$zbp->CheckRights('ArticleAll') && $article->AuthorID != $zbp->user->ID) {
-          $zbp->ShowError(6, __FILE__, __LINE__);
-          die();
-      }
+  $requiredRight = $ispage ? 'PageAll' : 'ArticleAll';
+  if (!$zbp->CheckRights($requiredRight) && $article->AuthorID != $zbp->user->ID) {
+    $zbp->ShowError(6, __FILE__, __LINE__);
+    die();
   }
 
-  if ($article->Intro) {
+  if (!$ispage && $article->Intro) {
       if (strpos($article->Content, '<!--more-->') !== false) {
           $article->Intro = '';
           $article->Content = str_replace('<!--more-->', '<hr class="more" />', $article->Content);
