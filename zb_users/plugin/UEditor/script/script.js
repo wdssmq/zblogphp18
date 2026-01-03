@@ -81,7 +81,7 @@ function editor_init() {
             fnAlert();
             cookieStore.set({ name: cookieKey, value: "1", expires: expiresAt, path: "/" });
           }
-        }).catch(ffnAlert);
+        }).catch(fnAlert);
       } else {
         fnAlert();
       }
