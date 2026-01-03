@@ -238,7 +238,6 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
 <script>
     let sContent = "",
         sIntro = ""; // 原内容与摘要
-    let tag_loaded = false; // 是否已经ajax读取过TAGS
     let isSubmit = false; // 是否提交保存
 
     const contentBarBtn = [],

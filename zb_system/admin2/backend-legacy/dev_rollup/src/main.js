@@ -9,6 +9,7 @@ $(document).ready(function() {
   });
 
   // 显示 tags
+  let tag_loaded = false; // 是否已经 ajax 读取过 TAGS
   $(document).click(function(event) {
     $('#ulTag').slideUp("fast");
   });
