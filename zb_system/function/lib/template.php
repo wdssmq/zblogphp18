@@ -529,6 +529,24 @@ class Template
         return true;
     }
 
+
+    /**
+     * 添加模板
+     */
+    public function AddTemplate($name, $content)
+    {
+        $this->templates[$name] = $content;
+    }
+
+    /**
+     * 添加模板Info ($name名称ID,$title标题, $type类型)
+     */
+    public function AddTemplateInfo($name, $title, $type)
+    {
+        $this->templates_Name[$name] = $title;
+        $this->templates_Type[$name] = $type;
+    }
+
     /**
      * 读取模板 Name 及 Type.
      */
