@@ -428,7 +428,6 @@ input.button, input[type=submit], input[type=button] {
   font-size: 1.05em;
   height: 29px;
   padding: 2px 18px 3px;
-  margin: 0 0.5em 0 0;
   background: #3a6ea5;
   border: 1px solid #3399cc;
   cursor: pointer;
