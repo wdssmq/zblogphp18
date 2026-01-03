@@ -1,4 +1,4 @@
-<?php die(); ?>
+<?php exit(); ?>
 
 <div class="sub">
   <form class="search" id="search" method="post" action="#">
