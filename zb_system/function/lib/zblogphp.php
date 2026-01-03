@@ -2485,7 +2485,7 @@ class ZBlogPHP
     {
         $this->template_admin->LoadAdminTemplates();
 
-        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplate_Admin'] as $fpname => &$fpsignal) {
+        foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_BuildTemplateAdmin'] as $fpname => &$fpsignal) {
             $fpname($this->template_admin->templates);
         }
 

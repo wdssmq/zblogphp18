@@ -5,8 +5,10 @@ RegisterPlugin('AdminColor_2026', 'ActivePlugin_AdminColor_2026');
 function ActivePlugin_AdminColor_2026()
 {
     Add_Filter_Plugin('Filter_Plugin_Admin_SettingMng_SubMenu', 'AdminColor_2026_submenu');
-    Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplate_Admin', 'AdminColor_2026_GenTpl');
+    Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplateAdmin', 'AdminColor_2026_GenTpl');
 }
+
+//挂上新接口
 function AdminColor_2026_GenTpl(&$templates)
 {
     $tplCont = file_get_contents(AdminColor_2026_Path('tpl-Content'));

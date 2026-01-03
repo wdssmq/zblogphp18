@@ -665,13 +665,13 @@ DefinePluginFilter('Filter_Plugin_Zbp_BuildTemplate');
 /*
 '**************************************************<
 '类型:Filter
-'名称:Filter_Plugin_Zbp_BuildTemplate_Admin
+'名称:Filter_Plugin_Zbp_BuildTemplateAdmin
 '参数:$template
 '说明:Zbp类的重新编译后台模板接口
 '调用:
 '**************************************************>
  */
-DefinePluginFilter('Filter_Plugin_Zbp_BuildTemplate_Admin');
+DefinePluginFilter('Filter_Plugin_Zbp_BuildTemplateAdmin');
 
 /*
 '**************************************************<
