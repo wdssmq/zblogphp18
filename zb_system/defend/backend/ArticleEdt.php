@@ -355,26 +355,6 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
         // changeYear: true
     });
 
-
-    function AddKey(i) {
-        const strKey = $('#edtTag').val();
-        const strNow = "," + i
-        if (strKey == "") {
-            strNow = i
-        }
-        if (strKey.indexOf(strNow) == -1) {
-            strKey = strKey + strNow;
-        }
-        $('#edtTag').val(strKey);
-    }
-
-    function DelKey(i) {
-        const strKey = $('#edtTag').val().replace(/[;，、\s]/, ',');
-        strKey = ',' + strKey + ',';
-        strKey = strKey.replace(',' + i + ',', ',').replace(/^,(.*?),$/, '$1');
-        $('#edtTag').val(strKey);
-    }
-
     // 提取摘要
     function AutoIntro() {
         let s = editor_api.editor.content.get();
