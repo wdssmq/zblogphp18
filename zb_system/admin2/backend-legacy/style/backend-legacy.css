@@ -762,6 +762,21 @@ form#edit #edtTag {
 #divEditLeft {
   /* 主栏内元素占据第一列 (默认) */
 }
+#divEditLeft #ulTag {
+  margin: 0 3em;
+}
+#divEditLeft #ulTag #ajaxtags {
+  background: #f8f8f8;
+  box-shadow: 0 0 10px #aaa;
+  padding: 1em;
+}
+#divEditLeft #ulTag #ajaxtags a {
+  margin-right: 1em;
+}
+#divEditLeft #ulTag #ajaxtags a.selected {
+  color: black;
+  background: #F8F889;
+}
 #divEditLeft #carea {
   margin: 5px 0px 0px;
 }
@@ -777,6 +792,7 @@ form#edit #edtTag {
   text-align: right;
 }
 #divEditRight .editmod select,
+#divEditRight .editmod input[type=text],
 #divEditRight #btnPost {
   width: 180px;
   height: 38px;

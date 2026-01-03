@@ -32,6 +32,25 @@ form#edit {
 #divEditLeft {
   /* 主栏内元素占据第一列 (默认) */
 
+  #ulTag {
+    margin: 0 3em;
+
+    #ajaxtags {
+      background: #f8f8f8;
+      box-shadow: 0 0 10px #aaa;
+      padding: 1em;
+
+      a {
+        margin-right: 1em;
+        &.selected {
+          color: black;
+          background: #F8F889;
+        }
+      }
+    }
+  }
+
+
   #carea {
     margin: 5px 0px 0px;
 
@@ -49,10 +68,12 @@ form#edit {
   text-align: right;
 
   .editmod select,
+  .editmod input[type="text"],
   #btnPost {
     width: 180px;
     height: 38px;
   }
+
   .editmod#istop select {
     width: 80px;
   }
