@@ -1,9 +1,12 @@
+const EditorOption = {
+  initialFrameWidth: '100%',
+}
+
 const EditorIntroOption = {
   toolbars: [['Source', 'bold', 'italic', 'link', 'insertimage', 'Undo', 'Redo']],
   autoHeightEnabled: false,
   initialFrameHeight: 200
 }
-
 
 function getContent() {
   return editor_api.editor.content.get();
@@ -46,8 +49,8 @@ function editor_init() {
     addButton.call(obj, 'editor_intro');
   })
 
-  editor_api.editor.content.obj = UE.getEditor('editor_content');
-  editor_api.editor.intro.obj = UE.getEditor('editor_intro', EditorIntroOption);
+  editor_api.editor.content.obj = UE.getEditor('editor_content', EditorOption);
+  editor_api.editor.intro.obj = UE.getEditor('editor_intro', Object.assign({}, EditorIntroOption, EditorOption));
   editor_api.editor.content.get = function() { return this.obj.getContent() };
   editor_api.editor.content.put = function(str) { return this.obj.setContent(str) };
   editor_api.editor.content.focus = function() { return this.obj.focus() };
