@@ -1,4 +1,4 @@
-<?php die(); ?>
+<?php exit(); ?>
 <section class="main {$action}">
 {php}$zbp->GetHint();{/php}
 {php}HookFilterPlugin('Filter_Plugin_Admin_Hint');{/php}
