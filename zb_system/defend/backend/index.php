@@ -13,6 +13,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="generator" content="{$zblogphp}" />
+    <meta name="csrfToken" content="{$zbp.GetCSRFToken()}" />
+    <meta name="csrfExpiration" content="{$zbp.csrfExpiration}" />
     <title>{$name} - {$title}</title>
     <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/{$backendtheme}.css?v={$version}">
     <link rel="stylesheet" href="{$host}zb_system/image/icon/icon.css?v={$version}">
