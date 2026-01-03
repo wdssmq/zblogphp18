@@ -169,7 +169,7 @@ function zbp_admin2_GetActionInfo($action)
 
     case 'ArticleEdt':
     case 'PageEdt':
-      $isPage = ($action === 'PageEdt');
+      $isPage = ('PageEdt' === $action);
       $blogtitle = $lang['msg'][$isPage ? 'page_edit' : 'article_edit'];
       $main->ActiveLeftMenu = empty(GetVars('id')) ? ($isPage ? 'aPageEdt' : 'aArticleEdt') : 'aPageMng';
       $main->Content = zbp_admin2_ArticleEdt($isPage);
