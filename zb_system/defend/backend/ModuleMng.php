@@ -1,4 +1,4 @@
-<?php die(); ?>
+<?php exit(); ?>
 {php}
 <?php
 // $modSourceMaps = [];
