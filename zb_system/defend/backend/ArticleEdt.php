@@ -249,51 +249,35 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
         editor: {
             content: {
                 obj: {},
-                get: function() {
-                    return ""
-                },
-                insert: function() {
-                    return ""
-                },
-                put: function() {
-                    return ""
-                },
-                focus: function() {
-                    return ""
-                },
-                barBtn: function(name, icon, callback) {
+                get: () => "",
+                insert: () => "",
+                put: () => "",
+                focus: () => "",
+                barBtn: (name, icon, callback) => {
                     contentBarBtn.push({
                         name: name,
                         icon: icon,
                         callback: callback
                     });
                 },
-                ready: function(f) {
+                ready: (f) => {
                     contentReady.push(f);
                 }
             },
             intro: {
                 obj: {},
-                get: function() {
-                    return ""
-                },
-                insert: function() {
-                    return ""
-                },
-                put: function() {
-                    return ""
-                },
-                focus: function() {
-                    return ""
-                },
-                barBtn: function(name, icon, callback) {
+                get: () => "",
+                insert: () => "",
+                put: () => "",
+                focus: () => "",
+                barBtn: (name, icon, callback) => {
                     introBarBtn.push({
                         name: name,
                         icon: icon,
                         callback: callback
                     });
                 },
-                ready: function(f) {
+                ready: (f) => {
                     introReady.push(f);
                 }
             }
@@ -374,6 +358,7 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
         }, 'fast');
     }
 
+    // 编辑器初始化，插件需要覆盖此函数
     function editor_init() {
         editor_api.editor.content.obj = $('#editor_content');
         editor_api.editor.intro.obj = $('#editor_intro');
