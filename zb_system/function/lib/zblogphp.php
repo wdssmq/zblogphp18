@@ -1115,6 +1115,10 @@ class ZBlogPHP
             $GLOBALS['zbpvers'][$GLOBALS['blogversion']] = ZC_VERSION_DISPLAY.' Build '.$GLOBALS['blogversion'];
         }
 
+        if ($this->option['ZC_DEBUG_MODE'] || $this->ismanage) {
+            $this->CheckTemplateAdmin();
+        }
+
         foreach ($GLOBALS['hooks']['Filter_Plugin_Zbp_LoadManage'] as $fpname => &$fpsignal) {
             $fpname();
         }
