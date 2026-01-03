@@ -1,6 +1,5 @@
 <?php die(); ?>
 
-<!-- 搜索 -->
 <div class="sub">
   <form class="search" id="search" method="post" action="#">
 
@@ -18,7 +17,6 @@
 </div>
 
 <div class="postlist">
-
   <div class="tr thead">
     <div class="td-5 td-id">{$zbp.lang['msg']['id']}{$button_id_html}</div>
     <div class="td-10">{$zbp.lang['msg']['member_level']}{$button_level_html}</div>
@@ -30,10 +28,7 @@
     <div class="td-10">{$zbp.lang['msg']['all_uploads']}</div>
     <div class="td-10 td-action">操作</div>
   </div>
-
 </div>
-<!-- 用户列表 -->
-
 
 {foreach $members as $member}
 <div class="tr">
