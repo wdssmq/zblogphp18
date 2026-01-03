@@ -5,7 +5,10 @@ require '../function/c_system_base.php';
 require 'function/admin2_function.php';
 
 require '../function/c_system_admin_function.php';
+
+// 设置后台标志并加载系统
 $zbp->ismanage = true;
+$zbp->isbackend_ui = true;
 $zbp->Load();
 
 $zbp->action = GetVars('act', 'GET');

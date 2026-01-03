@@ -8,9 +8,6 @@ require __DIR__ . '/admin2_view.php';
 
 require __DIR__ . '/admin2_misc.php';
 
-$zbp->ismanage = true;
-$zbp->isbackend_ui = true;
-
 // 在相应接口处理安全安全性问题
 Add_Filter_Plugin('Filter_Plugin_Admin_Begin', 'zbp_admin2_security');
 
