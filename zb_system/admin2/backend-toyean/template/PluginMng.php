@@ -29,19 +29,19 @@
     {if $plugin.type == 'plugin'}
       {if $plugin.IsUsed()}
       <a href="{php}echo BuildSafeCmdURL('act=PluginDis&name='.$pluginIdEscaped);{/php}" title="{$zbp.lang['msg']['disable']}" class="btn-icon btn-disable" data-pluginid="{$pluginIdEscaped}">
-        <i class="icon-cancel on"></i>
+        关闭
       </a>
       &nbsp;&nbsp;&nbsp;&nbsp;
       {else}
       <a href="{php}echo BuildSafeCmdURL('act=PluginEnb&name='.$pluginIdEscaped);{/php}" title="{$zbp.lang['msg']['enable']}" class="btn-icon btn-enable" data-pluginid="{$pluginIdEscaped}">
-        <i class="icon-power off"></i>
+        开启
       </a>
       {/if}
-      {/if}
+    {/if}
 
       {if $plugin.IsUsed() && $plugin.CanManage()}
       <a href="{$plugin.GetManageUrl()}" title="{$zbp.lang['msg']['manage']}" class="btn-icon btn-manage" data-pluginid="{$pluginIdEscaped}">
-        <i class="icon-tools"></i>
+        配置
       </a>
       {/if}
 
