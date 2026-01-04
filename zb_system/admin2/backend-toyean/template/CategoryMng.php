@@ -1,13 +1,11 @@
 <?php exit(); ?>
-
-<form class="search" id="search" method="post" action="#">
-	<div class="sub">
-		{$zbp.lang['msg']['search']}:
-		<input name="search" style="width:250px;" type="text" value="">
-		<input type="submit" class="button" value="{$zbp.lang['msg']['submit']}">
-	</div>
-</form>
-
+<div class="sub">
+  <form class="search" id="search" method="post" action="#">
+      {$zbp.lang['msg']['search']}:
+      <input name="search" style="width:250px;" type="text" value="">
+      <input type="submit" class="button" value="{$zbp.lang['msg']['submit']}">
+  </form>
+</div>
 <div class="postlist">
   <div class="tr thead"> 
     <div class="td-5 td-id">{$zbp.lang['msg']['id']}{$button_id_html}</div>

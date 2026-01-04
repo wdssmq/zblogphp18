@@ -2,45 +2,43 @@
 
 <form method="post" action="{$zbp.host}zb_system/cmd.php?act=PostBat&type={$post_type}">
 
-
-<table class="tableFull tableBorder tableBorder-thcenter table_hover table_striped">
-	<tr>
-		<th>{$zbp.lang['msg']['id']}{$button_id_html}</th>
-		<th>{$zbp.lang['msg']['author']}{$button_authorid_html}</th>
-		<th>{$zbp.lang['msg']['title']}</th>
-		<th>{$zbp.lang['msg']['date']}{$button_posttime_html}</th>
-		<th>{$zbp.lang['msg']['comment']}</th>
-		<th>{$zbp.lang['msg']['status']}</th>
-		<th></th>
+<div class="postlist">
+	<div class="tr thead"> 
+		<div class="td-5 td-id">{$zbp.lang['msg']['id']}{$button_id_html}</div>
+		<div class="td-10 td-author">{$zbp.lang['msg']['author']}{$button_authorid_html}</div>
+		<div class="td-25 td-title">{$zbp.lang['msg']['title']}</div>
+		<div class="td-20 td-date">{$zbp.lang['msg']['date']}{$button_posttime_html}</div>
+		<div class="td-5 td-comment">{$zbp.lang['msg']['comment']}</div>
+		<div class="td-5 td-status">{$zbp.lang['msg']['status']}</div>
+		<div class="td-10 td-action">操作</div>
 		{if $zbp.CheckRights('PostBat') && $zbp.option['ZC_POST_BATCH_DELETE']}
-		<th><a href="javascript:;" onclick="BatchSelectAll();return false;">{$zbp.lang['msg']['select_all']}</a></th>
+		<div class="td-5 td-order"><a href="javascript:;" onclick="BatchSelectAll();return false;">全选</a></div>
 		{/if}
-	</tr>
-
+	</div>
 	{foreach $pages as $page}
-	<tr>
-		<td class="td5">{$page.ID}</td>
-		<td class="td10">{$page.Author.Name}</td>
-		<td>
+	<div class="tr">
+		<div class="td-5 td-id">{$page.ID}</div>
+		<div class="td-10 td-author">{$page.Author.Name}</div>
+		<div class="td-25 td-title">
 			<a href="{$page.Url}" target="_blank"><i class="icon-link-45deg"></i></a> {$page.Title}
-		</td>
-		<td class="td20">{$page.Time()}</td>
-		<td class="td5">{$page.CommNums}</td>
-		<td class="td5">{$page.StatusName}</td>
-		<td class="td10 tdCenter">
-			<a href="../cmd.php?act=PageEdt&amp;id={$page.ID}"><i class="icon-pencil-square"></i></a>
-			<a onclick="return confirmDelete();" href="{BuildSafeCmdURL('act=PageDel&amp;id=' . $page->ID)}"><i class="icon-trash"></i></a>
-		</td>
+		</div>
+		<div class="td-20 td-date">{$page.Time()}</div>
+		<div class="td-5 td-comment">{$page.CommNums}</div>
+		<div class="td-5 td-status">{$page.StatusName}</div>
+		<div class="td-10 td-action">
+			<a href="../cmd.php?act=PageEdt&amp;id={$page.ID}" class="edit">编辑</a>
+			<a onclick="return confirmDelete();" href="{BuildSafeCmdURL('act=PageDel&amp;id=' . $page->ID)}" class="del">删除</a>
+		</div>
 		{if $zbp.CheckRights('PostBat') && $zbp.option['ZC_POST_BATCH_DELETE']}
-		<td class="td5 tdCenter">
+		<div class="td-5 td-order">
 			<input type="checkbox" id="id{$page.ID}" name="id[]" value="{$page.ID}">
-		</td>
+		</div>
 		{/if}
-	</tr>
+	</div>
 	{/foreach}
-</table>
 
-<!-- 分页 -->
+</div>
+
 <p class="pagebar">
 	{foreach $p->buttons as $k => $v}
 	{if $k == $p->PageNow}
@@ -49,8 +47,6 @@
 	<a href="{$v}">{$k}</a>
 	{/if}
 	{/foreach}
-
-	<!-- 批量删除按钮 -->
 	{if $zbp.CheckRights('PostBat') && $zbp.option['ZC_POST_BATCH_DELETE']}
 	<input type="submit" class="button pull-right" value="{$zbp.lang['msg']['all_del']}" name="all_del" onclick="return confirmDelete();">
 	{/if}
