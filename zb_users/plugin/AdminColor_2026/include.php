@@ -10,7 +10,7 @@ function ActivePlugin_AdminColor_2026()
     Add_Filter_Plugin('Filter_Plugin_Zbp_PrepareTemplateAdmin', 'AdminColor_2026_GenTpl');
 }
 
-//挂上新接口
+// 挂上新接口
 function AdminColor_2026_GenTpl(&$template_admin)
 {
     $tplCont = file_get_contents(AdminColor_2026_Path('tpl-Content'));
@@ -63,6 +63,13 @@ function InstallPlugin_AdminColor_2026()
         $zbp->Config('AdminColor_2026')->colors = (object) $Colors[0];
         $zbp->SaveConfig('AdminColor_2026');
     }
+
+    $file = AdminColor_2026_Path("usr/style.css");
+    if (!is_file($file)) {
+      @mkdir(dirname($file));
+      AdminColor_2026_GenCSS();
+    }
+
 }
 
 function UninstallPlugin_AdminColor_2026() {}

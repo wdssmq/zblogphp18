@@ -1,5 +1,5 @@
 <?php
-function AdminColor_2026_GetColors($var = null)
+function AdminColor_2026_GetColors()
 {
     return  [
         [
@@ -102,4 +102,17 @@ function AdminColor_2026_GetColors($var = null)
             'Square'     => '#262f3e',
         ],
     ];
+}
+
+function AdminColor_2026_GenCSS()
+{
+    global $zbp;
+    $uFile = AdminColor_2026_Path("usr/style.css");
+    $vFile = AdminColor_2026_Path("var/style.css");
+    $cfg_colors = $zbp->Config('AdminColor_2026')->colors;
+    $tpl = file_get_contents($vFile);
+    foreach ($cfg_colors as $key => $value) {
+        $tpl = str_replace("{{{$key}}}", $value, $tpl);
+    }
+    file_put_contents($uFile, $tpl);
 }
