@@ -1,4 +1,4 @@
-<?php die(); ?>
+<?php exit(); ?>
 <!-- update: 2026-01-04 -->
 <form id="frmTheme" method="post" action="{BuildSafeCmdURL('act=ThemeSet')}">
     <input type="hidden" name="theme" id="theme" value="" />
