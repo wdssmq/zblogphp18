@@ -24,10 +24,10 @@ function AdminColor_2026_Main_Header()
 {
     global $zbp;
     // 如果网址里含有 AdminColor_2026 则引入样式
-    if (strpos($zbp->currenturl, 'AdminColor_2026') !== false) {
-        echo '<link rel="stylesheet" href="' . AdminColor_2026_Path("tpl/plugin.css", "host") . '">';
+    if (false !== strpos($zbp->currenturl, 'AdminColor_2026')) {
+        echo '<link rel="stylesheet" href="' . AdminColor_2026_Path('tpl/plugin.css', 'host') . '">';
     }
-    echo '<link rel="stylesheet" type="text/css" href="' . AdminColor_2026_Path("usr/style.css", "host") . '">';
+    echo '<link rel="stylesheet" type="text/css" href="' . AdminColor_2026_Path('usr/style.css', 'host') . '">';
 }
 
 // 在后台底部引入脚本
@@ -35,8 +35,8 @@ function AdminColor_2026_Main_Footer()
 {
     global $zbp;
     // 如果网址里含有 AdminColor_2026 则引入脚本
-    if (strpos($zbp->currenturl, 'AdminColor_2026') !== false) {
-        echo '<script src="' . AdminColor_2026_Path("tpl/plugin.js", "host") . '"></script>';
+    if (false !== strpos($zbp->currenturl, 'AdminColor_2026')) {
+        echo '<script src="' . AdminColor_2026_Path('tpl/plugin.js', 'host') . '"></script>';
     }
 }
 
@@ -87,11 +87,13 @@ function InstallPlugin_AdminColor_2026()
         $zbp->SaveConfig('AdminColor_2026');
     }
 
-    $file = AdminColor_2026_Path("usr/style.css");
+    $file = AdminColor_2026_Path('usr/style.css');
     if (!is_file($file)) {
         @mkdir(dirname($file));
         AdminColor_2026_GenCSS();
     }
 }
 
-function UninstallPlugin_AdminColor_2026() {}
+function UninstallPlugin_AdminColor_2026()
+{
+}

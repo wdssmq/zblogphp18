@@ -1,7 +1,8 @@
 <?php
+
 function AdminColor_2026_GetColors()
 {
-    return  [
+    return [
         [
             'BoldColor'  => '#1d4c7d',
             'NormalColor' => '#3a6ea5',
@@ -107,8 +108,8 @@ function AdminColor_2026_GetColors()
 function AdminColor_2026_GenCSS()
 {
     global $zbp;
-    $uFile = AdminColor_2026_Path("usr/style.css");
-    $vFile = AdminColor_2026_Path("var/style.css");
+    $uFile = AdminColor_2026_Path('usr/style.css');
+    $vFile = AdminColor_2026_Path('var/style.css');
     $cfg_colors = $zbp->Config('AdminColor_2026')->colors;
     $tpl = file_get_contents($vFile);
     foreach ($cfg_colors as $key => $value) {

@@ -45,7 +45,6 @@ $ActionInfo = (object) [
     'Content' => $content,
 ];
 
-
 // 输出页面
 $zbp->template_admin->SetTags('title', $ActionInfo->Title);
 $zbp->template_admin->SetTags('main', $ActionInfo);
