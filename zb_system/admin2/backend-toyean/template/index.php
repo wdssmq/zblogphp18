@@ -36,7 +36,7 @@
         <!-- <p>title: {$title}</p> -->
         <!-- <p>action: {$action}</p> -->
         {template:layout_left}
-        <div class="main">
+        <div class="main{if GetVars('side','COOKIE')} on{/if}">
             {template:layout_top}
             {template:layout_main}
         </div>
