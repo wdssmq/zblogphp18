@@ -7,10 +7,10 @@
   </form>
 </div>
 <div class="postlist">
-  <div class="tr thead"> 
+  <div class="tr thead">
     <div class="td-5 td-id">{$zbp.lang['msg']['id']}{$button_id_html}</div>
     <div class="td-5 td-title">{$zbp.lang['msg']['order']}{$button_order_html}</div>
-    <div class="td-25 td-alias">{$zbp.lang['msg']['name']}{$button_name_html}</div>
+    <div class="td-full td-alias">{$zbp.lang['msg']['name']}{$button_name_html}</div>
     <div class="td-20 td-intro">{$zbp.lang['msg']['alias']}</div>
     <div class="td-10 td-post-count">{$zbp.lang['msg']['post_count']}</div>
     <div class="td-10 td-action">操作</div>
@@ -19,7 +19,7 @@
 	<div class="tr">
 			<div class="td-5 td-id">{$category.ID}</div>
 			<div class="td-5 td-title">{$category.Order}</div>
-			<div class="td-25 td-alias"><a href="{$category.Url}" target="_blank"><i class="icon-link-45deg"></i></a>
+			<div class="td-full td-alias"><a href="{$category.Url}" target="_blank"><i class="icon-link-45deg"></i></a>
       {$category.Name}</div>
 			<div class="td-20 td-intro">{$category.Alias}</div>
       <div class="td-10 td-post-count">{$category.Count}</div>

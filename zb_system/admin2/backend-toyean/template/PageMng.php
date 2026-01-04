@@ -3,10 +3,10 @@
 <form method="post" action="{$zbp.host}zb_system/cmd.php?act=PostBat&type={$post_type}">
 
 <div class="postlist">
-	<div class="tr thead"> 
+	<div class="tr thead">
 		<div class="td-5 td-id">{$zbp.lang['msg']['id']}{$button_id_html}</div>
 		<div class="td-10 td-author">{$zbp.lang['msg']['author']}{$button_authorid_html}</div>
-		<div class="td-25 td-title">{$zbp.lang['msg']['title']}</div>
+		<div class="td-full td-title">{$zbp.lang['msg']['title']}</div>
 		<div class="td-20 td-date">{$zbp.lang['msg']['date']}{$button_posttime_html}</div>
 		<div class="td-5 td-comment">{$zbp.lang['msg']['comment']}</div>
 		<div class="td-5 td-status">{$zbp.lang['msg']['status']}</div>
@@ -19,7 +19,7 @@
 	<div class="tr">
 		<div class="td-5 td-id">{$page.ID}</div>
 		<div class="td-10 td-author">{$page.Author.Name}</div>
-		<div class="td-25 td-title">
+		<div class="td-full td-title">
 			<a href="{$page.Url}" target="_blank"><i class="icon-link-45deg"></i></a> {$page.Title}
 		</div>
 		<div class="td-20 td-date">{$page.Time()}</div>

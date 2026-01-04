@@ -31,7 +31,7 @@
     {php}HookFilterPlugin('Filter_Plugin_Admin_Header');{/php}
 </head>
 
-<body class="admin admin-{$action}">
+<body class="admin admin-{$action}{if GetVars('night','COOKIE')} night{/if}">
     <div class="wrapper">
         <!-- <p>title: {$title}</p> -->
         <!-- <p>action: {$action}</p> -->
