@@ -24,6 +24,12 @@ if (!$zbp->CheckPlugin('AdminColor_2026')) {
     exit;
 }
 
+// 初始化
+InstallPlugin_AdminColor_2026();
+
+$cfg_colors = $zbp->Config('AdminColor_2026')->colors;
+$zbp->template_admin->SetTags('cfg_colors', $cfg_colors);
+
 // 显示内容构建
 $blogtitle = '后台配色器_2026';
 $content = $zbp->template_admin->Output('plugin_AdminColor_2026_Content');
@@ -37,6 +43,7 @@ $ActionInfo = (object) [
     'Action' => $zbp->action,
     'Content' => $content,
 ];
+
 
 // 输出页面
 $zbp->template_admin->SetTags('title', $ActionInfo->Title);

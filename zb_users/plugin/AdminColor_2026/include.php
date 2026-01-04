@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/function.php';
+
 RegisterPlugin('AdminColor_2026', 'ActivePlugin_AdminColor_2026');
 
 function ActivePlugin_AdminColor_2026()
@@ -24,38 +26,43 @@ function AdminColor_2026_submenu()
 function AdminColor_2026_Path($file, $t = 'path')
 {
     global $zbp;
-    $result = $zbp->{$t}.'zb_users/plugin/AdminColor_2026/';
+    $result = $zbp->{$t} . 'zb_users/plugin/AdminColor_2026/';
 
     switch ($file) {
         case 'tpl-Content':
-            return $result.'tpl/Content.php';
+            return $result . 'tpl/Content.php';
 
             break;
 
         case 'usr':
-            return $result.'usr/';
+            return $result . 'usr/';
 
             break;
 
         case 'var':
-            return $result.'var/';
+            return $result . 'var/';
 
             break;
 
         case 'main':
-            return $result.'main.php';
+            return $result . 'main.php';
 
             break;
 
         default:
-            return $result.$file;
+            return $result . $file;
     }
 }
 
 function InstallPlugin_AdminColor_2026()
 {
+    global $zbp;
+    $Colors = AdminColor_2026_GetColors();
+    if (!$zbp->HasConfig('AdminColor_2026')) {
+        $zbp->Config('AdminColor_2026')->version = 1;
+        $zbp->Config('AdminColor_2026')->colors = (object) $Colors[0];
+        $zbp->SaveConfig('AdminColor_2026');
+    }
 }
 
-function UninstallPlugin_AdminColor_2026()
-{
-}
+function UninstallPlugin_AdminColor_2026() {}
