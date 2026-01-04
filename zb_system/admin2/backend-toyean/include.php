@@ -1,10 +1,14 @@
 <?php
+function ActivePlugin_backend_toyean()
+{
+    global $zbp;
+    $zbp->lang['msg']['first_button'] = '首页';
+    $zbp->lang['msg']['prev_button'] = '上一页';
+    $zbp->lang['msg']['next_button'] = '下一页';
+    $zbp->lang['msg']['last_button'] = '尾页';
+}
 
-//自定义函数
-$zbp->lang['msg']['first_button'] = '首页';
-$zbp->lang['msg']['prev_button'] = '上一页';
-$zbp->lang['msg']['next_button'] = '下一页';
-$zbp->lang['msg']['last_button'] = '尾页';
+
 
 //覆盖ResponseAdmin_TopMenu
 function ResponseAdmin_TopMenu()

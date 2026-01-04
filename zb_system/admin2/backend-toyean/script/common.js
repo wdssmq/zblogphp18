@@ -256,11 +256,11 @@ $(function(){
 	//右上角用户菜单
 	$(document).on('click', '.userlink', function(e){
 		e.stopPropagation();
-		$(".usermenu").toggleClass("on");
+		$(".userlink,.usermenu").toggleClass("on");
 	});
 	$(document).on("click",function(e){
 		if (!$(e.target).closest('.userlink, .usermenu').length) {
-			$(".usermenu").removeClass("on");
+			$(".userlink,.usermenu").removeClass("on");
 		}
 	});
 

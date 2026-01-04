@@ -57,6 +57,9 @@ HookFilterPlugin('Filter_Plugin_Edit_Response5');
 					</div>
 					<div id="carea" style="margin:5px 0 0 0" class="editmod editmod3">
 						<textarea id="editor_content" name="Content">{FormatString($article->Content, '[html-format]')}</textarea>
+                        <div id="aiEditor" style="width:100%; height:400px;"></div>
+                        <link rel="stylesheet" href="{$host}zb_system/admin2/backend-toyean/plugin/aieditor/style.css">
+                        <script type="module" src="{$host}zb_system/admin2/backend-toyean/plugin/aieditor/aieditor.js"></script>
 					</div>
 					<div id="contentready" style="display:none">
 						<img alt="loading" id="statloading1" src="../image/admin/loading.gif">Waiting...
