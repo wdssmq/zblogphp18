@@ -241,17 +241,6 @@ HookFilterPlugin('Filter_Plugin_Edit_Response3');
 			<!-- divEditRight -->
 
 		</form>
-
-	{php}if ($ispage){
-	echo '<script>ActiveLeftMenu("aPageMng");</script>';
-} elseif ($article->ID == 0) {
-	echo '<script>ActiveLeftMenu("aArticleEdt");</script>';
-} else {
-	echo '<script>ActiveLeftMenu("aArticleMng");</script>';
-}
-echo '<script>AddHeaderFontIcon("icon-pencil-square-fill");</script>';
-	{/php}
-
 	<script>
 		/**
 		 * Gargabe codes
