@@ -3,6 +3,7 @@
  * Z-Blog with PHP.
  *
  * @author  Z-BlogPHP Team
+ *
  * @version 2.0 2013-06-14
  */
 require '../function/c_system_base.php';
@@ -330,13 +331,14 @@ $m = 'W/' . md5($s);
 header('Content-Type: application/x-javascript; charset=utf-8');
 header('Etag: ' . $m);
 
-if (isset($_SERVER["HTTP_IF_NONE_MATCH"]) && $_SERVER["HTTP_IF_NONE_MATCH"] == $m) {
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $m) {
     if (isset($zbp->option['ZC_JS_304_ENABLE']) && $zbp->option['ZC_JS_304_ENABLE']) {
         SetHttpStatusCode(304);
-        die;
+
+        exit;
     }
 }
 
 echo $s;
 
-die();
+exit();

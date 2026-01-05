@@ -723,7 +723,7 @@ class ZBlogPHP
             }
         }
 
-        trigger_error(get_class($this).$this->lang['error'][81]." '{$method}' ", E_USER_WARNING);
+        trigger_error(get_class($this) . $this->lang['error'][81] . " '{$method}' ", E_USER_WARNING);
     }
 
     /**
@@ -744,7 +744,7 @@ class ZBlogPHP
                 return $fpreturn;
             }
         }
-        trigger_error(get_class($this).$this->lang['error'][81]." '{$name}' ", E_USER_WARNING);
+        trigger_error(get_class($this) . $this->lang['error'][81] . " '{$name}' ", E_USER_WARNING);
     }
 
     /**
@@ -764,7 +764,7 @@ class ZBlogPHP
                 return $fpreturn;
             }
         }
-        trigger_error(get_class($this).$this->lang['error'][81]." '{$name}' ", E_USER_WARNING);
+        trigger_error(get_class($this) . $this->lang['error'][81] . " '{$name}' ", E_USER_WARNING);
     }
 
     /**
@@ -779,8 +779,8 @@ class ZBlogPHP
     public static function GetInstance()
     {
         if (!isset(self::$private_zbp)) {
-            if (isset($GLOBALS['option']['ZC_GODZBP_FILE'], $GLOBALS['option']['ZC_GODZBP_NAME']) && is_readable(ZBP_PATH.$GLOBALS['option']['ZC_GODZBP_FILE'])) {
-                include ZBP_PATH.$GLOBALS['option']['ZC_GODZBP_FILE'];
+            if (isset($GLOBALS['option']['ZC_GODZBP_FILE'], $GLOBALS['option']['ZC_GODZBP_NAME']) && is_readable(ZBP_PATH . $GLOBALS['option']['ZC_GODZBP_FILE'])) {
+                include ZBP_PATH . $GLOBALS['option']['ZC_GODZBP_FILE'];
                 self::$private_zbp = new $GLOBALS['option']['ZC_GODZBP_NAME']();
             } else {
                 self::$private_zbp = new self();
@@ -864,7 +864,7 @@ class ZBlogPHP
 
         if (defined('ZBP_PRESET_HOST_USED')) {
             //如果环境变量已预设了bloghost
-            $this->host = rtrim($this->host, '/').'/';
+            $this->host = rtrim($this->host, '/') . '/';
             $this->option['ZC_BLOG_HOST'] = $this->host;
             $this->ispermanent_domain = true;
         } else {
@@ -878,19 +878,19 @@ class ZBlogPHP
 
             if ('' != $permanent_domain_forced_url) {
                 //如果ZC_PERMANENT_DOMAIN_FORCED_URL存在 且不为空
-                $permanent_domain_forced_url = rtrim($permanent_domain_forced_url, '/').'/';
+                $permanent_domain_forced_url = rtrim($permanent_domain_forced_url, '/') . '/';
                 $this->option['ZC_BLOG_HOST'] = $this->host = $permanent_domain_forced_url;
                 $this->cookiespath = strstr(str_replace('://', '', $this->host), '/');
                 $this->ispermanent_domain = true;
             } elseif ($permanent_domain_enable) {
                 //如果ZC_PERMANENT_DOMAIN_ENABLE已开启的话
                 $this->host = $this->option['ZC_BLOG_HOST'];
-                $this->host = rtrim($this->host, '/').'/';
+                $this->host = rtrim($this->host, '/') . '/';
                 $this->cookiespath = strstr(str_replace('://', '', $this->host), '/');
                 $this->ispermanent_domain = true;
             } else {
                 //默认自动识别域名
-                $this->host = rtrim($this->host, '/').'/';
+                $this->host = rtrim($this->host, '/') . '/';
                 $this->option['ZC_BLOG_HOST'] = $this->host;
                 $this->option['ZC_PERMANENT_DOMAIN_ENABLE'] = false;
                 $this->ispermanent_domain = false;
@@ -901,9 +901,9 @@ class ZBlogPHP
         $this->option['ZC_BLOG_VERSION'] = ZC_BLOG_VERSION;
         $this->option['ZC_BLOG_COMMIT'] = ZC_BLOG_COMMIT;
         $this->option['ZC_NOW_VERSION'] = $this->version;
-        $this->option['ZC_BLOG_PRODUCT_FULL'] = $this->option['ZC_BLOG_PRODUCT'].' '.ZC_VERSION_DISPLAY;
-        $this->option['ZC_BLOG_PRODUCT_FULLHTML'] = '<a href="https://www.zblogcn.com/" title="Z-BlogPHP '.ZC_BLOG_VERSION.'" target="_blank" rel="noopener noreferrer">'.$this->option['ZC_BLOG_PRODUCT_FULL'].'</a>';
-        $this->option['ZC_BLOG_PRODUCT_HTML'] = '<a href="https://www.zblogcn.com/" title="Z-BlogPHP '.ZC_BLOG_VERSION.'" target="_blank" rel="noopener noreferrer">'.$this->option['ZC_BLOG_PRODUCT'].'</a>';
+        $this->option['ZC_BLOG_PRODUCT_FULL'] = $this->option['ZC_BLOG_PRODUCT'] . ' ' . ZC_VERSION_DISPLAY;
+        $this->option['ZC_BLOG_PRODUCT_FULLHTML'] = '<a href="https://www.zblogcn.com/" title="Z-BlogPHP ' . ZC_BLOG_VERSION . '" target="_blank" rel="noopener noreferrer">' . $this->option['ZC_BLOG_PRODUCT_FULL'] . '</a>';
+        $this->option['ZC_BLOG_PRODUCT_HTML'] = '<a href="https://www.zblogcn.com/" title="Z-BlogPHP ' . ZC_BLOG_VERSION . '" target="_blank" rel="noopener noreferrer">' . $this->option['ZC_BLOG_PRODUCT'] . '</a>';
 
         if ($oldZone != $this->option['ZC_TIME_ZONE_NAME']) {
             date_default_timezone_set($this->option['ZC_TIME_ZONE_NAME']);
@@ -919,14 +919,14 @@ class ZBlogPHP
         */
 
         if ($this->option['ZC_VERSION_IN_HEADER'] && !headers_sent()) {
-            header('Product:'.$this->option['ZC_BLOG_PRODUCT_FULL']);
+            header('Product:' . $this->option['ZC_BLOG_PRODUCT_FULL']);
         }
 
         $parsedHost = parse_url($this->host);
         if (isset($parsedHost['scheme'], $parsedHost['host'])) {
-            $this->fullcurrenturl = $parsedHost['scheme'].'://'.$parsedHost['host'];
+            $this->fullcurrenturl = $parsedHost['scheme'] . '://' . $parsedHost['host'];
             if (isset($parsedHost['port'])) {
-                $this->fullcurrenturl .= ':'.$parsedHost['port'];
+                $this->fullcurrenturl .= ':' . $parsedHost['port'];
             }
         } else {
             $this->fullcurrenturl = '';
@@ -942,18 +942,18 @@ class ZBlogPHP
         }
         //var_dump($this->ishttps);die;
 
-        $this->usersurl = $this->host.'zb_users/';
-        $this->systemurl = $this->host.'zb_system/';
-        $this->adminurl = $this->host.'zb_system/admin/';
+        $this->usersurl = $this->host . 'zb_users/';
+        $this->systemurl = $this->host . 'zb_system/';
+        $this->adminurl = $this->host . 'zb_system/admin/';
 
-        $this->verifyCodeUrl = $this->systemurl.'script/c_validcode.php';
+        $this->verifyCodeUrl = $this->systemurl . 'script/c_validcode.php';
         $this->validcodeurl = &$this->verifyCodeUrl;
-        $this->feedurl = $this->host.'feed.php';
-        $this->searchurl = $this->host.'search.php';
-        $this->cmdurl = $this->systemurl.'cmd.php';
-        $this->ajaxurl = $this->cmdurl.'?act=ajax&src=';
-        $this->xmlrpcurl = $this->systemurl.'xml-rpc/index.php';
-        $this->apiurl = $this->systemurl.'api.php';
+        $this->feedurl = $this->host . 'feed.php';
+        $this->searchurl = $this->host . 'search.php';
+        $this->cmdurl = $this->systemurl . 'cmd.php';
+        $this->ajaxurl = $this->cmdurl . '?act=ajax&src=';
+        $this->xmlrpcurl = $this->systemurl . 'xml-rpc/index.php';
+        $this->apiurl = $this->systemurl . 'api.php';
 
         $this->LoadConfigsOnlySystem(false);
 
@@ -1094,9 +1094,9 @@ class ZBlogPHP
      */
     public function LoadManage()
     {
-        $this->RegisterBackEndApp('backend-legacy', $this->systemdir.'admin2/backend-legacy/backend.xml');
+        $this->RegisterBackEndApp('backend-legacy', $this->systemdir . 'admin2/backend-legacy/backend.xml');
         //$this->RegisterBackEndApp('backend-nexus', $this->systemdir . 'admin2/backend-nexus/backend.xml');
-        $this->RegisterBackEndApp('backend-toyean', $this->systemdir.'admin2/backend-toyean/backend.xml');
+        $this->RegisterBackEndApp('backend-toyean', $this->systemdir . 'admin2/backend-toyean/backend.xml');
 
         $this->template_admin = $this->PrepareTemplateAdmin();
 
@@ -1112,7 +1112,7 @@ class ZBlogPHP
         Add_Filter_Plugin('Filter_Plugin_Admin_Hint', 'Include_Admin_CheckWeakPassWord');
 
         if (isset($GLOBALS['zbpvers'])) {
-            $GLOBALS['zbpvers'][$GLOBALS['blogversion']] = ZC_VERSION_DISPLAY.' Build '.$GLOBALS['blogversion'];
+            $GLOBALS['zbpvers'][$GLOBALS['blogversion']] = ZC_VERSION_DISPLAY . ' Build ' . $GLOBALS['blogversion'];
         }
 
         if ($this->option['ZC_DEBUG_MODE'] || $this->ismanage) {
@@ -1138,7 +1138,7 @@ class ZBlogPHP
 
             if (ZbpErrorControl::$islogerror && is_array($this->db->error) && !empty($this->db->error)) {
                 foreach ($this->db->error as $e) {
-                    Logs($this->db->type.' error id:'.PHP_EOL.var_export($e, true), 'ERROR');
+                    Logs($this->db->type . ' error id:' . PHP_EOL . var_export($e, true), 'ERROR');
                 }
             }
 
@@ -1184,7 +1184,7 @@ class ZBlogPHP
                 $this->db = self::InitializeDB($this->option['ZC_DATABASE_TYPE']);
                 if (false == $this->db->Open(
                     [
-                        $this->datadir.''.$this->option['ZC_SQLITE_NAME'],
+                        $this->datadir . '' . $this->option['ZC_SQLITE_NAME'],
                         $this->option['ZC_SQLITE_PRE'],
                     ],
                 )
@@ -1295,7 +1295,7 @@ class ZBlogPHP
             return null;
         }
 
-        $newtype = 'Database__'.trim($type);
+        $newtype = 'Database__' . trim($type);
 
         return new $newtype();
     }
@@ -1481,7 +1481,7 @@ class ZBlogPHP
 
         $reserve_keys = explode('|', self::OPTION_RESERVE_KEYS);
 
-        if (false == file_exists($this->usersdir.'c_option.php')) {
+        if (false == file_exists($this->usersdir . 'c_option.php')) {
             $s = '<';
             $s .= "?php\r\n";
             $s .= 'return ';
@@ -1493,7 +1493,7 @@ class ZBlogPHP
             }
             $s .= var_export($option, true);
             $s .= ';';
-            @file_put_contents($this->usersdir.'c_option.php', $s);
+            @file_put_contents($this->usersdir . 'c_option.php', $s);
         }
 
         foreach ($this->option as $key => $value) {
@@ -1624,8 +1624,8 @@ class ZBlogPHP
     public function Verify()
     {
         // 在普通 Web 页面中
-        $username = trim(GetVars('username_'.hash('crc32b', $this->guid), 'COOKIE', ''));
-        $token = trim(GetVars('token_'.hash('crc32b', $this->guid), 'COOKIE', ''));
+        $username = trim(GetVars('username_' . hash('crc32b', $this->guid), 'COOKIE', ''));
+        $token = trim(GetVars('token_' . hash('crc32b', $this->guid), 'COOKIE', ''));
         $user = $this->VerifyUserToken($token, $username);
 
         if (is_object($user)) {
@@ -1680,7 +1680,7 @@ class ZBlogPHP
      */
     public function GenerateApiToken($user, $time = 0)
     {
-        return base64_encode($user->Name.'|||'.$this->GenerateUserToken($user, (int) $time));
+        return base64_encode($user->Name . '|||' . $this->GenerateUserToken($user, (int) $time));
     }
 
     /**
@@ -1719,7 +1719,7 @@ class ZBlogPHP
         }
         $member = $this->GetMemberByName($name);
         if (null != $member->ID) {
-            return $this->Verify_Final($name, md5($md5pw.$member->Guid), $member);
+            return $this->Verify_Final($name, md5($md5pw . $member->Guid), $member);
         }
 
         return false;
@@ -1929,14 +1929,14 @@ class ZBlogPHP
         foreach ($this->posttype as $type => $value) {
             $lv = [];
             for ($i = 0; $i < $this->category_recursion_level; ++$i) {
-                $name = 'lv'.$i;
+                $name = 'lv' . $i;
                 ${$name} = [];
                 $lv[$i] = &${$name};
             }
             $categories = $this->categories_type[$type];
 
             foreach ($categories as $id => $c) {
-                $l = 'lv'.$c->Level;
+                $l = 'lv' . $c->Level;
                 ${$l}[$c->ParentID][] = $id;
             }
 
@@ -2012,7 +2012,7 @@ class ZBlogPHP
             }
         }
 
-        $dir = $this->usersdir.'theme/'.$this->theme.'/include/';
+        $dir = $this->usersdir . 'theme/' . $this->theme . '/include/';
         if (file_exists($dir)) {
             $files = GetFilesInDir($dir, 'htm');
             foreach ($files as $sortname => $fullname) {
@@ -2026,8 +2026,8 @@ class ZBlogPHP
                 } else {
                     $m->Type = 'div';
                 }
-                $m->Source = 'themeinclude_'.$this->theme;
-                $m->ID = (0 - (int) crc32($m->Source.$m->FileName));
+                $m->Source = 'themeinclude_' . $this->theme;
+                $m->ID = (0 - (int) crc32($m->Source . $m->FileName));
                 $this->AddCache($m);
             }
             $files = GetFilesInDir($dir, 'php');
@@ -2042,8 +2042,8 @@ class ZBlogPHP
                 } else {
                     $m->Type = 'div';
                 }
-                $m->Source = 'themeinclude_'.$this->theme;
-                $m->ID = (0 - (int) crc32($m->Source.$m->FileName));
+                $m->Source = 'themeinclude_' . $this->theme;
+                $m->ID = (0 - (int) crc32($m->Source . $m->FileName));
                 $this->AddCache($m);
             }
         }
@@ -2065,7 +2065,7 @@ class ZBlogPHP
     public function LoadThemes()
     {
         $allThemes = [];
-        $dirs = GetDirsInDir($this->usersdir.'theme/');
+        $dirs = GetDirsInDir($this->usersdir . 'theme/');
         natcasesort($dirs);
         array_unshift($dirs, $this->theme);
         $dirs = array_unique($dirs);
@@ -2087,7 +2087,7 @@ class ZBlogPHP
     public function LoadPlugins()
     {
         $allPlugins = [];
-        $dirs = GetDirsInDir($this->usersdir.'plugin/');
+        $dirs = GetDirsInDir($this->usersdir . 'plugin/');
         natcasesort($dirs);
 
         foreach ($dirs as $id) {
@@ -2204,7 +2204,7 @@ class ZBlogPHP
 
             case 'plugin':
             case 'theme':
-                $languagePath .= 'zb_users/'.$type.'/'.$id.'/language/';
+                $languagePath .= 'zb_users/' . $type . '/' . $id . '/language/';
                 $languagePtr = &$this->lang[$id];
 
                 break;
@@ -2213,17 +2213,17 @@ class ZBlogPHP
                 $backend_id = $id;
                 if (isset($this->backendapps[$backend_id]) && is_object($this->backendapps[$backend_id])) {
                     $this->backendapp = &$this->backendapps[$backend_id];
-                    $languagePath = $this->backendapp->GetPath().'language/';
+                    $languagePath = $this->backendapp->GetPath() . 'language/';
                     $languagePtr = &$this->lang[$id];
                 } else {
-                    $languagePath .= 'zb_system/admin2/'.$id.'/language/';
+                    $languagePath .= 'zb_system/admin2/' . $id . '/language/';
                     $languagePtr = &$this->lang[$id];
                 }
 
                 break;
 
             default:
-                $languagePath .= $type.'/language/';
+                $languagePath .= $type . '/language/';
                 $languagePtr = &$this->lang[$id];
 
                 break;
@@ -2240,11 +2240,11 @@ class ZBlogPHP
             closedir($handle);
         } else {
             // 这里不会执行到，在opendir时就已经抛出E_WARNING
-            throw new Exception('Cannot opendir('.$languagePath.')');
+            throw new Exception('Cannot opendir(' . $languagePath . ')');
         }
 
         if (0 === count($languageList)) {
-            throw new Exception('No language in '.$languagePath);
+            throw new Exception('No language in ' . $languagePath);
         }
 
         for ($i = 0; $i < count($defaultLanguageList); ++$i) {
@@ -2256,15 +2256,15 @@ class ZBlogPHP
             }
         }
         if ('' === $language) {
-            throw new Exception('Language '.$default.' is not found in '.$languagePath);
+            throw new Exception('Language ' . $default . ' is not found in ' . $languagePath);
         }
 
-        $languagePath .= $language.'.php';
+        $languagePath .= $language . '.php';
         $languagePtr = include $languagePath;
         $this->langpacklist[] = [$type, $id, $language];
         if ('system' == $type) {
-            if (is_readable($this->systemdir.'defend/en.php')) {
-                $defend_en = include $this->systemdir.'defend/en.php';
+            if (is_readable($this->systemdir . 'defend/en.php')) {
+                $defend_en = include $this->systemdir . 'defend/en.php';
                 $nowlang = $languagePtr;
                 $languagePtr = array_replace_recursive($defend_en, $nowlang);
             }
@@ -2446,7 +2446,7 @@ class ZBlogPHP
         $template_admin->MakeTemplateTags();
 
         $theme = 'backend-legacy';
-        $backendapp_dirname = $this->systemdir.'admin2/'.$theme.'/';
+        $backendapp_dirname = $this->systemdir . 'admin2/' . $theme . '/';
 
         //从ZC_BACKEND_ID取值
         $backend_id = $this->option['ZC_BACKEND_ID'];
@@ -2465,7 +2465,7 @@ class ZBlogPHP
         $template_admin->theme = $theme;
         $template_admin->template_dirname = 'template';
 
-        $template_admin->SetPath($this->cachedir.'compiled/system/'.$theme.'/');
+        $template_admin->SetPath($this->cachedir . 'compiled/system/' . $theme . '/');
         $template_admin->SetAppPath($backendapp_dirname);
         $template_admin->LoadAdminTemplates();
         $this->autofill_template_htmltags = false;
@@ -2522,7 +2522,7 @@ class ZBlogPHP
             $array_files_hash_md5 = [];
         }
         foreach ($array_files_hash_md5 as $file => $md5_file) {
-            if (!file_exists($this->template_admin->GetPath().$file.'.php')) {
+            if (!file_exists($this->template_admin->GetPath() . $file . '.php')) {
                 //缺编译后的文件
                 if (true == $onlycheck) {
                     return false;
@@ -3781,7 +3781,7 @@ class ZBlogPHP
      */
     public function GetCmtKey($id)
     {
-        return md5($this->guid.$id.date('YmdH'));
+        return md5($this->guid . $id . date('YmdH'));
     }
 
     /**
@@ -3794,8 +3794,8 @@ class ZBlogPHP
      */
     public function ValidCmtKey($id, $key)
     {
-        $nowkey = md5($this->guid.$id.date('YmdH'));
-        $nowkey2 = md5($this->guid.$id.date('YmdH', (time() - (3600 * 1))));
+        $nowkey = md5($this->guid . $id . date('YmdH'));
+        $nowkey2 = md5($this->guid . $id . date('YmdH', (time() - (3600 * 1))));
 
         return $key == $nowkey || $key == $nowkey2;
     }
@@ -3819,15 +3819,15 @@ class ZBlogPHP
             $time = date('YmdH');
         }
 
-        $hash_pre = $this->guid.$this->path;
+        $hash_pre = $this->guid . $this->path;
         if ($this->option['ZC_ADDITIONAL_SECURITY']) {
             $hash_pre .= GetGuestAgent();
         }
-        $hash_pre .= $this->user->ID.$this->user->Password.$this->user->Status.$id;
+        $hash_pre .= $this->user->ID . $this->user->Password . $this->user->Status . $id;
 
         date_default_timezone_set($oldZone);
 
-        return md5($hash_pre.$time);
+        return md5($hash_pre . $time);
     }
 
     /**
@@ -3844,15 +3844,15 @@ class ZBlogPHP
         $oldZone = date_default_timezone_get();
         date_default_timezone_set($this->option['ZC_TIME_ZONE_NAME']);
 
-        $hash_pre = $this->guid.$this->path;
+        $hash_pre = $this->guid . $this->path;
         if ($this->option['ZC_ADDITIONAL_SECURITY']) {
             $hash_pre .= GetGuestAgent();
         }
-        $hash_pre .= $this->user->ID.$this->user->Password.$this->user->Status.$id;
+        $hash_pre .= $this->user->ID . $this->user->Password . $this->user->Status . $id;
 
         if ('minute' == strtolower($timecompare) || 'm' == strtolower($timecompare)) {
             for ($i = 0; $i <= $this->csrfExpirationMinute; ++$i) {
-                if ($token === md5($hash_pre.date('YmdHi', (time() - (60 * $i))))) {
+                if ($token === md5($hash_pre . date('YmdHi', (time() - (60 * $i))))) {
                     date_default_timezone_set($oldZone);
 
                     return true;
@@ -3860,7 +3860,7 @@ class ZBlogPHP
             }
         } else {
             for ($i = 0; $i <= $this->csrfExpiration; ++$i) {
-                if ($token === md5($hash_pre.date('YmdH', (time() - (3600 * $i))))) {
+                if ($token === md5($hash_pre . date('YmdH', (time() - (3600 * $i))))) {
                     date_default_timezone_set($oldZone);
 
                     return true;
@@ -3892,15 +3892,15 @@ class ZBlogPHP
         $_vc = new ValidateCode();
         $_vc->GetImg();
 
-        $hash_pre = $this->guid.$this->path;
+        $hash_pre = $this->guid . $this->path;
         if ($this->option['ZC_ADDITIONAL_SECURITY']) {
             $hash_pre .= GetGuestIP();
         }
 
         if ('minute' == strtolower($timecompare) || 'm' == strtolower($timecompare)) {
-            setcookie('captcha_'.crc32($this->guid.$id), md5($hash_pre.date('YmdHi').$_vc->GetCode()), 0, $this->cookiespath);
+            setcookie('captcha_' . crc32($this->guid . $id), md5($hash_pre . date('YmdHi') . $_vc->GetCode()), 0, $this->cookiespath);
         } else {
-            setcookie('captcha_'.crc32($this->guid.$id), md5($hash_pre.date('YmdH').$_vc->GetCode()), 0, $this->cookiespath);
+            setcookie('captcha_' . crc32($this->guid . $id), md5($hash_pre . date('YmdH') . $_vc->GetCode()), 0, $this->cookiespath);
         }
 
         return true;
@@ -3924,24 +3924,24 @@ class ZBlogPHP
             return $fpname($verifyCode, $id, $timecompare); //*
         }
 
-        $original = GetVars('captcha_'.crc32($this->guid.$id), 'COOKIE');
-        setcookie('captcha_'.crc32($this->guid.$id), '', (time() - 3600), $this->cookiespath);
+        $original = GetVars('captcha_' . crc32($this->guid . $id), 'COOKIE');
+        setcookie('captcha_' . crc32($this->guid . $id), '', (time() - 3600), $this->cookiespath);
 
-        $hash_pre = $this->guid.$this->path;
+        $hash_pre = $this->guid . $this->path;
         if ($this->option['ZC_ADDITIONAL_SECURITY']) {
             $hash_pre .= GetGuestIP();
         }
 
         if ('minute' == strtolower($timecompare) || 'm' == strtolower($timecompare)) {
             for ($i = 0; $i <= $this->verifyCodeExpirationMinute; ++$i) {
-                $r = md5($hash_pre.date('YmdHi', (time() - (60 * $i))).strtolower($verifyCode));
+                $r = md5($hash_pre . date('YmdHi', (time() - (60 * $i))) . strtolower($verifyCode));
                 if ($r == $original) {
                     return true;
                 }
             }
         } else {
             for ($i = 0; $i <= $this->verifyCodeExpiration; ++$i) {
-                $r = md5($hash_pre.date('YmdH', (time() - (3600 * $i))).strtolower($verifyCode));
+                $r = md5($hash_pre . date('YmdH', (time() - (3600 * $i))) . strtolower($verifyCode));
                 if ($r == $original) {
                     return true;
                 }
@@ -3979,7 +3979,7 @@ class ZBlogPHP
             $hint->content = $content;
             $hint->delay = $delay;
             $this->hints[$i] = $hint;
-            setcookie('hint_signal'.$i, json_encode($hint), 0, $this->cookiespath);
+            setcookie('hint_signal' . $i, json_encode($hint), 0, $this->cookiespath);
 
             break;
         }
@@ -3993,17 +3993,17 @@ class ZBlogPHP
         for ($i = 1; $i <= 10; ++$i) {
             if (isset($this->hints[$i]) && is_object($this->hints[$i])) {
                 $this->ShowHint($this->hints[$i]);
-                setcookie('hint_signal'.$i, '', (time() - 3600), $this->cookiespath);
-                unset($_COOKIE['hint_signal'.$i]);
+                setcookie('hint_signal' . $i, '', (time() - 3600), $this->cookiespath);
+                unset($_COOKIE['hint_signal' . $i]);
             }
         }
         for ($i = 1; $i <= 10; ++$i) {
-            $signal = GetVars('hint_signal'.$i, 'COOKIE');
+            $signal = GetVars('hint_signal' . $i, 'COOKIE');
             $hint = (empty($signal)) ? null : json_decode($signal);
             if (null !== $hint) {
                 $this->ShowHint($hint);
-                setcookie('hint_signal'.$i, '', (time() - 3600), $this->cookiespath);
-                unset($_COOKIE['hint_signal'.$i]);
+                setcookie('hint_signal' . $i, '', (time() - 3600), $this->cookiespath);
+                unset($_COOKIE['hint_signal' . $i]);
             }
         }
     }
@@ -4065,7 +4065,7 @@ class ZBlogPHP
             }
         }
         $delay = ($delay * 1000);
-        echo "<script type='text/javascript'>$('.main').prepend('<div class=\"hint\"><p class=\"hint_".$signal.'" data-delay="'.$delay.'">';
+        echo "<script type='text/javascript'>$('.main').prepend('<div class=\"hint\"><p class=\"hint_" . $signal . '" data-delay="' . $delay . '">';
         echo str_replace("'", "\\'", $content);
         echo "</p></div>');</script>";
     }
@@ -4100,7 +4100,7 @@ class ZBlogPHP
             $line = __LINE__ - 11;
         }
         if (is_null($messagefull) || empty($messagefull)) {
-            $messagefull = $errorText.' (set_exception_handler) ';
+            $messagefull = $errorText . ' (set_exception_handler) ';
         }
         if (!is_array($moreinfo) && !is_null($moreinfo)) {
             $moreinfo = [$moreinfo];
@@ -4116,8 +4116,8 @@ class ZBlogPHP
 
         $show_zbe = new ZbpErrorException($errorText, $errorCode, null, $file, $line, null, $moreinfo, $httpcode, $messagefull);
 
-        if (0 === stripos('{'.sha1('mustshowerror').'}', $errorText)) {
-            $errorText = str_replace('{'.sha1('mustshowerror').'}', '', $errorText);
+        if (0 === stripos('{' . sha1('mustshowerror') . '}', $errorText)) {
+            $errorText = str_replace('{' . sha1('mustshowerror') . '}', '', $errorText);
             ClearFilterPlugin('Filter_Plugin_Debug_Display');
             ClearFilterPlugin('Filter_Plugin_Debug_Handler');
             ClearFilterPlugin('Filter_Plugin_Debug_Handler_Common');
@@ -4470,7 +4470,7 @@ class ZBlogPHP
     public function LoadPostType()
     {
         foreach ([0 => 'article', 1 => 'page'] as $postid => $postname) {
-            $file = ZBP_PATH.'zb_system/defend/posttype_'.$postname.'.php';
+            $file = ZBP_PATH . 'zb_system/defend/posttype_' . $postname . '.php';
             $this->LoadPostType_File($file);
         }
     }
@@ -4500,7 +4500,7 @@ class ZBlogPHP
     public function LoadRoutes()
     {
         foreach ([0 => 'article', 1 => 'page'] as $postid => $postname) {
-            $file = ZBP_PATH.'zb_system/defend/routes_post_'.$postname.'.php';
+            $file = ZBP_PATH . 'zb_system/defend/routes_post_' . $postname . '.php';
             $this->LoadRoutes_File($file);
         }
     }
@@ -4533,14 +4533,14 @@ class ZBlogPHP
     public function RegRoute($array, $prepend = false)
     {
         $routes = &$this->routes;
-        $new_name = $array['type'].'_'.$array['name'];
+        $new_name = $array['type'] . '_' . $array['name'];
 
         $postid = GetValueInArray($array, 'posttype', 0);
         $postname = $this->GetPostType($postid, 'name');
         if (!is_null($postid) && empty($array['urlrule'])) {
-            $prefix_name = 'post_'.$postname.'_';
+            $prefix_name = 'post_' . $postname . '_';
             $prefix_rulename = str_ireplace($prefix_name, '', $array['name']);
-            $rulename = $prefix_rulename.'_urlrule';
+            $rulename = $prefix_rulename . '_urlrule';
             if (isset($this->posttype[$postid][$rulename])) {
                 $array['urlrule'] = $this->posttype[$postid][$rulename];
             }
@@ -4577,9 +4577,9 @@ class ZBlogPHP
                 $this->SetPostType_Sub($postid, 'routes', $array['name'], [$array['type'] => $array['name']]);
 
                 if (!empty($array['urlrule'])) {
-                    $prefix_name = 'post_'.$postname.'_';
+                    $prefix_name = 'post_' . $postname . '_';
                     $prefix_rulename = str_ireplace($prefix_name, '', $array['name']);
-                    $rulename = $prefix_rulename.'_urlrule';
+                    $rulename = $prefix_rulename . '_urlrule';
                     $this->SetPostType($postid, $rulename, $array['urlrule']);
                 }
             }
@@ -4603,8 +4603,8 @@ class ZBlogPHP
             $name = current($type);
             $type = key($type);
         }
-        if (isset($routes[$type.'_'.$name])) {
-            return $routes[$type.'_'.$name];
+        if (isset($routes[$type . '_' . $name])) {
+            return $routes[$type . '_' . $name];
         }
     }
 
@@ -4623,7 +4623,7 @@ class ZBlogPHP
             $name = current($type);
             $type = key($type);
         }
-        unset($routes[$type.'_'.$name]);
+        unset($routes[$type . '_' . $name]);
 
         return true;
     }
@@ -4637,7 +4637,7 @@ class ZBlogPHP
     {
         if (!empty($route_type)) {
             foreach ($this->routes as $name => $value) {
-                if (0 === stripos($name, $route_type.'_')) {
+                if (0 === stripos($name, $route_type . '_')) {
                     unset($this->routes[$name]);
                 }
             }
@@ -4949,15 +4949,15 @@ class ZBlogPHP
     {
         if (!$this->option['ZC_DATABASE_TYPE']) {
             $s = GetVars('QUERY_STRING', 'GET', '');
-            $s = empty($s) ? '' : '?'.$s;
-            if (is_readable(ZBP_PATH.'zb_install/index.php')) {
-                Redirect302('./zb_install/index.php'.$s);
+            $s = empty($s) ? '' : '?' . $s;
+            if (is_readable(ZBP_PATH . 'zb_install/index.php')) {
+                Redirect302('./zb_install/index.php' . $s);
             }
         }
         if (isset($this->option['ZC_INSTALL_AFTER_CONFIG']) && true == $this->option['ZC_INSTALL_AFTER_CONFIG']) {
             $r = $this->db->ExistTable($GLOBALS['table']['Config']);
             if (false == $r) {
-                if (is_readable(ZBP_PATH.'zb_install/index.php')) {
+                if (is_readable(ZBP_PATH . 'zb_install/index.php')) {
                     Redirect302('./zb_install/index.php');
                 }
             }
@@ -5011,12 +5011,12 @@ class ZBlogPHP
         $m = $this->modulesbyfilename['navbar'];
         $s = $m->Content;
 
-        $a = '<li id="navbar-'.$type.'-'.$id.'"><a href="'.$url.'">'.$name.'</a></li>';
+        $a = '<li id="navbar-' . $type . '-' . $id . '"><a href="' . $url . '">' . $name . '</a></li>';
 
         if ($this->CheckItemToNavbar($type, $id)) {
-            $s = preg_replace('/<li id="navbar-'.$type.'-'.$id.'">.*?<\/li>/', $a, $s);
+            $s = preg_replace('/<li id="navbar-' . $type . '-' . $id . '">.*?<\/li>/', $a, $s);
         } else {
-            $s .= '<li id="navbar-'.$type.'-'.$id.'"><a href="'.$url.'">'.$name.'</a></li>';
+            $s .= '<li id="navbar-' . $type . '-' . $id . '"><a href="' . $url . '">' . $name . '</a></li>';
         }
 
         $m->Content = $s;
@@ -5038,7 +5038,7 @@ class ZBlogPHP
         $m = $this->modulesbyfilename['navbar'];
         $s = $m->Content;
 
-        $s = preg_replace('/<li id="navbar-'.$type.'-'.$id.'">.*?<\/li>/', '', $s);
+        $s = preg_replace('/<li id="navbar-' . $type . '-' . $id . '">.*?<\/li>/', '', $s);
 
         $m->Content = $s;
         $m->Save();
@@ -5061,7 +5061,7 @@ class ZBlogPHP
         $m = $this->modulesbyfilename['navbar'];
         $s = $m->Content;
 
-        return (bool) strpos($s, 'id="navbar-'.$type.'-'.$id.'"');
+        return (bool) strpos($s, 'id="navbar-' . $type . '-' . $id . '"');
     }
 
     /**
@@ -5075,7 +5075,7 @@ class ZBlogPHP
     {
         $s = '';
         foreach ($array as $a) {
-            $s .= '{'.$a.'}';
+            $s .= '{' . $a . '}';
         }
 
         return $s;
@@ -5095,7 +5095,7 @@ class ZBlogPHP
      */
     public function GetTopPost($type = 0)
     {
-        $varname = 'top_post_array_'.$type;
+        $varname = 'top_post_array_' . $type;
         if (false == $this->cache->HasKey($varname)) {
             return [];
         }
@@ -5321,14 +5321,14 @@ class ZBlogPHP
         }
         $subarray = [];
         for ($i = 0; $i < $this->category_recursion_level; ++$i) {
-            $name = 'lv'.$i;
+            $name = 'lv' . $i;
             ${$name} = &$lv[$i];
         }
-        $lvdeep = 'lv'.$deep;
+        $lvdeep = 'lv' . $deep;
         $this->categoriesbyorder_type[$type][$id] = &$this->categories_all[$id];
         if ($deep < ($this->category_recursion_level - 1)) {
             ++$deep;
-            $lvdeepnext = 'lv'.$deep;
+            $lvdeepnext = 'lv' . $deep;
             if (isset(${$lvdeepnext}[$id])) {
                 foreach (${$lvdeepnext}[$id] as $idnow) {
                     $subarray[] = $idnow;
