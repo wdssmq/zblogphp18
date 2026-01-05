@@ -24,6 +24,7 @@ if (!$zbp->CheckPlugin('AdminColor_2026')) {
     exit;
 }
 
+// 保存设置
 $act = GetVars('act', 'GET');
 $suc = GetVars('suc', 'GET');
 if ('save' == $act) {
