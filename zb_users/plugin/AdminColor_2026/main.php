@@ -26,20 +26,20 @@ if (!$zbp->CheckPlugin('AdminColor_2026')) {
 
 $act = GetVars('act', 'GET');
 $suc = GetVars('suc', 'GET');
-if ($act == 'save') {
+if ('save' == $act) {
     CheckIsRefererValid();
     $post_colors = [];
     foreach ($_POST as $key => $val) {
-        if (substr($key, 0, 5) == 'read_') {
+        if ('read_' == substr($key, 0, 5)) {
             continue;
         }
         $post_colors[$key] = trim($val);
     }
-    $zbp->Config('AdminColor_2026')->colors = (object)$post_colors;
+    $zbp->Config('AdminColor_2026')->colors = (object) $post_colors;
     $zbp->SaveConfig('AdminColor_2026');
     AdminColor_2026_GenCSS();
     $zbp->SetHint('good');
-    Redirect('./main.php' . ($suc == null ? '' : "?act={$suc}"));
+    Redirect('./main.php' . (null == $suc ? '' : "?act={$suc}"));
 }
 
 // 初始化
