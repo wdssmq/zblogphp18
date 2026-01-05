@@ -31,9 +31,9 @@ a:hover {
   background: var(--color-high);
 }
 
-#leftmenu li {
+/* #leftmenu li {
   background-color: var(--color-light);
-}
+} */
 
 #leftmenu li:hover {
   background-color: var(--color-light);
