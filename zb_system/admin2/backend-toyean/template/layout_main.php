@@ -1,4 +1,4 @@
-<?php die(); ?>
+<?php exit(); ?>
       <div class="content">
         {php}
         $zbp->GetHint();
