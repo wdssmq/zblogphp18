@@ -26,7 +26,7 @@
 		<div class="td-5 td-comment">{$page.CommNums}</div>
 		<div class="td-5 td-status">{$page.StatusName}</div>
 		<div class="td-10 td-action">
-			<a href="../cmd.php?act=PageEdt&amp;id={$page.ID}" class="edit">编辑</a>
+			<a href="{$zbp.host}zb_system/cmd.php?act=PageEdt&amp;id={$page.ID}" class="edit">编辑</a>
 			<a onclick="return confirmDelete();" href="{BuildSafeCmdURL('act=PageDel&amp;id=' . $page->ID)}" class="del">删除</a>
 		</div>
 		{if $zbp.CheckRights('PostBat') && $zbp.option['ZC_POST_BATCH_DELETE']}

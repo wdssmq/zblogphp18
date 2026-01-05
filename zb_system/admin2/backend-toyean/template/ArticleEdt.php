@@ -9,8 +9,8 @@ if (isset($_COOKIE['timezone'])) {
 }
 {/php}
 
-<script src="../script/jquery.tagto.js"></script>
-<script src="../script/jquery-ui-timepicker-addon.js"></script>
+<script src="{$zbp.host}zb_system/script/jquery.tagto.js"></script>
+<script src="{$zbp.host}zb_system/script/jquery-ui-timepicker-addon.js"></script>
 {php}
 HookFilterPlugin('Filter_Plugin_Edit_Begin');
 {/php}
@@ -62,7 +62,7 @@ HookFilterPlugin('Filter_Plugin_Edit_Response5');
                         <script type="module" src="{$host}zb_system/admin2/backend-toyean/plugin/aieditor/aieditor.js"></script>
 					</div>
 					<div id="contentready" style="display:none">
-						<img alt="loading" id="statloading1" src="../image/admin/loading.gif">Waiting...
+						<img alt="loading" id="statloading1" src="{$zbp.host}zb_system/image/admin/loading.gif">Waiting...
 					</div>
 				</div>
 
@@ -120,7 +120,7 @@ HookFilterPlugin('Filter_Plugin_Edit_Response');
 						<textarea id="editor_intro" name="Intro">{FormatString($article->Intro, '[html-format]')}</textarea>
 					</div>
 					<div id="introready" style="display:none">
-						<img alt="loading" id="statloading2" src="../image/admin/loading.gif">Waiting...
+						<img alt="loading" id="statloading2" src="{$zbp.host}zb_system/image/admin/loading.gif">Waiting...
 					</div>
 
 				</div>

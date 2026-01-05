@@ -24,7 +24,7 @@
 			<div class="td-20 td-intro">{$category.Alias}</div>
       <div class="td-10 td-post-count">{$category.Count}</div>
 			<div class="td-10 td-action">
-				<a href="../cmd.php?act=CategoryEdt&amp;id={$category.ID}" class="edit">编辑</a>
+				<a href="{$zbp.host}zb_system/cmd.php?act=CategoryEdt&amp;id={$category.ID}" class="edit">编辑</a>
         {if count($category.SubCategories) == 0}
 				<a onclick="return confirmDelete();" href="{BuildSafeCmdURL('act=CategoryDel&amp;id=' . $category->ID)}" class="del">删除</a>
         {/if}

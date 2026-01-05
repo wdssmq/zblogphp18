@@ -27,7 +27,7 @@
 			<div class="td-20 td-alias">{$tag.Alias}</div>
 			<div class="td-full td-intro">{$tag.Intro}</div>
 			<div class="td-10 td-action">
-				<a href="../cmd.php?act=TagEdt&amp;id={$tag.ID}" class="edit">编辑</a>
+				<a href="{$zbp.host}zb_system/cmd.php?act=TagEdt&amp;id={$tag.ID}" class="edit">编辑</a>
 				<a onclick="return confirmDelete();" href="{BuildSafeCmdURL('act=TagDel&amp;id=' . $tag->ID)}" class="del">删除</a>
 			</div>
 			<div class="td-10 td-order"><input type="checkbox" id="id{$tag.ID}" name="id[]" value="{$tag.ID}"></div>

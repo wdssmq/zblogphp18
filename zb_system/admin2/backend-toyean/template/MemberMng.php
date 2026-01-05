@@ -42,7 +42,7 @@
   <div class="td-10">{php}echo max(0, $member->Comments);{/php}</div>
   <div class="td-10">{php}echo max(0, $member->Uploads);{/php}</div>
   <div class="td-10 td-action">
-    <a href="../cmd.php?act=MemberEdt&amp;id={$member.ID}" class="edit">编辑</a>
+    <a href="{$zbp.host}zb_system/cmd.php?act=MemberEdt&amp;id={$member.ID}" class="edit">编辑</a>
     {if $zbp.CheckRights('MemberDel') && !$member.IsGod}
     <a onclick="return confirmDelete();" href="{BuildSafeCmdURL('act=MemberDel&amp;id=' . $member->ID)}"
       class="del">删除</a>
