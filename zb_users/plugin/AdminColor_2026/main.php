@@ -34,7 +34,8 @@ if ('save' == $act) {
             continue;
         }
         if ('opt_' == substr($key, 0, 4)) {
-            $zbp->Config('AdminColor_2026')->$key = trim($val);
+            $zbp->Config('AdminColor_2026')->{$key} = trim($val);
+
             continue;
         }
         $post_colors[$key] = trim($val);
