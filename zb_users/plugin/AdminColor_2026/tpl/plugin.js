@@ -92,6 +92,10 @@
 
       card.addEventListener('click', function() {
         applyPreset(preset);
+        card.classList.add('ac-focused');
+        setTimeout(function() {
+          card.classList.remove('ac-focused');
+        }, 200);
       });
 
       card.addEventListener('mouseenter', function() {
@@ -123,7 +127,6 @@
     const cards = bar.querySelectorAll('.ac-preset-item');
     cards.forEach(function(card) {
       card.classList.remove('ac-expanded');
-      card.classList.remove('ac-hidden');
     });
   }
 
