@@ -54,10 +54,14 @@ $cfg_colors = $zbp->Config('AdminColor_2026')->colors;
 $zbp->template_admin->SetTags('cfg_colors', $cfg_colors);
 $zbp->template_admin->SetTags('preset_colors', AdminColor_2026_GetColors());
 // 在后台头部引入样式
-$style = AdminColor_2026_Path('tpl/plugin.css', 'host');
+// $style = AdminColor_2026_Path('source/picker.min.css', 'host');
+// $zbp->header .= "<link rel=\"stylesheet\" href=\"{$style}\">";
+$style = AdminColor_2026_Path('source/plugin.css', 'host');
 $zbp->header .= "<link rel=\"stylesheet\" href=\"{$style}\">";
 // 在后台底部引入脚本
-$script = AdminColor_2026_Path('tpl/plugin.js', 'host');
+// $script = AdminColor_2026_Path('source/picker.min.js', 'host');
+// $zbp->footer .= "<script src=\"{$script}\"></script>";
+$script = AdminColor_2026_Path('source/plugin.js', 'host');
 $zbp->footer .= "<script src=\"{$script}\"></script>";
 
 // 内容构建

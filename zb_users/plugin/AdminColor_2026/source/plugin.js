@@ -1,3 +1,22 @@
+// 初始化颜色选择器
+$(document).ready(function() {
+  const fields = ['NormalColor', 'BoldColor', 'LightColor', 'HighColor', 'AntiColor'];
+
+  fields.forEach(function(name) {
+    const input = $(`input[name="${name}"]`);
+    const span = input.next('.ac-color-span');
+    // 监听输入框变化，更新颜色显示
+    input.on('input change', function() {
+      span.css('background-color', input.val());
+    });
+    // 初始化颜色显示
+    input.colorpicker({
+      displayIndicator: false,
+    });
+  });
+});
+
+// 颜色预置方案逻辑
 (function() {
 
   const bar = document.getElementById('acPresetBar');
