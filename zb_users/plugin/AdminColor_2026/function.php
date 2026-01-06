@@ -113,7 +113,7 @@ function AdminColor_2026_GenCSS()
     $cfg_colors = $zbp->Config('AdminColor_2026')->colors;
     $tpl = file_get_contents($vFile);
     foreach ($cfg_colors as $key => $value) {
-        $tpl = str_replace("{{{$key}}}", $value, $tpl);
+        $tpl = str_replace("--{$key}", $value, $tpl);
     }
     file_put_contents($uFile, $tpl);
 }

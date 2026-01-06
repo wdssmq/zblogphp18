@@ -1,9 +1,9 @@
 :root {
-  --color-bold: {{BoldColor}};
-  --color-normal: {{NormalColor}};
-  --color-light: {{LightColor}};
-  --color-high: {{HighColor}};
-  --color-anti: {{AntiColor}};
+  --color-normal: --NormalColor;
+  --color-high: --HighColor;
+  --color-light: --LightColor;
+  --color-bold: --BoldColor;
+  --color-anti: --AntiColor;
 }
 
 /* 覆盖 backend-legacy 基础配色，使用当前主题变量 */
@@ -45,6 +45,10 @@ a:hover {
 
 .divHeader {
   color: var(--color-bold);
+}
+
+#divMain .SubMenu a:hover {
+  background-color: var(--color-light);
 }
 
 .content-box .content-box-tabs a.current {
