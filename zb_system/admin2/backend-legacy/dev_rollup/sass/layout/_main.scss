@@ -36,14 +36,14 @@
     gap: 5px;
 
     a {
-      background-color: $color-backgroud;
+      background-color: $color-background;
       display: block;
       padding: 8px 12px;
       color: $color-text;
 
       &:hover {
         color: currentColor;
-        background-color: $color-backgroud-hover;
+        background-color: $color-background-hover;
       }
     }
   }
