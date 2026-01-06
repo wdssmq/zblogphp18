@@ -28,7 +28,7 @@ function AdminColor_2026_Main_Header()
     //     echo '<link rel="stylesheet" href="' . AdminColor_2026_Path('tpl/plugin.css', 'host') . '">';
     // }
     if ($zbp->Config('AdminColor_2026')->opt_Enable) {
-        echo '<link rel="stylesheet" type="text/css" href="' . AdminColor_2026_Path('usr/style.css', 'host') . '">';
+        echo '<link rel="stylesheet" type="text/css" href="' . AdminColor_2026_Path('usr/style.css?t=' . $zbp->Config('AdminColor_2026')->update, 'host') . '">';
     }
 }
 

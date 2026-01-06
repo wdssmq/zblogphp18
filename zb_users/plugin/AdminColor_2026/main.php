@@ -42,6 +42,7 @@ if ('save' == $act) {
         $post_colors[$key] = trim($val);
     }
     $zbp->Config('AdminColor_2026')->colors = (object) $post_colors;
+    $zbp->Config('AdminColor_2026')->update = time();
     $zbp->SaveConfig('AdminColor_2026');
     AdminColor_2026_GenCSS();
     $zbp->SetHint('good');
