@@ -67,19 +67,16 @@ $zbp->footer .= "<script src=\"{$script}\"></script>";
 $script = AdminColor_2026_Path('source/plugin.js', 'host');
 $zbp->footer .= "<script src=\"{$script}\"></script>";
 
+
 // 内容构建
 $blogtitle = '后台配色器_2026';
-$content = $zbp->template_admin->Output('plugin_AdminColor_2026_Content');
-$ActionInfo = (object) [
+// 生成 ActionInfo 并合并额外信息
+$ActionInfo = zbp_admin2_GetActionInfo($action, (object) [
     'Title' => $blogtitle,
     'Header' => $blogtitle,
     'HeaderIcon' => 'icon-brush-fill',
-    'SubMenu' => '',
-    'ActiveTopMenu' => '',
-    'ActiveLeftMenu' => '',
-    'Action' => $zbp->action,
-    'Content' => $content,
-];
+    'Content' => $zbp->template_admin->Output('plugin_AdminColor_2026_Content'),
+]);
 
 // 输出页面
 $zbp->template_admin->SetTags('title', $ActionInfo->Title);
