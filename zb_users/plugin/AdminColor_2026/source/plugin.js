@@ -5,10 +5,6 @@ $(document).ready(function() {
   fields.forEach(function(name) {
     const input = $(`input[name="${name}"]`);
     const span = input.next('.ac-color-span');
-    // 监听输入框变化，更新颜色显示
-    input.on('input change', function() {
-      span.css('background-color', input.val());
-    });
     // 绑定 Pickr 颜色选择器
     const pickr = Pickr.create({
       el: `.span-${name}`,
@@ -34,7 +30,13 @@ $(document).ready(function() {
     // 监听保存事件，更新输入框值
     pickr.on('save', (color) => {
       const hex = color.toHEXA().toString();
+      input.val(hex);
       pickr.hide();
+    });
+    // 监听输入框变化，同步更新至 Pickr
+    input.on('input change', function() {
+      pickr.setColor(input.val(), true);
+      // span.css('background-color', input.val());
     });
   });
 });
@@ -65,6 +67,9 @@ $(document).ready(function() {
       const f = findField(key);
       if (f.input) {
         f.input.value = preset[key];
+        // 触发输入框的 change 事件以更新 Pickr 颜色选择器
+        const event = new Event('change', { bubbles: false });
+        f.input.dispatchEvent(event);
       }
       if (f.span) {
         f.span.style.backgroundColor = preset[key];
