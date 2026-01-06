@@ -5,7 +5,7 @@
   --link-hover: #1e40af;
   --text-main: #334155;
   --text-muted: #64748b;
-  --bg-body: #f8fafc;
+  --bg-body: #f2f4f7;
   --bg-card: #ffffff;
   --border-color: #e2e8f0;
   --sidebar-width: 300px;
@@ -165,6 +165,9 @@ p {
   margin: 0;
   padding: 0;
   float: none;
+}
+.hidden {
+  overflow: hidden;
 }
 .function {
   background-color: var(--bg-card);
@@ -583,9 +586,11 @@ div.post div.post-body p {
     width: auto;
     flex-shrink: 0;
   }
+  #divNavBar a {
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+  }
   #divNavBar ul {
-    justify-content: center;
-    display: none;
     display: none;
     position: absolute;
     top: 100%;
@@ -596,10 +601,16 @@ div.post div.post-body p {
     box-shadow: var(--shadow-md);
     padding: 1rem 0;
     z-index: 1010;
-    border-radius: var(--radius-md);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    gap: 0;
   }
   #divNavBar ul.active {
     display: flex;
+  }
+  #divNavBar > ul {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100vh;
   }
   #divNavBar li {
     width: 100%;
@@ -611,17 +622,16 @@ div.post div.post-body p {
     position: static;
     width: 100%;
     box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: rgba(0, 0, 0, 0.02);
     border-radius: 0;
     min-width: 0;
-    padding: 0;
+    padding: 0.5rem 0;
   }
   #divNavBar li:hover ul, #divNavBar li.hover ul {
     display: block;
   }
   #divNavBar li ul li a {
-    padding: 0.75rem 1rem;
-    padding-left: 2rem;
+    padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
   .menu-toggle {

@@ -1,11 +1,9 @@
 {* Template Name:文章页单页 *}
 <!DOCTYPE html>
 <html lang="{$lang['lang_bcp47']}">
-
 <head>
   {template:header}
 </head>
-
 <body class="single {$type}">
   <div id="divAll">
     <div id="divTop">
@@ -19,7 +17,6 @@
         </div>
       </div>
     </div>
-
     <div id="divMiddle">
       <div id="divMain">
         {if $article.Type==ZC_POST_TYPE_ARTICLE}
@@ -36,5 +33,4 @@
     {template:footer}
   </div>
 </body>
-
 </html>

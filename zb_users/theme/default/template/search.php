@@ -1,11 +1,9 @@
 {* Template Name:搜索页 *}
 <!DOCTYPE html>
 <html lang="{$lang['lang_bcp47']}">
-
 <head>
   {template:header}
 </head>
-
 <body class="multi {$type}">
   <div id="divAll">
     <div id="divTop">
@@ -19,7 +17,6 @@
         </div>
       </div>
     </div>
-    
     <div id="divMiddle">
       <div id="divMain">
         <div class="post istop istop-post">
@@ -40,5 +37,4 @@
     {template:footer}
   </div>
 </body>
-
 </html>

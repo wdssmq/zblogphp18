@@ -8,7 +8,13 @@
   })
   $(".menu-toggle").click(function () {
     $(this).toggleClass("open");
+    $("body").toggleClass("hidden");
     $("#divNavBar ul").toggleClass("active");
+  });
+  $(window).resize(function() {
+    $(".menu-toggle").removeClass("open");
+    $("body").removeClass("hidden");
+    $("#divNavBar ul").removeClass("active");
   });
 })
 

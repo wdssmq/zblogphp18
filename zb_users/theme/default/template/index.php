@@ -1,11 +1,9 @@
 {* Template Name:首页及列表页 *}
 <!DOCTYPE html>
 <html lang="{$lang['lang_bcp47']}">
-
 <head>
   {template:header}
 </head>
-
 <body class="multi {$type}">
   <div id="divAll">
     <div id="divTop">
@@ -18,8 +16,7 @@
           </ul>
         </div>
       </div>
-    </div>
-    
+    </div>   
     <div id="divMiddle">
       <div id="divMain">
         {foreach $articles as $article}
@@ -41,5 +38,4 @@
     {template:footer}
   </div>
 </body>
-
 </html>
