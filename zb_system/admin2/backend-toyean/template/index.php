@@ -17,6 +17,7 @@
     <script src="{$host}zb_system/admin2/{$backendtheme}/script/common.js"></script>
     <script src="{$host}zb_system/script/zblogphp.js?v={$version}"></script>
     <script src="{$host}zb_system/script/c_admin_js_add.php?v={$version}"></script>
+    <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/tcadmin.css?v={$version}">
     <script>
         window.toyean = Object.assign(window.toyean || {}, {
             night: true,
