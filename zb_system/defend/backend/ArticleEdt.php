@@ -282,9 +282,6 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
 
     /* ----- */
 
-    let sContent = "",
-        sIntro = ""; // 原内容与摘要
-
     // 编辑器接口构造函数
     const makeEditorSlot = (barList, readyList) => ({
         obj: {},
@@ -317,6 +314,38 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
         }
     };
 
+    // 编辑器内容缓存
+    let sContent = "",
+        sIntro = "";
+
+    // 编辑器初始化，插件需要覆盖此函数
+    function editor_init() {
+        // 内容编辑器接口实现
+        editor_api.editor.content.obj = $('#editor_content');
+        editor_api.editor.content.get = function() {
+            return this.obj.val()
+        };
+        editor_api.editor.content.put = function(str) {
+            return this.obj.val(str)
+        };
+        editor_api.editor.content.focus = function() {
+            return this.obj.focus()
+        };
+
+        // 摘要编辑器接口实现
+        editor_api.editor.intro.obj = $('#editor_intro');
+        editor_api.editor.intro.get = function() {
+            return this.obj.val()
+        };
+        editor_api.editor.intro.put = function(str) {
+            return this.obj.val(str)
+        };
+        editor_api.editor.intro.focus = function() {
+            return this.obj.focus()
+        };
+        sContent = editor_api.editor.content.get();
+    }
+
     /* ----- */
 
     let isSubmit = false; // 是否提交保存
@@ -336,6 +365,8 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
         }
         isSubmit = true;
     }
+
+    /* ----- */
 
     // 日期时间控件
     $.datepicker.regional["{$lang['lang']}"] = {
@@ -394,32 +425,6 @@ HookFilterPlugin('Filter_Plugin_Edit_Begin');
             scrollTop: $('#divIntro').offset().top
         }, 'fast');
     }
-
-    // 编辑器初始化，插件需要覆盖此函数
-    function editor_init() {
-        editor_api.editor.content.obj = $('#editor_content');
-        editor_api.editor.intro.obj = $('#editor_intro');
-        editor_api.editor.content.get = function() {
-            return this.obj.val()
-        };
-        editor_api.editor.content.put = function(str) {
-            return this.obj.val(str)
-        };
-        editor_api.editor.content.focus = function() {
-            return this.obj.focus()
-        };
-        editor_api.editor.intro.get = function() {
-            return this.obj.val()
-        };
-        editor_api.editor.intro.put = function(str) {
-            return this.obj.val(str)
-        };
-        editor_api.editor.intro.focus = function() {
-            return this.obj.focus()
-        };
-        sContent = editor_api.editor.content.get();
-    }
-
 
     // Auto-save module
     (function() {
