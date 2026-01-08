@@ -127,19 +127,29 @@ function zbp_admin2_statistic_data()
         switch ($group['category']) {
             case '程序':
                 $group['category'] = $zbp->lang['msg']['program'];
+
                 break;
+
             case '界面':
                 $group['category'] = $zbp->lang['msg']['interface'];
+
                 break;
+
             case '支持':
                 $group['category'] = $zbp->lang['msg']['support'];
+
                 break;
+
             case '感谢':
                 $group['category'] = $zbp->lang['msg']['thanks'];
+
                 break;
+
             case '链接':
                 $group['category'] = $zbp->lang['msg']['website'];
+
                 break;
+
             default:
                 // 保持原样
         }
@@ -276,9 +286,8 @@ function zbp_admin2_security()
 }
 
 /**
- * 封装一个函数，用于返回 thanks.php
+ * 封装一个函数，用于返回 thanks.php.
  */
-
 function zbp_admin2_get_thanks()
 {
     return require $GLOBALS['zbp']->path . 'zb_system/defend/thanks.php';
