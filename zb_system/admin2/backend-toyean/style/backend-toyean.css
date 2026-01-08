@@ -2421,12 +2421,6 @@ select {
 /*! 布局相关 */
 .title {
   margin-bottom: 14px;
-  zoom: 1;
-}
-.title::after {
-  content: "";
-  display: block;
-  clear: both;
 }
 .title h2 {
   margin-bottom: 8px;
@@ -2436,12 +2430,6 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  zoom: 1;
-}
-.title h2::after {
-  content: "";
-  display: block;
-  clear: both;
 }
 .title h2 ul#topmenu {
   display: flex;

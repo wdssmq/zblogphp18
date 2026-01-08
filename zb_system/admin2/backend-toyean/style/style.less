@@ -267,14 +267,12 @@ input,textarea { font-size:16px; font-family:"PingFang SC", -apple-system, Blink
 		}
 	}
 	table { width:100%; font-size:14px; border-collapse:collapse; border-spacing:0; }
-	td { padding:5px 10px; color:#666; line-height:24px; word-break:break-word; border:1px solid #ebebeb; }
-	#thankslist {
-		tr td {
-			&:first-child { width:60px; text-align:center; cursor:default; box-sizing:border-box; background:#f5f5f5; }
-			&:last-child {
-				a { margin:0 8px; font-size:14px; color:#333;
-					&:hover { color:@c; }
-				}
+	.th { width:100px; background:#ebebeb; }
+	td { padding:5px 10px; color:#666; line-height:24px; word-break:break-word; border:1px solid #ebebeb;
+		&.thank-label { text-align:center; cursor:default; background:#f5f5f5; }
+		&.thank-link {
+			a { margin:0 8px; font-size:14px; color:#333;
+				&:hover { color:@c; }
 			}
 		}
 	}
