@@ -112,15 +112,6 @@ function zbp_admin2_statistic_data()
     $data->reload_reload_updateinfo_url = BuildSafeCmdURL('act=misc&type=updateinfo');
 
     // thanks
-    // $s = file_get_contents($zbp->path . 'zb_system/defend/thanks.html');
-    // $s = str_replace('Z-BlogPHP网站和程序开发', $zbp->lang['msg']['develop_intro'], $s);
-    // $s = str_replace('程序', $zbp->lang['msg']['program'], $s);
-    // $s = str_replace('界面', $zbp->lang['msg']['interface'], $s);
-    // $s = str_replace('支持', $zbp->lang['msg']['support'], $s);
-    // $s = str_replace('感谢', $zbp->lang['msg']['thanks'], $s);
-    // $s = str_replace('相关链接', $zbp->lang['msg']['website'], $s);
-    // $data->thanksinfo = $s;
-
     $data->thanksInfo = zbp_admin2_get_thanks();
     // 替换语言项
     foreach ($data->thanksInfo as &$group) {

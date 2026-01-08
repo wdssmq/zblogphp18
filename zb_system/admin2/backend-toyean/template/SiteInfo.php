@@ -79,7 +79,12 @@
                 <tbody>
                     {foreach $thanksInfo as $group}
                     <tr>
-                        <td class="td20">{$group['category']}</td>
+                        <td class="td20">
+                            {if isset($group['icon']) && $group['icon']}
+                                <i class="{$group['icon']}"></i>&nbsp;&nbsp;
+                            {/if}
+                            {$group['category']}
+                        </td>
                         <td>
                             {foreach $group['items'] as $item}
                                 {if isset($item['url'])}

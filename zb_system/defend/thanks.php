@@ -3,6 +3,7 @@
 return [
     [
         'category' => '程序',
+        'icon' => 'icon-gear-wide-connected',
         'items' => [
             ['name' => 'zx.asd', 'url' => 'https://bbs.zblogcn.com/user-zx.asd.html', 'title' => '宇宙飞天神猪！！！'],
             ['name' => 'zsx', 'url' => 'https://www.zsxsoft.com', 'title' => '路过的'],
@@ -12,6 +13,7 @@ return [
     ],
     [
         'category' => '协作',
+        'icon' => 'icon-x-diamond-fill',
         'items' => [
             ['name' => 'ice', 'url' => 'https://iceui.cn', 'title' => 'BT编程语言创始人'],
             ['name' => '[BT语言]', 'url' => 'https://btlang.org/', 'title' => ''],
@@ -25,6 +27,7 @@ return [
     ],
     [
         'category' => '界面',
+        'icon' => 'icon-image-fill',
         'items' => [
             ['name' => '拓源', 'url' => 'https://www.toyean.com', 'title' => '我们的御用射鸡狮^_^'],
             ['name' => '吉光片羽', 'url' => 'https://www.jgpy.cn', 'title' => '他太轻了,就像一片羽毛,风一吹就飞了.为了避免乱飞,他的内心就渐渐纠结起来了.'],
@@ -34,6 +37,7 @@ return [
     ],
     [
         'category' => '支持',
+        'icon' => 'icon-lightning-fill',
         'items' => [
             ['name' => 'Haphic', 'url' => 'http://www.esloy.com', 'title' => '哈哈同学同样是Z-Blog的传奇人物,从哈哈上大学到研究生毕业,一直都在为Z-Blog付出,Z-Blog 1.8有PS和TS插件才更精彩,在可以预见的将来,我们依然会拥有哈哈同学的,不见不散哦.'],
             ['name' => '月上之木', 'url' => 'https://bbs.zblogcn.com/user-%E6%9C%88%E4%B8%8A%E4%B9%8B%E6%9C%A8.html', 'title' => 'Z-Blog里的老黄牛,真正的老黄牛,不愧是属牛的,总是在默默无闻的奉献着他的一切,吃的是草,挤出来的是贴子和代码,让我们向他致敬!'],
@@ -46,6 +50,7 @@ return [
     ],
     [
         'category' => '感谢',
+        'icon' => 'icon-peace-fill',
         'items' => [
             ['name' => '空城', 'url' => null, 'title' => '空大师乃是PHP高手,ZBP的指引者!'],
             ['name' => '楊懿軒', 'url' => null, 'title' => '為天地立心，為生民立命，為往聖繼絕學，為萬世開太平。'],
@@ -64,6 +69,7 @@ return [
     ],
     [
         'category' => '链接',
+        'icon' => 'icon-geo-alt-fill',
         'items' => [
             ['name' => 'GitHub', 'url' => 'https://github.com/zblogcn/zblogphp', 'title' => 'Z-BlogPHP on GitHub'],
             ['name' => '程序下载', 'url' => 'https://www.zblogcn.com/zblogphp', 'title' => ''],

@@ -81,7 +81,31 @@
 </table>
 
 <!-- 感谢信息 -->
-{$thanksinfo}
+<table class="tableFull tableBorder table_hover table_striped" id="thankslist">
+    <thead>
+        <tr>
+            <th
+                height="32"
+                colspan="2"><i class="icon-flag-fill"></i>{$zbp->lang['msg']['develop_intro']}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach $thanksInfo as $group}
+        <tr>
+            <td class="td20"><i class="{$group['icon']}"></i>{$group['category']}</td>
+            <td>
+                {foreach $group['items'] as $item}
+                {if isset($item['url'])}
+                <a target="_blank" href="{$item['url']}" title="{if isset($item['title'])}{$item['title']}{/if}" rel="noreferrer">{$item['name']}</a>&nbsp;
+                {else}
+                <span title="{if isset($item['title'])}{$item['title']}{/if}">{$item['name']}</span>
+                {/if}
+                {/foreach}
+            </td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
 
 {if $zbp->CheckRights('root')}
 
