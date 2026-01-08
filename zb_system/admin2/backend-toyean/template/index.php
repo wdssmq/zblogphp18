@@ -10,15 +10,14 @@
     <meta name="csrfToken" content="{$zbp.GetCSRFToken()}" />
     <meta name="csrfExpiration" content="{$zbp.csrfExpiration}" />
     <title>{$name} - {$title}</title>
-    <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/style.css?v={$version}">
+    <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/{$backendtheme}.css?v={$version}">
     <!--<link rel="stylesheet" href="{$host}zb_system/image/icon/icon.css?v={$version}">-->
     <script src="{$host}zb_system/script/jquery-2.2.4.min.js?v={$version}"></script>
     <!--<script src="{$host}zb_system/script/jquery-ui.custom.min.js?v={$version}"></script>-->
     <script src="{$host}zb_system/admin2/{$backendtheme}/script/common.js"></script>
     <script src="{$host}zb_system/script/zblogphp.js?v={$version}"></script>
     <script src="{$host}zb_system/script/c_admin_js_add.php?v={$version}"></script>
-    <link rel="stylesheet" href="{$host}zb_system/admin2/{$backendtheme}/style/tcadmin.css?v={$version}">
-    <script>
+   <script>
         window.toyean = Object.assign(window.toyean || {}, {
             night: true,
             setnightstart: '22',
