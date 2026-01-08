@@ -3,11 +3,11 @@ select,
 textarea {
   box-sizing: border-box;
   padding: 10px 14px;
-  background-color: #fff;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  background-color: var(--color-surface, @color-surface);
+  border: 1px solid var(--color-border-input, @color-border-input);
+  border-radius: var(--radius-input, @radius-input);
   font-size: 14px;
-  color: #374151;
+  color: var(--color-text, @color-text);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
   line-height: 1.5;
@@ -16,14 +16,14 @@ textarea {
 input[type="text"]:hover,
 select:hover,
 textarea:hover {
-  border-color: #9ca3af;
+  border-color: var(--color-border-hover, @color-border-hover);
 }
 
 input[type="text"]:focus,
 select:focus,
 textarea:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  border-color: var(--color-primary, @color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring, @color-focus-ring);
 }
 
 .input-90,
@@ -43,24 +43,24 @@ input.button,
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-primary, @color-primary) 0%, var(--color-primary-strong, @color-primary-strong) 100%);
+  color: var(--color-surface, @color-surface);
   border: none;
   padding: 12px 36px;
   font-size: 15px;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: var(--radius-button, @radius-button);
   cursor: pointer;
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3), 0 2px 4px -1px rgba(37, 99, 235, 0.15);
+  box-shadow: var(--shadow-btn, @shadow-btn);
   transition: all 0.2s ease;
   margin-top: 20px;
 }
 
 input.button:hover,
 #btnPost:hover {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover, @color-primary-hover) 0%, var(--color-primary, @color-primary) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 8px -1px rgba(37, 99, 235, 0.4), 0 3px 6px -1px rgba(37, 99, 235, 0.2);
+  box-shadow: var(--shadow-btn-hover, @shadow-btn-hover);
 }
 
 input.button:active,
@@ -73,17 +73,17 @@ span.imgcheck {
   display: inline-block !important;
   width: 48px;
   height: 24px;
-  background-color: #e5e7eb;
+  background-color: var(--color-switch-off, @color-switch-off);
   border-radius: 9999px;
   position: relative;
   cursor: pointer;
   vertical-align: middle;
   transition: background-color 0.3s ease;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-switch, @shadow-switch);
 }
 
 span.imgcheck-on {
-  background-color: #2563eb;
+  background-color: var(--color-primary, @color-primary);
 }
 
 span.imgcheck::after {
@@ -93,9 +93,9 @@ span.imgcheck::after {
   left: 2px;
   width: 20px;
   height: 20px;
-  background-color: #ffffff;
+  background-color: var(--color-surface, @color-surface);
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-switch-knob, @shadow-switch-knob);
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
