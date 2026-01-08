@@ -298,7 +298,6 @@ return [
         'ai_url'                            => 'AI Url',
         'ai_key'                            => 'AI Key',
         'ai_model'                          => 'AI模型名',
-
     ],
 
     //Action
