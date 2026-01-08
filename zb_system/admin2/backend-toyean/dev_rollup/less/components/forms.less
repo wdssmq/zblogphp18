@@ -44,7 +44,7 @@ input.button,
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, var(--color-primary, @color-primary) 0%, var(--color-primary-strong, @color-primary-strong) 100%);
-  color: var(--color-surface, @color-surface);
+  color: var(--color-text-btn, @color-text-btn);
   border: none;
   padding: 12px 36px;
   font-size: 15px;
@@ -66,7 +66,7 @@ input.button:hover,
 input.button:active,
 #btnPost:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px -1px rgba(37, 99, 235, 0.3);
+  box-shadow: var(--shadow-btn-active, @shadow-btn);
 }
 
 span.imgcheck {
