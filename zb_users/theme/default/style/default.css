@@ -166,6 +166,9 @@ p {
   padding: 0;
   float: none;
 }
+.menu-toggle {
+  display: none;
+}
 .hidden {
   overflow: hidden;
 }
@@ -175,6 +178,11 @@ p {
   padding: 1.5rem;
   margin: 0 0 1.5rem;
   box-shadow: var(--shadow-sm);
+}
+.function a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .function .function_t {
   font-size: 1.1rem;
@@ -199,6 +207,9 @@ p {
 }
 .function li:last-child {
   border-bottom: none;
+}
+#divPrevious a {
+  white-space: break-spaces;
 }
 #divCalendar table {
   width: 100%;
@@ -251,7 +262,6 @@ p {
 }
 #divSearchPanel input[type="text"] {
   width: 100%;
-  height: 100%;
   padding: 0.5rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
@@ -275,7 +285,7 @@ p {
 #divSearchPanel input[type="submit"]:hover {
   background-color: var(--primary-hover);
 }
-#divCatalog ul, #divTags ul, #divComments ul, #divFavorites ul, #divLinkage ul {
+#divTags ul, #divComments ul, #divFavorites ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -285,6 +295,7 @@ p {
   border: none;
   padding: 0;
   background: none;
+  min-width: 0;
 }
 #divCatalog li a, #divTags li a, #divComments li a, #divFavorites li a, #divLinkage li a, #divArchives li a, #divAuthors li a {
   display: block;
@@ -303,7 +314,7 @@ p {
   box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
   transform: translateX(2px);
 }
-#divArchives ul, #divAuthors ul {
+#divArchives ul, #divAuthors ul, #divLinkage ul, #divCatalog ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
@@ -328,16 +339,8 @@ p {
 #divMisc a:hover img {
   opacity: 0.8;
 }
-#divFavorites li a {
-  padding: 0.5rem 0.75rem;
-}
 #divComments li, #divFavorites li {
   width: 100%;
-}
-#divComments li a, #divArchives li a {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 #divContorPanel .function_c div {
   padding: 0.25rem 0;
@@ -375,7 +378,7 @@ ul.msg {
 li.msgname {
   display: flex;
   align-items: center;
-  background: #f1f5f9;
+  background: #f8fafc;
   padding: 0.75rem 1rem;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   border-bottom: 1px solid var(--border-color);
@@ -390,13 +393,14 @@ li.msgname img.avatar {
 li.msgname .commentname {
   font-weight: 600;
   margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 li.msgname small {
   color: var(--text-muted);
   font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  font-weight: normal;
   margin-left: auto;
 }
 li.msgarticle {
@@ -416,7 +420,7 @@ ul.msg ul.msg li.msgarticle {
   border: 1px solid var(--border-color);
 }
 .commentpagebar {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 #divCommentPost {
   background-color: var(--bg-card);
@@ -595,6 +599,8 @@ div.post div.post-body p {
 @media (max-width: 768px) {
   #divMiddle {
     flex-direction: column;
+    margin: 1.5rem auto;
+    gap: 0;
   }
   #divSidebar {
     width: 100%;
@@ -700,9 +706,13 @@ div.post div.post-body p {
     top: 10px;
     transform: rotate(-135deg);
   }
-}
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
+  div.post {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  li.msgname .commentname {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
   }
 }

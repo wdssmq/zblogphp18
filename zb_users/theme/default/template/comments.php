@@ -15,10 +15,12 @@
 {template:comment}
 {/foreach}
 
+{if $pagebar}
 <!--评论翻页条输出-->
 <div class="pagebar commentpagebar">
 {template:pagebar}
 </div>
+{/if}
 <label id="AjaxCommentEnd"></label>
 
 <!--评论框-->
