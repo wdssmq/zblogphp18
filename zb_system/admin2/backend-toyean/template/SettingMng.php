@@ -201,15 +201,15 @@
         <table class="table_hover table_striped tableFull">
           <tr>
             <td><b>API URL</b></td>
-            <td><input id="ZC_API_THROTTLE_MAX_REQS_PER_MIN" name="ZC_API_THROTTLE_MAX_REQS_PER_MIN" type="text" value="" class="input-90"></td>
+            <td><input id="" name="" type="text" value="" class="input-90"></td>
           </tr>
           <tr>
             <td><b>API Key</b></td>
-            <td><input id="ZC_API_DISPLAY_COUNT" name="ZC_API_DISPLAY_COUNT" type="text" value="" class="input-90"></td>
+            <td><input id="" name="" type="text" value="" class="input-90"></td>
           </tr>
           <tr>
             <td><b>大模型名称</b></td>
-            <td><input id="ZC_API_DISPLAY_COUNT" name="ZC_API_DISPLAY_COUNT" type="text" value="" class="input-90"></td>
+            <td><input id="" name="" type="text" value="" class="input-90"></td>
           </tr>
         </table>
       </div>
