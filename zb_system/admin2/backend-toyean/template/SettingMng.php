@@ -163,7 +163,7 @@
 {php}<?php
   $backendapps = &$zbp->backendapps;
   foreach ($backendapps as $backendapp) {
-      $s = '<option value="'.$backendapp->id.'" '.($zbp->option['ZC_BACKEND_ID'] == $backendapp->id ? 'selected="selected"' : '').' >'.' '.$backendapp->name.'</option>';
+      $s = '<option value="' . $backendapp->id . '" ' . ($zbp->option['ZC_BACKEND_ID'] == $backendapp->id ? 'selected="selected"' : '') . ' >' . ' ' . $backendapp->name . '</option>';
       echo $s;
   }
   unset($backendapps, $backendapp, $s);
