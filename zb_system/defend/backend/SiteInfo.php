@@ -84,9 +84,10 @@
 <table class="tableFull tableBorder table_hover table_striped" id="thankslist">
     <thead>
         <tr>
-            <th
-                height="32"
-                colspan="2"><i class="icon-flag-fill"></i>{$zbp->lang['msg']['develop_intro']}</th>
+            <th>
+                <i class="icon-flag-fill"></i>
+                {$zbp->lang['msg']['develop_intro']}
+            </th>
         </tr>
     </thead>
     <tbody>

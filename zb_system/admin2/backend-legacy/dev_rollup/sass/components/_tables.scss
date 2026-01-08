@@ -58,6 +58,13 @@ table {
       background-color: #f4f4f4;
     }
   }
+
+  th,
+  td {
+    &>[class^="icon-"] {
+      padding-right: .3em;
+    }
+  }
 }
 
 // 表格背景色

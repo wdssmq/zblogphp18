@@ -305,6 +305,10 @@ table.table_hover > tbody > tr:hover > th {
 table.table_striped > tbody > tr:nth-of-type(odd) {
   background-color: #f4f4f4;
 }
+table th > [class^=icon-],
+table td > [class^=icon-] {
+  padding-right: 0.3em;
+}
 
 tr.color1 {
   background: #ededed;
