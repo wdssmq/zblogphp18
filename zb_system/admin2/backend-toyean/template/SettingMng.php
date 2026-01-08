@@ -160,16 +160,9 @@
                     <tr>
                         <td><b>后台主题</b></td>
                         <td><select id="ZC_BACKEND_ID" name="ZC_BACKEND_ID" class="select-90">
-                                {php}<?php
-                                        $backendapps = &$zbp->backendapps;
-                                        foreach ($backendapps as $backendapp) {
-                                            $s = '<option value="' . $backendapp->id . '" ' . ($zbp->option['ZC_BACKEND_ID'] == $backendapp->id ? 'selected="selected"' : '') . ' >' . ' ' . $backendapp->name . '</option>';
-                                            echo $s;
-                                        }
-                                        unset($backendapps, $backendapp, $s);
-                                        ?>{/php}
-
-
+                                {foreach $zbp->backendapps as $backendapp}
+                                <option value="{$backendapp->id}" {if $zbp->option['ZC_BACKEND_ID'] == $backendapp->id}selected="selected"{/if}>{$backendapp->name}</option>
+                                {/foreach}
                             </select></td>
                     </tr>
 
