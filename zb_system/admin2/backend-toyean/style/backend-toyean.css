@@ -192,7 +192,7 @@ table {
 body {
   font-size: var(--font-size-base);
   color: #333;
-  font-family: Penrose, "PingFang SC", "Hiragino Sans GB", Tahoma, Arial, "Lantinghei SC", "Microsoft YaHei", "simsun", sans-serif;
+  font-family: Penrose, "PingFang SC", "Hiragino Sans GB", Tahoma, Roboto, Arial, "Lantinghei SC", "Microsoft YaHei", "simsun", sans-serif;
 }
 body::-webkit-scrollbar {
   width: 8px;
@@ -229,16 +229,12 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
-  width: auto\9;
+  width: auto\\9;
   border: 0;
   -webkit-transform: translateZ(0px);
   transform: translateZ(0px);
   -webkit-transition: -webkit-transform 0.2s ease 0s;
   transition: transform 0.2s ease 0s;
-}
-input,
-textarea {
-  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans", "Noto Sans CJK Sc", "Microsoft YaHei", "Microsoft Jhenghei", sans-serif;
 }
 @font-face {
   font-family: 'zblog';
@@ -1116,6 +1112,7 @@ textarea {
 input[type="text"],
 select,
 textarea {
+  font-family: Roboto;
   box-sizing: border-box;
   padding: 10px 14px;
   background-color: var(--color-surface, #ffffff);
@@ -2203,7 +2200,6 @@ span.imgcheck-disabled {
   border: 1px solid var(--color-border, #eaeaea);
   margin-bottom: 25px;
   overflow: visible;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .content-box .content-box-content {
   padding: 30px 24px;
