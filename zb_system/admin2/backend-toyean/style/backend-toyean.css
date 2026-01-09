@@ -144,7 +144,7 @@ table {
   --color-border-input: #d1d5db;
   --color-border-hover: #9ca3af;
   --color-table-border: #f3f4f6;
-  --color-text: #374151;
+  --color-text: #333;
   --color-focus-ring: rgba(59, 130, 246, 0.15);
   --color-switch-off: #e5e7eb;
   --radius-card: 8px;
@@ -273,11 +273,6 @@ textarea {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 /* Animations */
-@-webkit-keyframes shine {
-  100% {
-    left: 125%;
-  }
-}
 @keyframes shine {
   100% {
     left: 125%;
@@ -293,62 +288,25 @@ textarea {
     transform: translateY(0);
   }
 }
-@-webkit-keyframes layer-bounceIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
 @keyframes layer-bounceIn {
   0% {
     opacity: 0;
-    -webkit-transform: scale(0.5);
-    -ms-transform: scale(0.5);
     transform: scale(0.5);
   }
   100% {
     opacity: 1;
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@-webkit-keyframes layer-bounceOut {
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(0.7);
-    transform: scale(0.7);
-  }
-  30% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-  0% {
-    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
 @keyframes layer-bounceOut {
   100% {
     opacity: 0;
-    -webkit-transform: scale(0.7);
-    -ms-transform: scale(0.7);
     transform: scale(0.7);
   }
   30% {
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
     transform: scale(1.05);
   }
   0% {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -356,7 +314,7 @@ textarea {
 .side {
   width: 180px;
   height: 100vh;
-  border-right: 1px solid #ebeef5;
+  border-right: 1px solid #eaeaea;
   background: #fff;
   position: fixed;
   display: flex;
@@ -416,7 +374,7 @@ textarea {
 }
 .logo {
   height: 60px;
-  border-bottom: 1px solid #ebeef5;
+  border-bottom: 1px solid #eaeaea;
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
@@ -620,7 +578,7 @@ textarea {
   color: #333;
   line-height: 32px;
   white-space: nowrap;
-  border: 1px solid #ebeef5;
+  border: 1px solid #eaeaea;
   border-radius: 4px;
   box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.15);
   background: #fff;
@@ -634,7 +592,7 @@ textarea {
   content: '';
   border-width: 6px;
   border-style: solid;
-  border-color: transparent #ebeef5 transparent transparent;
+  border-color: transparent #eaeaea transparent transparent;
   position: absolute;
   top: 50%;
   left: -12px;
@@ -653,7 +611,7 @@ textarea {
 .copyright {
   padding: 8px 16px;
   text-align: center;
-  border-top: 1px solid #ebeef5;
+  border-top: 1px solid #eaeaea;
   position: relative;
 }
 .copyright p {
@@ -787,7 +745,7 @@ textarea {
 .head {
   height: 60px;
   padding-right: 40px;
-  border-bottom: 1px solid #ebeef5;
+  border-bottom: 1px solid #eaeaea;
   box-sizing: border-box;
   background: #fff;
   position: relative;
@@ -903,7 +861,7 @@ textarea {
 .usermenu {
   width: 100%;
   padding: 8px 0;
-  border: 1px solid #ebeef5;
+  border: 1px solid #eaeaea;
   border-radius: 10px;
   background: #fff;
   position: absolute;
@@ -936,7 +894,7 @@ textarea {
   line-height: 16px;
 }
 .usermenu li a:hover {
-  background: #ebeef5;
+  background: #eaeaea;
 }
 .usermenu li a.ico-set::before {
   content: "\f0e4";
@@ -1164,7 +1122,7 @@ textarea {
   border: 1px solid var(--color-border-input, #d1d5db);
   border-radius: var(--radius-input, 6px);
   font-size: 14px;
-  color: var(--color-text, #374151);
+  color: var(--color-text, #333);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
   line-height: 1.5;
@@ -1334,7 +1292,7 @@ span.imgcheck-disabled {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  border-bottom: 1px dotted #ebeef5;
+  border-bottom: 1px dotted #eaeaea;
   border-radius: 4px;
   position: relative;
   display: block;
@@ -1623,7 +1581,7 @@ span.imgcheck-disabled {
   height: 32px;
   padding: 0 12px;
   line-height: 30px;
-  border: 1px solid #ebeef5;
+  border: 1px solid #eaeaea;
   border-radius: 4px;
   box-sizing: border-box;
   display: inline-block;
@@ -1744,7 +1702,7 @@ span.imgcheck-disabled {
 }
 .postlist {
   font-size: 14px;
-  border: 1px solid #ebeef5;
+  border: 1px solid #eaeaea;
   border-radius: 16px;
   box-shadow: 0 4px 2px -2px rgba(23, 35, 59, 0.06), 0 2px 8px rgba(23, 35, 59, 0.04);
   overflow: hidden;
@@ -1978,7 +1936,7 @@ span.imgcheck-disabled {
     padding: 2px 0 8px;
     line-height: 24px;
     white-space: normal;
-    border-bottom: 1px dotted #ebeef5;
+    border-bottom: 1px dotted #eaeaea;
   }
   .listcard.two p:last-child {
     padding: 8px 0 0;
@@ -1993,7 +1951,7 @@ span.imgcheck-disabled {
   .listcard.two ul.configinfo li {
     padding: 10px 0;
     line-height: 24px;
-    border-bottom: 1px dotted #ebeef5;
+    border-bottom: 1px dotted #eaeaea;
   }
   .listcard.two ul.configinfo li:first-child {
     padding-top: 0;
@@ -2085,7 +2043,7 @@ span.imgcheck-disabled {
     width: 100%;
     padding-top: 10px;
     text-align: right;
-    border-top: 1px dotted #ebeef5;
+    border-top: 1px dotted #eaeaea;
     order: 3;
   }
 }
@@ -2307,7 +2265,7 @@ span.imgcheck-disabled {
   padding: 16px 12px;
   vertical-align: middle;
   border-bottom: 1px solid var(--color-table-border, #f3f4f6);
-  color: var(--color-text, #374151);
+  color: var(--color-text, #333);
   font-size: 14px;
 }
 .tableFull tr:last-child td {
@@ -2341,7 +2299,7 @@ span.imgcheck-disabled {
 .pagebar {
   height: 36px;
   margin: 20px auto 0;
-  color: #374151;
+  color: #333;
   line-height: 36px;
   border: 1px solid #eaeaea;
   border-radius: 4px;
@@ -2474,7 +2432,7 @@ select {
   margin-top: 4px;
   padding: 0;
   border-radius: 2px;
-  box-shadow: 0 0 0 1px #ebeef5;
+  box-shadow: 0 0 0 1px #eaeaea;
   box-sizing: border-box;
   opacity: 0;
   overflow: hidden;
@@ -2511,7 +2469,7 @@ select {
 .nice-select .option:hover,
 .nice-select .option.focus,
 .nice-select .option.selected.focus {
-  background-color: #ebeef5;
+  background-color: #eaeaea;
 }
 .nice-select .option.selected {
   color: #0188fb;
