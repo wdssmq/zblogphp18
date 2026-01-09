@@ -191,7 +191,7 @@ table {
 }
 body {
   font-size: var(--font-size-base);
-  color: #333;
+  color: var(--color-text);
   font-family: Penrose, "PingFang SC", "Hiragino Sans GB", Tahoma, Roboto, Arial, "Lantinghei SC", "Microsoft YaHei", "simsun", sans-serif;
 }
 body::-webkit-scrollbar {
@@ -218,12 +218,12 @@ textarea {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 a {
-  color: #0188fb;
+  color: var(--color-primary);
   text-decoration: none;
   transition: background-color 0.15s linear, color 0.15s linear;
 }
 a:hover {
-  color: #3b82f6;
+  color: var(--color-primary-hover);
   text-decoration: none;
 }
 img {

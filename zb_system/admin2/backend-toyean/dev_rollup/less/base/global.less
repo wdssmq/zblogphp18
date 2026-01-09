@@ -1,6 +1,6 @@
 body {
   font-size: var(--font-size-base);
-  color: @color-text;
+  color: var(--color-text);
   font-family: Penrose, "PingFang SC", "Hiragino Sans GB", Tahoma, Roboto, Arial, "Lantinghei SC", "Microsoft YaHei", "simsun", sans-serif;
   .scrollbar-light();
 }
@@ -14,12 +14,12 @@ textarea {
 }
 
 a {
-  color: @color-primary;
+  color: var(--color-primary);
   text-decoration: none;
   transition: background-color .15s linear, color .15s linear;
 
   &:hover {
-    color: @color-primary-hover;
+    color: var(--color-primary-hover);
     text-decoration: none;
   }
 }
