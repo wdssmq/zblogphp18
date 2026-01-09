@@ -229,7 +229,6 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
-  border: 0;
   transform: translateZ(0px);
   transition: transform 0.2s ease 0s;
 }
@@ -955,11 +954,10 @@ img {
 .wrap {
   width: 1280px;
   margin: 0 auto;
-  zoom: 1;
 }
 .wrap::after {
   content: "";
-  display: block;
+  display: table;
   clear: both;
 }
 .wrapper {
