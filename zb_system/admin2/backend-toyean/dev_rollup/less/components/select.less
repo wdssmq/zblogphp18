@@ -64,3 +64,39 @@ select { .hide; }
 		.list { display:block; }
 	}
 }
+
+.night {
+	.nice-select {
+		color: #ccc;
+		border-color: #3a3a3a;
+		background-color: #202020;
+
+		&:focus,
+		&.open {
+			color: #ccc;
+		}
+
+		.list {
+			color: #ccc;
+			box-shadow: 0 0 0 1px #434343;
+			background-color: #3a3a3a;
+			.scrollbar-dark(transparent, #666, rgba(255, 255, 255, .3), rgba(255, 255, 255, .4), @scrollbar-thumb-img-dark);
+		}
+
+		.option {
+			&.selected {
+				color: #fff;
+			}
+
+			&:hover,
+			&.focus,
+			&.selected.focus {
+				background-color: fade(@c, 30%);
+			}
+		}
+
+		.list {
+			box-shadow: 0 0 0 1px @c;
+		}
+	}
+}

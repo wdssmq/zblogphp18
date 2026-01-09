@@ -80,3 +80,61 @@
     color: #333;
   }
 }
+
+@media screen and (max-width: 860px) {
+  .content {
+    height: calc(~"100vh - 89px");
+    padding: 14px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    .scrollbar-hidden();
+  }
+
+  .title {
+    h2 {
+      font-size: 26px;
+
+      a {
+        margin-top: 4px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+.night {
+  .content {
+    .scrollbar-dark();
+  }
+
+  .title {
+    h2 {
+      color: #fff;
+
+      span {
+        background: linear-gradient(0deg, #036 0%, transparent 20%);
+      }
+
+      ul span {
+        background: none;
+      }
+
+      a {
+        color: #fff;
+        border-color: @c;
+        background-color: @c;
+
+        &::before {
+          color: #fff;
+        }
+      }
+    }
+
+    p {
+      color: #ccc;
+    }
+  }
+}

@@ -38,3 +38,80 @@
 		}
 	}
 }
+
+@media screen and (max-width: 860px) {
+	.head {
+		padding-right: 14px;
+	}
+
+	.backhome {
+		width: 28px;
+		padding: 0;
+		font-size: 0;
+		text-align: center;
+
+		&::before {
+			margin: 0;
+			font-size: 18px;
+		}
+	}
+
+	.user {
+		margin-left: 10px;
+
+		&link {
+			cursor: default;
+		}
+	}
+}
+
+.night {
+	.head {
+		border-color: #2a2a2a;
+		background-color: #161616;
+	}
+
+	.backhome,
+	.theme {
+		color: #ccc;
+		border-color: #434343;
+		background: #242424;
+
+		&::before {
+			color: #ccc;
+		}
+	}
+
+	.user {
+		&name {
+			strong {
+				color: #fff;
+			}
+		}
+
+		&link {
+			&::after {
+				color: #fff;
+			}
+		}
+
+		&menu {
+			border-color: #434343;
+			background: #242424;
+
+			li {
+				a {
+					color: #fff;
+
+					&::before {
+						color: #fff;
+					}
+
+					&:hover {
+						background-color: #333;
+					}
+				}
+			}
+		}
+	}
+}

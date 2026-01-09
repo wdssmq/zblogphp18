@@ -274,3 +274,251 @@
 		&-action { width:100%; padding-top:10px; text-align:right; border-top:1px dotted @borderc; order:3; }
 	}
 }
+
+.night {
+	.listcard {
+		li {
+			border-color: #434343;
+			background-color: #242424;
+		}
+
+		&.one,
+		&.two {
+			dl {
+				border-color: #434343;
+				background-color: #242424;
+
+				dt {
+					color: #fff;
+				}
+			}
+		}
+
+		&.two {
+			dt {
+				a.refresh {
+					border-color: @c;
+					color: #fff;
+					background-color: @c;
+
+					&::before {
+						color: #fff;
+					}
+				}
+			}
+
+			ul {
+				li {
+					a {
+						color: #fff;
+						border-color: #333;
+
+						&:hover {
+							color: @c;
+						}
+					}
+
+					span {
+						background-color: #242424;
+					}
+				}
+
+				&.configinfo {
+					li {
+						span {
+							color: #fff;
+
+							&.on {
+								color: @c;
+							}
+						}
+					}
+				}
+			}
+
+			p {
+				a {
+					color: #fff;
+
+					&:hover {
+						color: @c;
+					}
+				}
+			}
+		}
+
+		&.four {
+			li {
+				p {
+					color: #fff;
+
+					&.mom {
+						color: #999;
+					}
+				}
+
+				.icon {
+					background-image: url(images/icobg-dark.svg);
+				}
+			}
+		}
+
+		td {
+			color: #ccc;
+			border-color: #434343;
+
+			&.thank- {
+				&label {
+					color: #86909c;
+					background-color: #2a2a2a;
+				}
+
+				&link {
+					a {
+						color: #fff;
+
+						&:hover {
+							color: @c;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.postlist {
+		border-color: #434343;
+		background-color: #161616;
+	}
+
+	.sub {
+		color: #fff;
+		border-color: #434343;
+		background: #242424;
+
+		input {
+			color: #ccc;
+			border-color: #434343;
+			background-color: #202020;
+
+			&[type=submit] {
+				color: #fff;
+				border-color: @c;
+				background-color: @c;
+			}
+		}
+
+		label {
+			color: #ccc;
+		}
+
+		a {
+			&.filter {
+				background-color: #242424;
+			}
+		}
+	}
+
+	.tr {
+		color: #ccc;
+		border-color: #434343;
+
+		&.thead {
+			background-color: #242424;
+		}
+
+		&:not(.thead):hover {
+			background-color: #1e1e1e;
+		}
+
+		a {
+			color: #ccc;
+
+			&:hover {
+				color: @c;
+			}
+		}
+	}
+
+	.td {
+		&-status {
+			span {
+				color: #a0fba0;
+				background-color: #13321d;
+
+				&.draft {
+					color: orange;
+					background-color: #3b3600;
+				}
+
+				&.review {
+					color: #ff6a6a;
+					background: #3f0000;
+				}
+			}
+		}
+
+		&-action {
+			.edit,
+			.del {
+				&::before {
+					color: #ccc;
+				}
+
+				&:hover {
+					&::before {
+						color: @c;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 860px) {
+	.night {
+		.listcard {
+			table {
+				border-color: #424242;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.night {
+		.listcard {
+			&.two {
+				p {
+					border-color: #333;
+				}
+
+				ul {
+					&.configinfo {
+						li {
+							border-color: #333;
+						}
+					}
+				}
+			}
+		}
+
+		.post {
+			&list {
+				background: #242424;
+			}
+		}
+
+		.tr {
+			&:nth-child(odd) {
+				background: #1e1e1e;
+			}
+		}
+
+		.td {
+			&-action {
+				border-color: #434343;
+			}
+		}
+	}
+}
