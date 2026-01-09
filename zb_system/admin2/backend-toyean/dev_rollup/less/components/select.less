@@ -11,10 +11,10 @@ select { display:none; }
 @input_height_small:36px;
 @dropdown_padding:12px;
 
-@gray_dark:@borderc;
+@gray_dark:@color-border;
 @gray:#999;
 @gray_light:#e8e8e8;
-@gray_lighter:@borderc;
+@gray_lighter:@color-border;
 @primary_light:@gray;
 @arrow_color:@gray;
 select { .hide; }
@@ -24,7 +24,7 @@ select { .hide; }
 	&:after { content:''; width:5px; height:5px; margin-top:-4px; border-bottom:2px solid @arrow_color; border-right:2px solid @arrow_color; position:absolute; top:50%; right:12px; pointer-events:none; transform-origin:66% 66%; transform:rotate(45deg); display:block; }
 	&.open {
 		&:after { transform:rotate(-135deg); }
-		.list { box-shadow:0 0 0 1px @c; opacity:1; pointer-events:auto; transform:scale(1) translateY(0); }
+		.list { box-shadow:0 0 0 1px @color-primary; opacity:1; pointer-events:auto; transform:scale(1) translateY(0); }
 	}
 	&.disabled {
 		border-color:lighten(@gray_light, 2%); color:@gray; pointer-events:none;
@@ -41,7 +41,7 @@ select { .hide; }
 	}
 	.option { width:100%!important; min-height:@input_height - 2; margin:0!important; padding-left:@dropdown_padding; padding-right:@dropdown_padding; font-weight:400; text-align:left; line-height:@input_height - 2; list-style:none; box-sizing:border-box; outline:none; cursor:pointer; display:block!important; transition:all 0.2s;
 		&:hover, &.focus, &.selected.focus { background-color:@gray_lighter; }
-		&.selected { color:@c; font-weight:bold; }
+		&.selected { color:@color-primary; font-weight:bold; }
 		&.disabled { color:@gray; background-color:transparent; cursor:default; }
 	}
 	&.multiple {
@@ -91,12 +91,12 @@ select { .hide; }
 			&:hover,
 			&.focus,
 			&.selected.focus {
-				background-color: fade(@c, 30%);
+				background-color: fade(@color-primary, 30%);
 			}
 		}
 
 		.list {
-			box-shadow: 0 0 0 1px @c;
+			box-shadow: 0 0 0 1px @color-primary;
 		}
 	}
 }
