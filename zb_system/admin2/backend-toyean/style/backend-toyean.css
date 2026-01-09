@@ -229,11 +229,8 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
-  width: auto\\9;
   border: 0;
-  -webkit-transform: translateZ(0px);
   transform: translateZ(0px);
-  -webkit-transition: -webkit-transform 0.2s ease 0s;
   transition: transform 0.2s ease 0s;
 }
 @font-face {
