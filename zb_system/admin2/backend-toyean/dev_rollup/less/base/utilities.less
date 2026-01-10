@@ -9,6 +9,12 @@
   align-items: @a;
 }
 
+.inline-flex(@j: center; @a: center) {
+  display: inline-flex;
+  justify-content: @j;
+  align-items: @a;
+}
+
 .clear() {
   &::after {
     content: "";
@@ -27,9 +33,9 @@
   display: inline;
 }
 
-.zoom {
+.zoom,
+.inline-block {
   display: inline-block;
-  vertical-align: top;
 }
 
 .nowrap {
