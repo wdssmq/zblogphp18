@@ -1,5 +1,6 @@
 <?php exit(); ?>
 <div class="content">
+    <p class="hint-place hidden"></p>
     {php}
     $zbp->GetHint();
     HookFilterPlugin('Filter_Plugin_Admin_Hint');
