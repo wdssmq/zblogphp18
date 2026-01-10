@@ -3,6 +3,13 @@ table {
     width: 100%;
   }
 
+  &.thCenter {
+    th {
+      text-align: center;
+    }
+  }
+
+  th,
   td {
     padding: 16px 12px;
     vertical-align: middle;
@@ -27,6 +34,10 @@ table {
     &.bold {
       font-weight: 600;
       color: var(--color-text-strong, @color-text-strong);
+    }
+
+    &.center {
+      text-align: center;
     }
   }
 

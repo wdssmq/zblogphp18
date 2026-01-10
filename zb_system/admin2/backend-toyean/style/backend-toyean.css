@@ -2256,6 +2256,10 @@ span.imgcheck-disabled {
 table.tableFull {
   width: 100%;
 }
+table.thCenter th {
+  text-align: center;
+}
+table th,
 table td {
   padding: 16px 12px;
   vertical-align: middle;
@@ -2263,30 +2267,42 @@ table td {
   color: var(--color-text, #333);
   font-size: 14px;
 }
+table th.td5,
 table td.td5 {
   width: 5%;
 }
+table th.td10,
 table td.td10 {
   width: 10%;
 }
+table th.td15,
 table td.td15 {
   width: 15%;
 }
+table th.td20,
 table td.td20 {
   width: 20%;
 }
+table th.td25,
 table td.td25 {
   width: 25%;
 }
+table th.td30,
 table td.td30 {
   width: 30%;
 }
+table th.td35,
 table td.td35 {
   width: 35%;
 }
+table th.bold,
 table td.bold {
   font-weight: 600;
   color: var(--color-text-strong, #111827);
+}
+table th.center,
+table td.center {
+  text-align: center;
 }
 table tr:last-child td {
   border-bottom: none;

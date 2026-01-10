@@ -280,8 +280,8 @@ table td:last-child,
 table th:last-child {
   border-right: none;
 }
-table td .tdCenter,
-table th .tdCenter {
+table td.center,
+table th.center {
   text-align: center;
 }
 
@@ -292,10 +292,7 @@ table.tableBorder {
   line-height: 1.8em;
   margin: 0.4em 0 0.8em;
 }
-table.tableBorder th {
-  text-align: left;
-}
-table.tableBorder-thcenter th {
+table.thCenter th {
   text-align: center;
 }
 table.table_hover > tbody > tr:hover > td,
