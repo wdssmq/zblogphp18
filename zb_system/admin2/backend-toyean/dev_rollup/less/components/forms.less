@@ -2,48 +2,41 @@ input[type="text"],
 select,
 textarea {
   font-family: Roboto;
-  box-sizing: border-box;
   padding: 10px 14px;
   background-color: var(--color-surface, @color-surface);
   border: 1px solid var(--color-border-input, @color-border-input);
   border-radius: var(--radius-input, @radius-input);
-  font-size: 14px;
   color: var(--color-text, @color-text);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
   line-height: 1.5;
-}
 
-input[type="text"]:hover,
-select:hover,
-textarea:hover {
-  border-color: var(--color-border-hover, @color-border-hover);
-}
+  &:hover {
+    border-color: var(--color-border-hover, @color-border-hover);
+  }
 
-input[type="text"]:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--color-primary, @color-primary);
-  box-shadow: 0 0 0 3px var(--color-focus-ring, @color-focus-ring);
+  &:focus {
+    border-color: var(--color-primary, @color-primary);
+    box-shadow: 0 0 0 3px var(--color-focus-ring, @color-focus-ring);
+  }
+
 }
 
 .input-90,
 .textarea-90,
 .select-90 {
-  width: 100%;
+  width: 90%;
   max-width: 600px;
 }
 
-.textarea-90 {
+.textarea {
   min-height: 120px;
   resize: vertical;
 }
 
 input.button,
+input[type="submit"],
 #btnPost {
-  // display: inline-flex;
-  // justify-content: center;
-  // align-items: center;
   background: linear-gradient(135deg, var(--color-primary, @color-primary) 0%, var(--color-primary-strong, @color-primary-strong) 100%);
   color: var(--color-text-btn, @color-text-btn);
   border: none;
@@ -56,56 +49,53 @@ input.button,
   box-shadow: var(--shadow-btn, @shadow-btn);
   transition: all 0.2s ease;
   margin-top: 20px;
-}
 
-input.button:hover,
-#btnPost:hover {
-  background: linear-gradient(135deg, var(--color-primary-hover, @color-primary-hover) 0%, var(--color-primary, @color-primary) 100%);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-btn-hover, @shadow-btn-hover);
-}
+  &:hover {
+    background: linear-gradient(135deg, var(--color-primary-hover, @color-primary-hover) 0%, var(--color-primary, @color-primary) 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-btn-hover, @shadow-btn-hover);
+  }
 
-input.button:active,
-#btnPost:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-btn-active, @shadow-btn);
+  &:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-btn-active, @shadow-btn);
+  }
 }
 
 span.imgcheck {
-  display: inline-block !important;
   width: 48px;
   height: 24px;
   background-color: var(--color-switch-off, @color-switch-off);
   border-radius: 9999px;
   position: relative;
   cursor: pointer;
-  vertical-align: middle;
+  // vertical-align: middle;
   transition: background-color 0.3s ease;
   box-shadow: var(--shadow-switch, @shadow-switch);
-}
 
-span.imgcheck-on {
-  background-color: var(--color-primary, @color-primary);
-}
+  &::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-surface, @color-surface);
+    border-radius: 50%;
+    box-shadow: var(--shadow-switch-knob, @shadow-switch-knob);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
 
-span.imgcheck::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
-  background-color: var(--color-surface, @color-surface);
-  border-radius: 50%;
-  box-shadow: var(--shadow-switch-knob, @shadow-switch-knob);
-  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
+  &.imgcheck-on {
+    background-color: var(--color-primary, @color-primary);
 
-span.imgcheck-on::after {
-  transform: translateX(24px);
-}
+    &::after {
+      transform: translateX(24px);
+    }
+  }
 
-span.imgcheck-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  &.imgcheck-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

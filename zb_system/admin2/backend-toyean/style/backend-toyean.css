@@ -143,7 +143,7 @@ table {
   --color-border: #eaeaea;
   --color-border-input: #d1d5db;
   --color-border-hover: #9ca3af;
-  --color-table-border: #f3f4f6;
+  --color-table-border: #eaeaea;
   --color-text: #333;
   --color-focus-ring: rgba(59, 130, 246, 0.15);
   --color-switch-off: #e5e7eb;
@@ -1124,12 +1124,10 @@ input[type="text"],
 select,
 textarea {
   font-family: Roboto;
-  box-sizing: border-box;
   padding: 10px 14px;
   background-color: var(--color-surface, #ffffff);
   border: 1px solid var(--color-border-input, #d1d5db);
   border-radius: var(--radius-input, 6px);
-  font-size: 14px;
   color: var(--color-text, #333);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
@@ -1149,14 +1147,15 @@ textarea:focus {
 .input-90,
 .textarea-90,
 .select-90 {
-  width: 100%;
+  width: 90%;
   max-width: 600px;
 }
-.textarea-90 {
+.textarea {
   min-height: 120px;
   resize: vertical;
 }
 input.button,
+input[type="submit"],
 #btnPost {
   background: linear-gradient(135deg, var(--color-primary, #0188fb) 0%, var(--color-primary-strong, #1d4ed8) 100%);
   color: var(--color-text-btn, #d6d6d6);
@@ -1172,30 +1171,27 @@ input.button,
   margin-top: 20px;
 }
 input.button:hover,
+input[type="submit"]:hover,
 #btnPost:hover {
   background: linear-gradient(135deg, var(--color-primary-hover, #3b82f6) 0%, var(--color-primary, #0188fb) 100%);
   transform: translateY(-1px);
   box-shadow: var(--shadow-btn-hover, 0 6px 8px -1px rgba(37, 99, 235, 0.4), 0 3px 6px -1px rgba(37, 99, 235, 0.2));
 }
 input.button:active,
+input[type="submit"]:active,
 #btnPost:active {
   transform: translateY(0);
   box-shadow: var(--shadow-btn-active, 0 4px 6px -1px rgba(37, 99, 235, 0.3), 0 2px 4px -1px rgba(37, 99, 235, 0.15));
 }
 span.imgcheck {
-  display: inline-block !important;
   width: 48px;
   height: 24px;
   background-color: var(--color-switch-off, #e5e7eb);
   border-radius: 9999px;
   position: relative;
   cursor: pointer;
-  vertical-align: middle;
   transition: background-color 0.3s ease;
   box-shadow: var(--shadow-switch, inset 0 2px 4px rgba(0, 0, 0, 0.05));
-}
-span.imgcheck-on {
-  background-color: var(--color-primary, #0188fb);
 }
 span.imgcheck::after {
   content: '';
@@ -1209,10 +1205,13 @@ span.imgcheck::after {
   box-shadow: var(--shadow-switch-knob, 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06));
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-span.imgcheck-on::after {
+span.imgcheck.imgcheck-on {
+  background-color: var(--color-primary, #0188fb);
+}
+span.imgcheck.imgcheck-on::after {
   transform: translateX(24px);
 }
-span.imgcheck-disabled {
+span.imgcheck.imgcheck-disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -2263,7 +2262,7 @@ table th,
 table td {
   padding: 16px 12px;
   vertical-align: middle;
-  border-bottom: 1px solid var(--color-table-border, #f3f4f6);
+  border-bottom: 1px solid var(--color-table-border, #eaeaea);
   color: var(--color-text, #333);
   font-size: 14px;
 }
@@ -2323,7 +2322,7 @@ table tr:last-child td {
     padding-bottom: 7px;
   }
   table tr:not(:last-child) {
-    border-bottom: 1px solid var(--color-table-border, #f3f4f6);
+    border-bottom: 1px solid var(--color-table-border, #eaeaea);
     margin-bottom: 8px;
   }
 }
