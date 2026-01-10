@@ -5,66 +5,54 @@
   border: 1px solid var(--color-border, @color-border);
   margin-bottom: 25px;
   overflow: visible;
-}
 
-.content-box .content-box-content {
-  padding: 30px 24px;
-}
+  .content-box-header {
+    background-color: var(--color-surface-muted, @color-surface-muted);
+    border-bottom: 1px solid var(--color-border, @color-border);
+    padding: 0 var(--padding-tab-x, @padding-tab-x);
+  }
 
+  .content-box-tabs {
+    display: flex;
+    gap: var(--gap-tab, @gap-tab);
 
-.content-box .content-box-header {
-  background-color: var(--color-surface-muted, @color-surface-muted);
-  border-bottom: 1px solid var(--color-border, @color-border);
-  padding: 0 var(--padding-tab-x, @padding-tab-x);
-  display: flex;
-  align-items: center;
-}
+    li a {
+      display: inline-block;
+      padding: var(--padding-tab-y, @padding-tab-y) 0;
+      color: var(--color-text-muted, @color-text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-.content-box .content-box-tabs {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  gap: var(--gap-tab, @gap-tab);
-}
+      &:hover {
+        color: var(--color-primary, @color-primary);
+      }
 
-.content-box .content-box-tabs li {
-  margin: 0;
-  padding: 0;
-}
+      &.current {
+        color: var(--color-primary, @color-primary);
+        border-bottom-color: var(--color-primary, @color-primary);
+      }
+    }
+  }
 
-.content-box .content-box-tabs li a {
-  display: inline-block;
-  padding: var(--padding-tab-y, @padding-tab-y) 0;
-  color: var(--color-text-muted, @color-text-muted);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.content-box .content-box-tabs li a:hover {
-  color: var(--color-primary, @color-primary);
-}
-
-.content-box .content-box-tabs li a.current {
-  color: var(--color-primary, @color-primary);
-  border-bottom-color: var(--color-primary, @color-primary);
+  .content-box-content {
+    padding: var(--padding-tab-y, 18px) var(--padding-tab-x, 24px);
+  }
 }
 
 @media (max-width: 768px) {
-  .content-box .content-box-header {
-    padding: 0 15px;
-    overflow-x: auto;
-  }
+  .content-box {
+    .content-box-header {
+      padding: 0 15px;
+      overflow-x: auto;
+      .scrollbar-hidden();
+    }
 
-  .content-box .content-box-content {
-    padding: 20px 15px;
-  }
+    .content-box-tabs {
+      min-width: max-content;
+    }
 
-  .content-box .content-box-tabs {
-    min-width: max-content;
+    .content-box-content {
+      padding: 9px 15px;
+    }
   }
 }

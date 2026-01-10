@@ -1,46 +1,63 @@
-.tableFull {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
+table {
+  &.tableFull {
+    width: 100%;
+  }
 
-.tableFull td {
-  padding: 16px 12px;
-  vertical-align: middle;
-  border-bottom: 1px solid var(--color-table-border, @color-table-border);
-  color: var(--color-text, @color-text);
-  font-size: 14px;
-}
+  td {
+    padding: 16px 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-table-border, @color-table-border);
+    color: var(--color-text, @color-text);
+    font-size: 14px;
 
-.tableFull tr:last-child td {
-  border-bottom: none;
-}
+    @max: 7;
 
-.tableFull td.td25 {
-  width: 25%;
-  color: var(--color-text-strong, @color-text-strong);
-  font-weight: 600;
-  white-space: nowrap;
+    .loop(@i) when (@i <=@max) {
+      @w: (@i * 5);
+
+      &.td@{w} {
+        width:~"@{w}%";
+      }
+
+      .loop(@i + 1);
+    }
+
+    .loop(1);
+
+    &.bold {
+      font-weight: 600;
+      color: var(--color-text-strong, @color-text-strong);
+    }
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
 }
 
 @media (max-width: 768px) {
-  .tableFull td {
-    display: block;
-    width: 100%;
-    padding: 8px 0;
-    border: none;
-  }
+  table {
+    td {
+      display: block;
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+    }
 
-  .tableFull td.td25 {
-    padding-top: 15px;
-    margin-bottom: 5px;
-    color: var(--color-text-muted, @color-text-muted);
-    font-size: 13px;
-  }
+    td.bold {
+      color: var(--color-text-muted, @color-text-muted);
+      font-size: 13px;
+    }
 
-  .tableFull tr {
-    border-bottom: 1px solid var(--color-table-border, @color-table-border);
-    display: block;
-    padding-bottom: 15px;
+    tr {
+      display: block;
+      padding-bottom: 7px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-table-border, @color-table-border);
+        margin-bottom: 8px;
+      }
+    }
   }
 }

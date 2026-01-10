@@ -11,14 +11,13 @@
                 <li><a href="#tab6"><span>{$zbp->lang['msg']['api_setting']}</span></a></li>
                 <li><a href="#tab7"><span>{$zbp->lang['msg']['ai_setting']}</span></a></li>
             </ul>
-            <div class="clear"></div>
         </div>
         <div class="content-box-content">
             <!-- Tab 1 -->
             <div class="tab-content default-tab" id="tab1">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td class="td25"><b>{$zbp->lang['msg']['blog_host']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['blog_host']}</b></td>
                         <td><input id="ZC_BLOG_HOST" name="ZC_BLOG_HOST" type="text" value="{$zbp->option['ZC_BLOG_HOST']}" readonly oninput="disableSubmit($(this).val())" class="input-90"></td>
                     </tr>
                     <tr>
@@ -39,7 +38,7 @@
             <div class="tab-content" id="tab2">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td class="td25"><b>{$zbp->lang['msg']['blog_timezone']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['blog_timezone']}</b></td>
                         <td><select id="ZC_TIME_ZONE_NAME" name="ZC_TIME_ZONE_NAME" class="select-90">{CreateOptionsOfTimeZone($zbp->option['ZC_TIME_ZONE_NAME'])}</select></td>
                     </tr>
                     <tr>
@@ -76,7 +75,7 @@
             <div class="tab-content" id="tab3">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td class="td25"><b>{$zbp->lang['msg']['display_count']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['display_count']}</b></td>
                         <td><input id="ZC_DISPLAY_COUNT" name="ZC_DISPLAY_COUNT" type="text" value="{$zbp->option['ZC_DISPLAY_COUNT']}" class="input-90"></td>
                     </tr>
                     <tr>
@@ -101,7 +100,7 @@
             <div class="tab-content" id="tab4">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td class="td25"><b>{$zbp->lang['msg']['comment_turnoff']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['comment_turnoff']}</b></td>
                         <td><input id="ZC_COMMENT_TURNOFF" name="ZC_COMMENT_TURNOFF" type="text" value="{$zbp->option['ZC_COMMENT_TURNOFF']}" class="checkbox"></td>
                     </tr>
                     <tr>
@@ -126,7 +125,7 @@
             <div class="tab-content" id="tab5">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td class="td25"><b>{$zbp->lang['msg']['allow_upload_type']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['allow_upload_type']}</b></td>
                         <td><input id="ZC_UPLOAD_FILETYPE" name="ZC_UPLOAD_FILETYPE" type="text" value="{$zbp->option['ZC_UPLOAD_FILETYPE']}" class="input-90"></td>
                     </tr>
                     <tr>
@@ -173,7 +172,7 @@
             <div class="tab-content" id="tab6">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td class="td25"><b>{$zbp->lang['msg']['enable_api']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['enable_api']}</b></td>
                         <td><input id="ZC_API_ENABLE" name="ZC_API_ENABLE" type="text" value="{$zbp->option['ZC_API_ENABLE']}" class="checkbox"></td>
                     </tr>
                     <tr>
@@ -194,7 +193,7 @@
             <div class="tab-content" id="tab7">
                 <table class="table_hover table_striped tableFull">
                     <tr>
-                        <td><b>{$zbp->lang['msg']['ai_url']}</b></td>
+                        <td class="td20"><b>{$zbp->lang['msg']['ai_url']}</b></td>
                         <td><input id="ZC_AI_API_URL" name="ZC_AI_API_URL" type="text" value="{$zbp->option['ZC_AI_API_URL']}" class="input-90"></td>
                     </tr>
                     <tr>
