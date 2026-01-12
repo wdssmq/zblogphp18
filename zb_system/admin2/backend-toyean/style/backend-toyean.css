@@ -2259,12 +2259,12 @@ table tr:last-child td {
   text-align: left !important;
   line-height: 34px;
   white-space: nowrap;
-  border: solid 1px #e8e8e8;
+  border: 1px solid var(--color-border-input, #d1d5db);
   outline: none;
-  border-radius: 2px;
+  border-radius: 4px;
   box-sizing: border-box;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--color-surface, #ffffff);
   position: relative;
   clear: both;
   display: block;
@@ -2273,7 +2273,7 @@ table tr:last-child td {
   user-select: none;
 }
 .nice-select:hover {
-  border-color: #dbdbdb;
+  border-color: var(--color-border-hover, #9ca3af);
 }
 .nice-select:active,
 .nice-select:focus {
@@ -2298,13 +2298,13 @@ table tr:last-child td {
   transform: rotate(-135deg);
 }
 .nice-select.open .list {
-  box-shadow: 0 0 0 1px #0188fb;
+  border: 1px solid var(--color-border-input, #d1d5db);
   opacity: 1;
   pointer-events: auto;
   transform: scale(1) translateY(0);
 }
 .nice-select.disabled {
-  border-color: #ededed;
+  border-color: #d7dadf;
   color: #999;
   pointer-events: none;
 }
@@ -2330,13 +2330,13 @@ table tr:last-child td {
   max-height: 400px;
   margin-top: 4px;
   padding: 0;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1px #eaeaea;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--color-border-hover);
   box-sizing: border-box;
   opacity: 0;
   overflow: hidden;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: var(--color-surface-muted, #f9fafb);
   position: absolute;
   top: 100%;
   left: 0;
@@ -2368,7 +2368,7 @@ table tr:last-child td {
 .nice-select .option:hover,
 .nice-select .option.focus,
 .nice-select .option.selected.focus {
-  background-color: #eaeaea;
+  background-color: var(--color-background, #ecedee);
 }
 .nice-select .option.selected {
   color: #0188fb;
@@ -2416,47 +2416,6 @@ table tr:last-child td {
 }
 .no-csspointerevents .nice-select.open .list {
   display: block;
-}
-.night .nice-select {
-  color: #ccc;
-  border-color: #3a3a3a;
-  background-color: #202020;
-}
-.night .nice-select:focus,
-.night .nice-select.open {
-  color: #ccc;
-}
-.night .nice-select .list {
-  color: #ccc;
-  box-shadow: 0 0 0 1px #434343;
-  background-color: #3a3a3a;
-}
-.night .nice-select .list::-webkit-scrollbar {
-  width: 8px;
-}
-.night .nice-select .list::-webkit-scrollbar-track {
-  background: transparent;
-}
-.night .nice-select .list::-webkit-scrollbar-thumb {
-  background: #666 url('images/scrollbar-02.png') no-repeat center center;
-  border-radius: 4px;
-}
-.night .nice-select .list::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-.night .nice-select .list::-webkit-scrollbar-thumb:vertical:active {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.night .nice-select .option.selected {
-  color: #fff;
-}
-.night .nice-select .option:hover,
-.night .nice-select .option.focus,
-.night .nice-select .option.selected.focus {
-  background-color: rgba(1, 136, 251, 0.3);
-}
-.night .nice-select .list {
-  box-shadow: 0 0 0 1px #0188fb;
 }
 /*! Toast & Hint */
 .toast {
