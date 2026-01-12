@@ -2379,81 +2379,71 @@ table tr:last-child td {
   line-height: 22px;
   border-radius: 2px;
   background: rgba(0, 0, 0, 0.6);
-  -webkit-animation-name: layer-bounceIn;
   animation-name: layer-bounceIn;
-  -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-duration: 0.3s;
   animation-duration: 0.3s;
 }
 .toastclose {
-  -webkit-animation-name: layer-bounceOut;
   animation-name: layer-bounceOut;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
 }
+.night .toasttext {
+  background: rgba(60, 60, 60, 0.8);
+}
+/* Hint */
+.hint {
+  --color-info-text: #333;
+  --color-info-background: #e0eaf6;
+  --color-good-text: green;
+  --color-good-background: #e8fff0;
+  --color-bad-text: #991b1b;
+  --color-bad-background: #fee2e2;
+}
 .hint p {
-  margin: -24px -36px 12px;
-  padding: 8px 34px;
+  line-height: 20px;
+  padding: 8px 16px;
   font-size: 15px;
-  color: #333;
-  line-height: 18px;
-  background: #e0eaf6;
+  color: var(--color-info-text);
+  background: var(--color-info-background);
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 .hint p::before {
   content: "\eca1";
   width: 20px;
   height: 20px;
   margin-right: 6px;
-  font-size: 19px;
-  color: #333;
+  font-size: 20px;
+  color: var(--color-info-text);
   font-family: zblog;
-  line-height: 19px;
   display: inline-block;
 }
 .hint .hint_good {
-  background: #e8fff0;
-  color: green;
+  background: var(--color-good-background);
+  color: var(--color-good-text);
 }
 .hint .hint_good::before {
   content: "\eb81";
-  color: green;
+  color: var(--color-good-text);
 }
 .hint .hint_bad {
-  background: #fee2e2;
-  color: #991b1b;
+  background: var(--color-bad-background);
+  color: var(--color-bad-text);
 }
 .hint .hint_bad::before {
   content: "\eb97";
-  color: #991b1b;
+  color: var(--color-bad-text);
 }
-.night .toasttext {
-  background: rgba(60, 60, 60, 0.8);
-}
-.night .hint p {
-  color: #8fdaff;
-  background: #002c52;
-}
-.night .hint p::before {
-  color: #8fdaff;
-}
-.night .hint .hint_good {
-  color: #a0fba0;
-  background: #13321d;
-}
-.night .hint .hint_good::before {
-  color: #a0fba0;
-}
-.night .hint .hint_bad {
-  color: #ff6a6a;
-  background: #3f0000;
-}
-.night .hint .hint_bad::before {
-  color: #ff6a6a;
+.night .hint {
+  --color-info-text: #8fdaff;
+  --color-info-background: #002c52;
+  --color-good-text: #a0fba0;
+  --color-good-background: #13321d;
+  --color-bad-text: #ff6a6a;
+  --color-bad-background: #3f0000;
 }
 /*! 独立页面 */
 /* 使用 Grid 布局：主内容 + 侧栏 */
