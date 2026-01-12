@@ -738,72 +738,57 @@ img {
 .head {
   height: 60px;
   padding-right: 40px;
-  border-bottom: 1px solid #eaeaea;
-  box-sizing: border-box;
-  background: #fff;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
   position: relative;
   z-index: 99;
   display: flex;
-  align-items: center;
   justify-content: end;
+  align-items: center;
+}
+.backhome,
+.theme {
+  height: 28px;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backhome::before,
+.theme::before {
+  font-family: zblog;
+  font-size: 16px;
+  color: var(--color-text);
+}
+.backhome:hover,
+.theme:hover {
+  color: var(--color-text-muted);
+  border-color: var(--color-border-hover);
+}
+.backhome:hover::before,
+.theme:hover::before {
+  color: var(--color-text-muted);
 }
 .backhome {
-  height: 28px;
-  padding: 0 12px;
-  font-size: 14px;
-  color: #333;
-  line-height: 28px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  display: inline-block;
+  padding: 0 10px;
 }
 .backhome::before {
   content: "\ee21";
   margin-right: 6px;
-  font-size: 16px;
-  color: #333;
-  font-family: zblog;
-  display: inline-block;
-}
-.backhome:hover {
-  color: #000;
-  border-color: #ddd;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-.backhome:hover::before {
-  color: #000;
 }
 .theme {
   width: 28px;
-  height: 28px;
-  margin: 0 10px;
-  text-align: center;
-  line-height: 28px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  display: inline-block;
 }
 .theme.light::before {
   content: "\ef6f";
-  font-size: 18px;
-  color: #333;
-  font-family: zblog;
-  display: inline-block;
 }
 .theme.dark::before {
   content: "\f1bf";
-  font-size: 18px;
-  color: #333;
-  font-family: zblog;
-  display: inline-block;
-}
-.theme:hover {
-  color: #000;
-  border-color: #ddd;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 .user {
-  margin-left: 20px;
   position: relative;
 }
 .userlink {
@@ -814,7 +799,7 @@ img {
   content: "\ea4e";
   margin-left: 10px;
   font-size: 18px;
-  color: #333;
+  color: var(--color-text);
   font-family: zblog;
   display: flex;
   align-items: center;
@@ -823,10 +808,7 @@ img {
   content: "\ea78";
 }
 .userimg {
-  width: 32px;
-  height: 32px;
   margin-right: 10px;
-  border-radius: 50%;
 }
 .userimg img {
   width: 32px;
@@ -840,7 +822,7 @@ img {
 .username strong {
   margin-top: 2px;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text);
   display: block;
 }
 .username em {
@@ -851,9 +833,9 @@ img {
 .usermenu {
   width: 100%;
   padding: 8px 0;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #fff;
+  background: var(--color-surface);
   position: absolute;
   top: 40px;
   left: 0;
@@ -869,7 +851,7 @@ img {
 .usermenu li a {
   padding: 0 0 0 14px;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text);
   display: flex;
   align-items: center;
 }
@@ -879,12 +861,12 @@ img {
   height: 16px;
   margin-right: 4px;
   font-size: 16px;
-  color: #333;
+  color: var(--color-text);
   font-family: zblog;
   line-height: 16px;
 }
 .usermenu li a:hover {
-  background: #eaeaea;
+  background: var(--color-surface-muted);
 }
 .usermenu li a.ico-set::before {
   content: "\f0e4";
@@ -915,39 +897,6 @@ img {
   .userlink {
     cursor: default;
   }
-}
-.night .head {
-  border-color: #2a2a2a;
-  background-color: #161616;
-}
-.night .backhome,
-.night .theme {
-  color: #ccc;
-  border-color: #434343;
-  background: #242424;
-}
-.night .backhome::before,
-.night .theme::before {
-  color: #ccc;
-}
-.night .username strong {
-  color: #fff;
-}
-.night .userlink::after {
-  color: #fff;
-}
-.night .usermenu {
-  border-color: #434343;
-  background: #242424;
-}
-.night .usermenu li a {
-  color: #fff;
-}
-.night .usermenu li a::before {
-  color: #fff;
-}
-.night .usermenu li a:hover {
-  background-color: #333;
 }
 .wrapper {
   background-color: var(--color-surface-muted, #f9fafb);
