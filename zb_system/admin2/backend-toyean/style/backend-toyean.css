@@ -148,18 +148,12 @@ table {
   --color-text: #333;
   --color-focus-ring: rgba(59, 130, 246, 0.15);
   --color-switch-off: #e5e7eb;
-  --radius-card: 8px;
-  --radius-input: 4px;
-  --radius-button: 6px;
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
   --shadow-btn: 0 4px 6px -1px rgba(37, 99, 235, 0.3), 0 2px 4px -1px rgba(37, 99, 235, 0.15);
   --shadow-btn-hover: 0 6px 8px -1px rgba(37, 99, 235, 0.4), 0 3px 6px -1px rgba(37, 99, 235, 0.2);
   --shadow-btn-active: 0 2px 4px -1px rgba(37, 99, 235, 0.3);
   --shadow-switch: inset 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-switch-knob: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --padding-tab-x: 24px;
-  --padding-tab-y: 18px;
-  --gap-tab: 25px;
 }
 /* 显式强制暗色 */
 .night {
@@ -178,18 +172,12 @@ table {
   --color-table-border: #334155;
   --color-focus-ring: rgba(59, 130, 246, 0.45);
   --color-switch-off: #374151;
-  --radius-card: 8px;
-  --radius-input: 4px;
-  --radius-button: 6px;
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-btn: 0 4px 6px -1px rgba(37, 99, 235, 0.35), 0 2px 4px -1px rgba(37, 99, 235, 0.2);
   --shadow-btn-hover: 0 6px 12px -2px rgba(37, 99, 235, 0.45), 0 3px 8px -2px rgba(37, 99, 235, 0.25);
   --shadow-btn-active: 0 2px 4px -1px rgba(37, 99, 235, 0.35);
   --shadow-switch: inset 0 2px 4px rgba(0, 0, 0, 0.35);
   --shadow-switch-knob: 0 1px 3px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.4);
-  --padding-tab-x: 24px;
-  --padding-tab-y: 18px;
-  --gap-tab: 25px;
 }
 body {
   font-size: var(--font-size-base);
