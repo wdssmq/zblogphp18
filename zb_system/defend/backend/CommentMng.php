@@ -41,7 +41,7 @@
                 </span>
             </td>
             <td>
-                <div style="overflow:hidden;max-width:500px;">
+                <div class="overflow-hidden">
                     {if $comment.Post}
                     <a href="{$comment.Post.Url}" target="_blank"><i class="icon-link-45deg"></i></a>
                     {else}
@@ -85,11 +85,11 @@
         {/foreach}
 
         {if $ischecking}
-        <input type="submit" name="all_del" onclick="return confirmDelete();" value="{$zbp.lang['msg']['all_del']}" class="button" style="float:right;" />
-        <input type="submit" name="all_pass" value="{$zbp.lang['msg']['all_pass']}" class="button" style="float:right;margin-right:10px;" />
+        <input type="submit" name="all_del" onclick="return confirmDelete();" value="{$zbp.lang['msg']['all_del']}" class="button pull-right" />
+        <input type="submit" name="all_pass" value="{$zbp.lang['msg']['all_pass']}" class="button pull-right mr-10" />
         {else}
-        <input type="submit" name="all_del" onclick="return confirmDelete();" value="{$zbp.lang['msg']['all_del']}" class="button" style="float:right;" />
-        <input type="submit" name="all_audit" value="{$zbp.lang['msg']['all_audit']}" class="button" style="float:right;margin-right:10px;" />
+        <input type="submit" name="all_del" onclick="return confirmDelete();" value="{$zbp.lang['msg']['all_del']}" class="button pull-right" />
+        <input type="submit" name="all_audit" value="{$zbp.lang['msg']['all_audit']}" class="button pull-right mr-10" />
         {/if}
     </p>
 
