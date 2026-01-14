@@ -4,6 +4,7 @@
 nologin*
 test.php
 vendor/
+test/
 web.config
 zb_users/c_option.php
 zb_users/cache/
