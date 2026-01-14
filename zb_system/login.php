@@ -12,7 +12,11 @@ $zbp->Load();
 if ($zbp->CheckRights('admin')) {
     Redirect302('cmd.php?act=admin');
 }
-?><!DOCTYPE HTML>
+if ($zbp->option['ZC_MANAGE_UI'] != 1) {
+    Redirect("{$zbp->host}zb_system/admin2/login.php");
+}
+?>
+<!DOCTYPE HTML>
 <html lang="<?php echo $lang['lang_bcp47']; ?>">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
