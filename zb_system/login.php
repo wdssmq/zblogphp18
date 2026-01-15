@@ -11,7 +11,7 @@ $zbp->Load();
 if ($zbp->CheckRights('admin')) {
     Redirect302('cmd.php?act=admin');
 }
-if (1 != $zbp->option['ZC_MANAGE_UI']) {
+if (2 == $zbp->option['ZC_MANAGE_UI'] && $zbp->option['ZC_LOGIN_USE_LEGACY_PAGE'] == true) {
     Redirect("{$zbp->host}zb_system/admin2/login.php");
 }
 ?>
