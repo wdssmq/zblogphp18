@@ -22,13 +22,13 @@
     {php}HookFilterPlugin('Filter_Plugin_Login_Header');{/php}
 </head>
 
-<body class="admin-login">
+<body class="admin-login body-login">
     <header class="login-header">
         <h1 class="brand"><img src="{$host}zb_system/image/admin/none.gif" title="{htmlspecialchars($blogname)}" alt="{htmlspecialchars($blogname)}" /></h1>
     </header>
 
 
-    <main class="login-container">
+    <main class="login-container login">
         <form class="login-form" method="post" action="#">
             <input type="hidden" name="csrfToken" value="{$zbp.GetCSRFToken('login','minute')}">
             <dl>
