@@ -964,6 +964,21 @@ DefinePluginFilter('Filter_Plugin_Misc_Begin');
  */
 DefinePluginFilter('Filter_Plugin_Login_Header');
 
+
+
+/*
+'**************************************************<
+'类型:Filter
+'名称:Filter_Plugin_Login_Input_Insert
+'参数:
+'说明:定义Login.php首页Input_Insert接口
+'调用:
+'**************************************************>
+ */
+DefinePluginFilter('Filter_Plugin_Login_Input_Insert');
+
+
+
 /*
 '**************************************************<
 '类型:Filter
