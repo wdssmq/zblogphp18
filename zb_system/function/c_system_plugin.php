@@ -50,7 +50,7 @@ function RegisterPlugin($strPluginName, $strPluginActiveFunction)
  */
 function InstallPlugin($strPluginName)
 {
-    $f = 'InstallPlugin_'.$strPluginName;
+    $f = 'InstallPlugin_' . $strPluginName;
     if (function_exists($f)) {
         $f();
     }
@@ -63,7 +63,7 @@ function InstallPlugin($strPluginName)
  */
 function UninstallPlugin($strPluginName)
 {
-    $f = 'UninstallPlugin_'.$strPluginName;
+    $f = 'UninstallPlugin_' . $strPluginName;
     if (true == function_exists($f)) {
         $f();
     }
@@ -964,8 +964,6 @@ DefinePluginFilter('Filter_Plugin_Misc_Begin');
  */
 DefinePluginFilter('Filter_Plugin_Login_Header');
 
-
-
 /*
 '**************************************************<
 '类型:Filter
@@ -976,8 +974,6 @@ DefinePluginFilter('Filter_Plugin_Login_Header');
 '**************************************************>
  */
 DefinePluginFilter('Filter_Plugin_Login_Input_Insert');
-
-
 
 /*
 '**************************************************<
