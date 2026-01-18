@@ -58,15 +58,15 @@ HookFilterPlugin('Filter_Plugin_Login_Header');
           $input_tabindex = 9998;
           $input_type = 'text';
           foreach ($GLOBALS['hooks']['Filter_Plugin_Login_Input_Insert'] as $fpname => &$fpsignal) {
-              $fpreturn = call_user_func_array($fpname, $input_classname, $input_id, $input_label, $input_tabindex, $input_type); 
-      if ($input_label !== null) { ?>
+              $fpreturn = call_user_func_array($fpname, $input_classname, $input_id, $input_label, $input_tabindex, $input_type);
+              if (null !== $input_label) { ?>
       <dd class="<?php echo $input_classname; ?>">
           <label for="<?php echo $input_id; ?>"><?php echo $input_label; ?></label>
           <input type="<?php echo $input_type; ?>" id="<?php echo $input_id; ?>" name="<?php echo $input_id; ?>" size="20" tabindex="<?php echo $input_tabindex; ?>" />
       </dd>
       <?php
       } else {
-?>
+          ?>
           <dd class="<?php echo $input_classname; ?>">
                     <?php echo $input_id; ?>
                 </dd>
