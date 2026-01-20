@@ -928,6 +928,56 @@ img {
 .content::-webkit-scrollbar-thumb:vertical:active {
   background-color: #787878;
 }
+.content .title {
+  margin-bottom: 14px;
+}
+.content .title h2 {
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text);
+}
+.content .title h2 ul#topmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.content .title h2 ul#topmenu a {
+  padding: 0 12px;
+}
+.content .title h2 ul#topmenu a:last-child {
+  margin-left: 0;
+}
+.content .title h2 a {
+  height: 32px;
+  margin-top: 4px;
+  padding: 0 12px 0 8px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: normal;
+  line-height: 32px;
+  border: 1px solid #0188fb;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 0 rgba(1, 136, 251, 0.3);
+  background: #0188fb;
+  display: inline-block;
+}
+.content .title h2 a.rebuild::before {
+  content: "\ec28";
+  margin-right: 4px;
+  font-family: zblog;
+}
+.content .title h2 a:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.content .title p {
+  font-size: 16px;
+  color: var(--color-text);
+}
 .content .sub {
   margin-bottom: 16px;
   padding: 12px 22px;
@@ -980,75 +1030,13 @@ img {
   font-family: zblog;
   display: inline-block;
 }
-.title {
-  margin-bottom: 14px;
-}
-.title h2 {
-  margin-bottom: 8px;
-  font-size: 32px;
-  color: #333;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.title h2 ul#topmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-.title h2 ul#topmenu a {
-  padding: 0 12px;
-}
-.title h2 ul#topmenu a:last-child {
-  margin-left: 0;
-}
-.title h2 a {
-  height: 32px;
-  margin-top: 4px;
-  padding: 0 12px 0 8px;
-  font-size: 14px;
-  color: #fff;
-  font-weight: normal;
-  line-height: 32px;
-  border: 1px solid #0188fb;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px 0 rgba(1, 136, 251, 0.3);
-  background: #0188fb;
-  display: inline-block;
-}
-.title h2 a.rebuild::before {
-  content: "\ec28";
-  margin-right: 4px;
-  font-size: 14px;
-  color: #fff;
-  font-family: zblog;
-  font-weight: normal;
-  display: inline-block;
-}
-.title h2 a:hover {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-.title p {
-  font-size: 16px;
-  color: #333;
-}
 @media screen and (max-width: 860px) {
   .content {
     height: calc(100vh - 89px);
     padding: 14px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .content::-webkit-scrollbar {
-    width: 0;
   }
   .title h2 {
     font-size: 26px;
-  }
-  .title h2 a {
-    margin-top: 4px;
   }
   .title p {
     font-size: 14px;
@@ -1069,26 +1057,6 @@ img {
 }
 .night .content::-webkit-scrollbar-thumb:vertical:active {
   background-color: rgba(255, 255, 255, 0.4);
-}
-.night .title h2 {
-  color: #fff;
-}
-.night .title h2 span {
-  background: linear-gradient(0deg, #036 0%, transparent 20%);
-}
-.night .title h2 ul span {
-  background: none;
-}
-.night .title h2 a {
-  color: #fff;
-  border-color: #0188fb;
-  background-color: #0188fb;
-}
-.night .title h2 a::before {
-  color: #fff;
-}
-.night .title p {
-  color: #ccc;
 }
 /*! 通用组件 */
 input[type="text"],
