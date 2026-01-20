@@ -12,16 +12,6 @@
   &.on {
     width: 72px;
 
-    .logo {
-      a {
-        img {
-          &:not(:first-child) {
-            display: none;
-          }
-        }
-      }
-    }
-
     .menu {
       &title {
         margin: 0;
@@ -105,8 +95,26 @@
         margin-left: 6px;
       }
 
+      &.logolight {
+        display: inline-block;
+
+        .night & {
+          display: none;
+        }
+      }
+
       &.logodark {
         display: none;
+
+        .night & {
+          display: inline-block;
+        }
+      }
+
+      @media screen and (860px < width) {
+        .on &:not(:first-child) {
+          display: none;
+        }
       }
     }
   }
@@ -293,16 +301,6 @@
           padding-left: 16px;
           justify-content: normal;
           box-sizing: border-box;
-
-          img {
-            &:not(:first-child) {
-              display: block;
-            }
-
-            &.logodark {
-              display: none;
-            }
-          }
         }
       }
 
@@ -354,20 +352,6 @@
 }
 
 .night {
-  .logo {
-    a {
-      img {
-        &.logolight {
-          display: none;
-        }
-
-        &.logodark {
-          display: inline-block;
-        }
-      }
-    }
-  }
-
   .menu {
     .scrollbar-dark();
   }

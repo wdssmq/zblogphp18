@@ -363,9 +363,6 @@ table {
 .side.on {
   width: 72px;
 }
-.side.on .logo a img:not(:first-child) {
-  display: none;
-}
 .side.on .menutitle {
   margin: 0;
   font-size: 0;
@@ -434,8 +431,22 @@ table {
 .logo a img:not(:first-child) {
   margin-left: 6px;
 }
+.logo a img.logolight {
+  display: inline-block;
+}
+.night .logo a img.logolight {
+  display: none;
+}
 .logo a img.logodark {
   display: none;
+}
+.night .logo a img.logodark {
+  display: inline-block;
+}
+@media screen and (860px < width) {
+  .on .logo a img:not(:first-child) {
+    display: none;
+  }
 }
 .logo.on a:before {
   content: '';
@@ -598,12 +609,6 @@ table {
     justify-content: normal;
     box-sizing: border-box;
   }
-  .side.on .logo a img:not(:first-child) {
-    display: block;
-  }
-  .side.on .logo a img.logodark {
-    display: none;
-  }
   .side.on .menutitle {
     margin: 20px 0 8px;
     font-size: 12px;
@@ -635,12 +640,6 @@ table {
   .menutip {
     display: none !important;
   }
-}
-.night .logo a img.logolight {
-  display: none;
-}
-.night .logo a img.logodark {
-  display: inline-block;
 }
 .night .menu::-webkit-scrollbar {
   width: 8px;
