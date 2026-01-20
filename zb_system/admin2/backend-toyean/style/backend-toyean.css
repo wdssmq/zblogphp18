@@ -1,4 +1,157 @@
 /*! 基础工具类 */
+/* Animations */
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes layer-bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes layer-bounceOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  0% {
+    transform: scale(1);
+  }
+}
+body {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-family: Penrose, "PingFang SC", "Hiragino Sans GB", Tahoma, Roboto, Arial, "Lantinghei SC", "Microsoft YaHei", "simsun", sans-serif;
+}
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+body::-webkit-scrollbar-thumb {
+  background: #c1c1c1 url('images/scrollbar-01.png') no-repeat center center;
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: #a8a8a8;
+}
+body::-webkit-scrollbar-thumb:vertical:active {
+  background-color: #787878;
+}
+a,
+img,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: background-color 0.15s linear, color 0.15s linear;
+}
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  transform: translateZ(0px);
+  transition: transform 0.2s ease 0s;
+}
+@font-face {
+  font-family: 'zblog';
+  src: url('fonts/zblog.eot');
+  src: url('fonts/zblog.eot?#iefix') format('embedded-opentype'), url('fonts/zblog.woff2') format('woff2'), url('fonts/zblog.woff') format('woff'), url('fonts/zblog.ttf') format('truetype'), url('fonts/zblog.svg#zblog') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  /* 可选：防止文字闪烁 */
+}
+@font-face {
+  font-family: 'din-bold';
+  src: url('fonts/DINPro-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.ico {
+  width: 16px;
+  height: 16px;
+  margin-right: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+}
+.ico::before {
+  content: "\ed0f";
+  font-size: 21px;
+  color: var(--color-text);
+  font-family: zblog;
+}
+.ico.ico-home::before {
+  content: "\ec10";
+}
+.ico.ico-newpost::before {
+  content: "\ec86";
+}
+.ico.ico-article::before {
+  content: "\ecd3";
+}
+.ico.ico-page::before {
+  content: "\eac2";
+}
+.ico.ico-category::before {
+  content: "\f181";
+}
+.ico.ico-tag::before {
+  content: "\f023";
+}
+.ico.ico-cmt::before {
+  content: "\ef44";
+}
+.ico.ico-file::before {
+  content: "\ea86";
+}
+.ico.ico-user::before {
+  content: "\ea09";
+}
+.ico.ico-module::before {
+  content: "\ee7f";
+}
+.ico.ico-theme::before {
+  content: "\f1d5";
+}
+.ico.ico-plugin::before {
+  content: "\f019";
+}
+.ico.ico-setting::before {
+  content: "\f0e4";
+}
+.ico.ico-appstore::before {
+  content: "\f3a7";
+}
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -131,6 +284,22 @@ table {
 *::after {
   box-sizing: border-box;
 }
+.hide,
+.hidden {
+  display: none !important;
+}
+.zoom,
+.inline-block {
+  display: inline-block;
+}
+.nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.shadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
 :root {
   --font-size-base: 16px;
   --color-primary: #0188fb;
@@ -178,119 +347,6 @@ table {
   --shadow-btn-active: 0 2px 4px -1px rgba(37, 99, 235, 0.35);
   --shadow-switch: inset 0 2px 4px rgba(0, 0, 0, 0.35);
   --shadow-switch-knob: 0 1px 3px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-body {
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-  font-family: Penrose, "PingFang SC", "Hiragino Sans GB", Tahoma, Roboto, Arial, "Lantinghei SC", "Microsoft YaHei", "simsun", sans-serif;
-}
-body::-webkit-scrollbar {
-  width: 8px;
-}
-body::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-body::-webkit-scrollbar-thumb {
-  background: #c1c1c1 url('images/scrollbar-01.png') no-repeat center center;
-  border-radius: 4px;
-}
-body::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: #a8a8a8;
-}
-body::-webkit-scrollbar-thumb:vertical:active {
-  background-color: #787878;
-}
-a,
-img,
-button,
-input,
-textarea {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-}
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: background-color 0.15s linear, color 0.15s linear;
-}
-a:hover {
-  color: var(--color-primary-hover);
-  text-decoration: none;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  transform: translateZ(0px);
-  transition: transform 0.2s ease 0s;
-}
-@font-face {
-  font-family: 'zblog';
-  src: url('fonts/zblog.eot');
-  src: url('fonts/zblog.eot?#iefix') format('embedded-opentype'), url('fonts/zblog.woff2') format('woff2'), url('fonts/zblog.woff') format('woff'), url('fonts/zblog.ttf') format('truetype'), url('fonts/zblog.svg#zblog') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-  /* 可选：防止文字闪烁 */
-}
-@font-face {
-  font-family: 'din-bold';
-  src: url('fonts/DINPro-Bold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-.hide,
-.hidden {
-  display: none !important;
-}
-.zoom,
-.inline-block {
-  display: inline-block;
-}
-.nowrap {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.shadow {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-/* Animations */
-@keyframes shine {
-  100% {
-    left: 125%;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes layer-bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-@keyframes layer-bounceOut {
-  100% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  30% {
-    transform: scale(1.05);
-  }
-  0% {
-    transform: scale(1);
-  }
 }
 /*! 布局相关 */
 .side {
@@ -434,62 +490,6 @@ img {
   position: relative;
   display: block;
   transition: all 0.2s ease;
-}
-.menu li a .ico {
-  width: 16px;
-  height: 16px;
-  margin-right: 14px;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: inline-block;
-}
-.menu li a .ico::before {
-  content: "\ed0f";
-  font-size: 21px;
-  color: var(--color-text);
-  font-family: zblog;
-}
-.menu li a .ico.ico-home::before {
-  content: "\ec10";
-}
-.menu li a .ico.ico-newpost::before {
-  content: "\ec86";
-}
-.menu li a .ico.ico-article::before {
-  content: "\ecd3";
-}
-.menu li a .ico.ico-page::before {
-  content: "\eac2";
-}
-.menu li a .ico.ico-category::before {
-  content: "\f181";
-}
-.menu li a .ico.ico-tag::before {
-  content: "\f023";
-}
-.menu li a .ico.ico-cmt::before {
-  content: "\ef44";
-}
-.menu li a .ico.ico-file::before {
-  content: "\ea86";
-}
-.menu li a .ico.ico-user::before {
-  content: "\ea09";
-}
-.menu li a .ico.ico-module::before {
-  content: "\ee7f";
-}
-.menu li a .ico.ico-theme::before {
-  content: "\f1d5";
-}
-.menu li a .ico.ico-plugin::before {
-  content: "\f019";
-}
-.menu li a .ico.ico-setting::before {
-  content: "\f0e4";
-}
-.menu li a .ico.ico-appstore::before {
-  content: "\f3a7";
 }
 .menu li a:hover {
   background: var(--color-surface-muted);
