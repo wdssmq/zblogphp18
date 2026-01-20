@@ -123,24 +123,17 @@
   left: -75%;
   z-index: 2;
   display: block;
-  -webkit-transform: skewX(-17deg);
-  -moz-transform: skewX(-17deg);
-  -o-transform: skewX(-17deg);
-  -ms-transform: skewX(-17deg);
   transform: skewX(-17deg);
   pointer-events: none;
 }
 
 .logo a:hover::before {
-  -webkit-animation: shine 1s;
-  -moz-animation: shine 1s;
   animation: shine 1s;
 }
 
 .menu {
   overflow-y: auto;
   scrollbar-width: none;
-  -ms-overflow-style: none;
   flex: 1;
 
   ul {
@@ -276,9 +269,6 @@
     top: 50%;
     left: 28px;
     transform: translateY(-50%);
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
   }
 
@@ -290,12 +280,7 @@
     top: 50%;
     left: 50%;
     display: block;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    -webkit-transition: all 0.1s ease-in;
-    -moz-transition: all 0.1s ease-in;
-    -o-transition: all 0.1s ease-in;
     transition: all 0.1s ease-in;
   }
 
@@ -309,8 +294,6 @@
 
   &ico.on span {
     background-color: var(--color-text);
-    -webkit-transform-origin: 0;
-    -moz-transform-origin: 0;
     transform-origin: 0;
   }
 
