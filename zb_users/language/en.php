@@ -301,6 +301,8 @@ return [
         'video_ai_key'                      => 'Video AI Key',
         'video_ai_model'                    => 'Video AI Model',
         'link'                              => 'Link',
+        'href'                              => 'href',
+        'text'                              => 'text',
         ''                                  => '',
     ],
 

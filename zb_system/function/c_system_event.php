@@ -1917,6 +1917,28 @@ function PostModule()
         $mod->HtmlID = $mod->FileName;
     }
 
+    if ($mod->Type == 'ul') {
+        $array = [];
+        $j = count($_POST['href']);
+        for ($i = 0; $i <= $j-1; $i++)
+        {
+            $link = new stdClass();
+            $link->href = $_POST['href'][$i];
+            $link->content = $_POST['content'][$i];
+            foreach ($_POST as $key => $post) {
+                if (is_array($post) && $key != 'href' && $key != 'content') {
+                    @$link->$key = $post[$i];
+                }
+            }
+            if (!empty($link->href) && !empty($link->content)) {
+                $array[] = $link;  
+            }
+        }
+    }
+    $mod->Links = $array;
+    //var_dump($array, $mod->Links);
+//die;
+
     FilterMeta($mod);
 
     foreach ($GLOBALS['hooks']['Filter_Plugin_PostModule_Core'] as $fpname => &$fpsignal) {

@@ -49,6 +49,13 @@ abstract class Base__Module extends Base
 
             return;
         }
+        if ('Links' == $name) {
+            $this->private_links = $value;
+            $this->Metas->links = json_encode($this->private_links, JSON_UNESCAPED_UNICODE);
+            if (!is_array($this->private_links)) {
+                $this->private_links = [];
+            }
+        }
         foreach ($GLOBALS['hooks']['Filter_Plugin_Module_Set'] as $fpname => &$fpsignal) {
             $fpname($this, $name, $value);
         }

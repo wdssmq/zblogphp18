@@ -25,12 +25,15 @@
 {php}<?php
 foreach ($mod->Links as $link) {
     ?>{/php}
-    <p><input class="edit" size="40" name="link_href" type="text" value="{FormatString($link->href, '[html-format]')}" />
-    <input class="edit" size="40" name="link_content" type="text" value="{FormatString($link->content, '[html-format]')}" />
+    <p><input class="edit" size="40" name="href[]" type="text" value="{FormatString($link->href, '[html-format]')}" />
+    <input class="edit" size="40" name="content[]" type="text" value="{FormatString($link->content, '[html-format]')}" />
     </p>
     {php}<?php
 }
 ?>{/php}
+    <p><input class="edit" size="40" name="content[]" type="text" placeholder="{$zbp->lang['msg']['text']}" value="" />
+    <input class="edit" size="40" name="href[]" type="text" placeholder="{$zbp->lang['msg']['href']}" value="" />
+    </p>
     {/if}
     {if $mod->Type == 'div'}
     <p>
