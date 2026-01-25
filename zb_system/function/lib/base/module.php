@@ -123,6 +123,7 @@ abstract class Base__Module extends Base
             if (in_array($this->FileName, ['catalog', 'calendar', 'comments', 'previous', 'archives', 'tags', 'statistics', 'authors'])) {
                 return true;
             }
+
             return false;
         }
         foreach ($GLOBALS['hooks']['Filter_Plugin_Module_Get'] as $fpname => &$fpsignal) {
