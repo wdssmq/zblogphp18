@@ -8,7 +8,13 @@
 {/if}
 
 {if $module.Type=='ul'}
-<ul>{$module.Content}</ul>
+<ul>
+
+{foreach $module.Links as $link}
+<li><a href="{$link.href}">{$link.content}</a></li>
+{/foreach}
+
+</ul>
 {/if}
 
 </dd>
