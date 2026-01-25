@@ -278,9 +278,16 @@ abstract class Base__Module extends Base
                 $p = is_array($p) ? $p : [];
 
                 $this->Content = call_user_func_array(ParseFilterPlugin($f), $p);
-
                 return true;
             }
+        }
+        if (isset($this->Metas->system_function)) {
+            $f = $this->Metas->system_function;
+            $p = $this->Metas->system_parameters;
+            $p = is_array($p) ? $p : [];
+
+            $this->Content = call_user_func_array(ParseFilterPlugin($f), $p);
+            return true;
         }
 
         return false;
