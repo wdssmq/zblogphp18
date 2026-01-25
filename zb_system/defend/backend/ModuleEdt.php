@@ -18,7 +18,7 @@
     <input id="edtHtmlID" class="edit" size="40" name="HtmlID" type="hidden" value="{FormatString($mod->HtmlID, '[html-format]')}" />
     <!-- type -->
     <input id="edtType" class="edit" size="40" name="Type" type="hidden" value="{FormatString($mod->Type, '[html-format]')}" />
-    {if $mod->Type == 'ul'}
+    {if $mod->AutoContent == false && $mod->Type == 'ul'}
     <p>
         <span class="title">{$zbp->lang['msg']['link']}:</span><span class="star">(*)</span><br />
     </p>
@@ -35,7 +35,7 @@ foreach ($mod->Links as $link) {
     <input class="edit" size="40" name="href[]" type="text" placeholder="{$zbp->lang['msg']['href']}" value="" />
     </p>
     {/if}
-    {if $mod->Type == 'div'}
+    {if $mod->AutoContent == false && $mod->Type == 'div'}
     <p>
         <span class="title">{$zbp->lang['msg']['content']}:</span><br />
         <textarea name="Content" id="Content" cols="80" rows="12">{htmlspecialchars($mod->Content)}</textarea>

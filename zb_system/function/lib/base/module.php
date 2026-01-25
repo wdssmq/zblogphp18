@@ -119,6 +119,12 @@ abstract class Base__Module extends Base
 
             return $s;
         }
+        if ('AutoContent' == $name) {
+            if (in_array($this->FileName, ['catalog', 'calendar', 'comments', 'previous', 'archives', 'tags', 'statistics', 'authors'])) {
+                return true;
+            }
+            return false;
+        }
         foreach ($GLOBALS['hooks']['Filter_Plugin_Module_Get'] as $fpname => &$fpsignal) {
             $fpreturn = $fpname($this, $name);
             if (PLUGIN_EXITSIGNAL_RETURN == $fpsignal) {
@@ -151,9 +157,9 @@ abstract class Base__Module extends Base
         }
         $this->FileName = strtolower($this->FileName);
 
-        //if ($this->Type == 'ul') {
-        //    $this->Metas->links = [];
-        //}
+        if (empty($this->HtmlID)) {
+            $this->HtmlID = $this->FileName;
+        }
         if (!empty($this->private_links)) {
             $this->Metas->links = json_encode($this->private_links, JSON_UNESCAPED_UNICODE);
         }
