@@ -75,7 +75,7 @@ class ModuleBuilder
     {
         global $zbp;
 
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
 
         $tags['style'] = $zbp->option['ZC_MODULE_CATALOG_STYLE'];
@@ -100,7 +100,7 @@ class ModuleBuilder
     public static function Calendar($date = '')
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
 
         if ('' == $date) {
@@ -197,7 +197,7 @@ class ModuleBuilder
     public static function Comments()
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
 
         $i = $zbp->modulesbyfilename['comments']->MaxLi;
@@ -224,7 +224,7 @@ class ModuleBuilder
     public static function LatestArticles()
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
 
         $i = $zbp->modulesbyfilename['previous']->MaxLi;
@@ -251,7 +251,7 @@ class ModuleBuilder
     public static function Archives()
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
         $urls = []; //array(url,name,count);
 
@@ -352,48 +352,10 @@ class ModuleBuilder
     public static function Navbar()
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
 
         $s = $zbp->modulesbyfilename['navbar']->Content;
-
-        $a = [];
-        preg_match_all('/<li id="navbar-(page|category|tag)-(\d+)">/', $s, $a);
-
-        $b = $a[1];
-        $c = $a[2];
-        foreach ($b as $key => $value) {
-            if ('page' == $b[$key]) {
-                $type = 'page';
-                $id = $c[$key];
-                $o = $zbp->GetPostByID($id);
-                $url = $o->Url;
-                $name = $o->Title;
-
-                $a = '<li id="navbar-' . $type . '-' . $id . '"><a href="' . $url . '">' . $name . '</a></li>';
-                $s = preg_replace('/<li id="navbar-' . $type . '-' . $id . '">.*?<\/a><\/li>/', $a, $s);
-            }
-            if ('category' == $b[$key]) {
-                $type = 'category';
-                $id = $c[$key];
-                $o = $zbp->GetCategoryByID($id);
-                $url = $o->Url;
-                $name = $o->Name;
-
-                $a = '<li id="navbar-' . $type . '-' . $id . '"><a href="' . $url . '">' . $name . '</a></li>';
-                $s = preg_replace('/<li id="navbar-' . $type . '-' . $id . '">.*?<\/a><\/li>/', $a, $s);
-            }
-            if ('tag' == $b[$key]) {
-                $type = 'tag';
-                $id = $c[$key];
-                $o = $zbp->GetTagByID($id);
-                $url = $o->Url;
-                $name = $o->Name;
-
-                $a = '<li id="navbar-' . $type . '-' . $id . '"><a href="' . $url . '">' . $name . '</a></li>';
-                $s = preg_replace('/<li id="navbar-' . $type . '-' . $id . '">.*?<\/a><\/li>/', $a, $s);
-            }
-        }
 
         $tags['content'] = $s;
 
@@ -415,7 +377,7 @@ class ModuleBuilder
     public static function TagList($type = 0)
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
         $urls = []; //array(real tag);
 
@@ -455,7 +417,7 @@ class ModuleBuilder
     public static function Authors($level = 4)
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
         $authors = [];
         $level = $level || $zbp->actions['ArticleEdt'];
@@ -496,7 +458,7 @@ class ModuleBuilder
     public static function Statistics($array = [])
     {
         global $zbp;
-        $template = $zbp->GetTemplateAdmin();
+        $template = $zbp->GetTemplate();
         $tags = [];
         $allinfo = [];
 
