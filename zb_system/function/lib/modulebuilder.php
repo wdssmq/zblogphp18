@@ -85,6 +85,17 @@ class ModuleBuilder
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-catalog');
 
+        $links = [];
+        $catalogs = $zbp->categoriesbyorder_type[$type];
+        foreach ($catalogs as $catalog ) {
+            $link = new StdClass();
+            $link->href = $catalog->Url;
+            $link->title = $catalog->Name;
+            $link->content= $catalog->Name;
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['catalog']->Links = $links;
+
         return $ret;
     }
 
@@ -211,6 +222,16 @@ class ModuleBuilder
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-comments');
 
+        $links = [];
+        foreach ($comments as $comment) {
+            $link = new StdClass();
+            $link->href = $comment->Post->Url;
+            $link->title = htmlspecialchars($comment->Author->StaticName . ' @ ' . $comment->Time());
+            $link->content= FormatString($comment->Content, '[noenter]');
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['comments']->Links = $links;
+
         return $ret;
     }
 
@@ -237,6 +258,16 @@ class ModuleBuilder
 
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-previous');
+
+        $links = [];
+        foreach ($articles as $article) {
+            $link = new StdClass();
+            $link->href = $article->Url;
+            $link->title = $article->Title;
+            $link->content= $article->Title;
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['previous']->Links = $links;
 
         return $ret;
     }
@@ -339,6 +370,17 @@ class ModuleBuilder
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-archives');
 
+        $links = [];
+        foreach ($urls as $url) {
+            $link = new StdClass();
+            $link->href = $url['Url'];
+            $link->title = $url['Name'];
+            $link->content= $url['Name'];
+            $link->data_count = $url['Count'];
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['archives']->Links = $links;
+
         return $ret;
     }
 
@@ -403,6 +445,17 @@ class ModuleBuilder
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-tags');
 
+        $links = [];
+        foreach ($urls as $tag) {
+            $link = new StdClass();
+            $link->href = $tag->Url;
+            $link->title = $tag->Name;
+            $link->content = $tag->Name;
+            $link->data_count = $tag->Count;
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['tags']->Links = $links;
+
         return $ret;
     }
 
@@ -443,6 +496,18 @@ class ModuleBuilder
         $tags['authors'] = $authors;
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-authors');
+
+        $links = [];
+        foreach ($authors as $author) {
+            $link = new StdClass();
+            $link->href = $author->Url;
+            $link->title = $author->StaticName;
+            $link->content = $author->StaticName;
+            $link->data_count = $author->Articles;
+            $link->data_count_articles = $author->Articles;
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['authors']->Links = $links;
 
         return $ret;
     }
@@ -510,6 +575,17 @@ class ModuleBuilder
         $tags['allinfo'] = $allinfo;
         $template->SetTagsAll($tags);
         $ret = $template->Output('module-statistics');
+
+        $links = [];
+        foreach ($allinfo as $info) {
+            $link = new StdClass();
+            $link->href = '';
+            $link->title = $info['name'];
+            $link->content = $info['name'] . ':' . $info['count'];
+            $link->data_count = $info['count'];
+            $links[] = $link;
+        }
+        $zbp->modulesbyfilename['statistics']->Links = $links;
 
         return $ret;
     }

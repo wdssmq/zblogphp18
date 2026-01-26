@@ -5051,7 +5051,7 @@ class ZBlogPHP
         $m = $this->modulesbyfilename['navbar'];
         $links = $m->Links;
         foreach ($links as $key => $link) {
-            if ($link->li_id == $li_id) {
+            if (isset($link->li_id) && $link->li_id == $li_id) {
                 unset($links[$key]);
             }
         }
@@ -5077,7 +5077,7 @@ class ZBlogPHP
         $m = $this->modulesbyfilename['navbar'];
         $links = $m->Links;
         foreach ($links as $key => $link) {
-            if ($link->li_id == $li_id) {
+            if (isset($link->li_id) && $link->li_id == $li_id) {
                 return true;
             }
         }
