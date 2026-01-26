@@ -25,14 +25,16 @@
 {php}<?php
 foreach ($mod->Links as $link) {
     ?>{/php}
-    <p><input class="edit" size="60" name="href[]" type="text" value="{FormatString($link->href, '[html-format]')}" />
-    <input class="edit" size="40" name="content[]" type="text" value="{FormatString($link->content, '[html-format]')}" />
+    <p><input class="edit" size="50" name="href[]" type="text" placeholder="{$zbp->lang['msg']['href']}" value="{FormatString(@$link->href, '[html-format]')}" />
+    <input class="edit" size="30" name="content[]" type="text" placeholder="{$zbp->lang['msg']['text']}" value="{FormatString(@$link->content, '[html-format]')}" />
+    <input class="edit" size="30" name="target[]" type="text" placeholder="Target" value="{FormatString(@$link->target, '[html-format]')}" />
     </p>
     {php}<?php
 }
 ?>{/php}
-    <p><input class="edit" size="60" name="href[]" type="text" placeholder="{$zbp->lang['msg']['href']}" value="" />
-    <input class="edit" size="40" name="content[]" type="text" placeholder="{$zbp->lang['msg']['text']}" value="" />
+    <p><input class="edit" size="50" name="href[]" type="text" placeholder="{$zbp->lang['msg']['href']}" value="" />
+    <input class="edit" size="30" name="content[]" type="text" placeholder="{$zbp->lang['msg']['text']}" value="" />
+    <input class="edit" size="30" name="target[]" type="text" placeholder="Target" value="" />
     </p>
     {/if}
     {if $mod->AutoContent == false && $mod->Type == 'div'}

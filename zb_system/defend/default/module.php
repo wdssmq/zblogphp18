@@ -14,9 +14,13 @@
 {php}
   echo '<li><'.'a ';
   foreach ($link as $link_key => $link_value) {
-    if ($link_key!='content'||($link_key=='target'&&empty($link_value))) {
-        $link_key=str_replace('data_','data-',$link_key);
-        echo $link_key.'="'.$link_value.'" ';
+    if ($link_key=='content') {
+
+    }elseif($link_key=='target' && empty($link_value)) {
+
+    }else{
+      $link_key=str_replace('data_','data-',$link_key);
+      echo $link_key.'="'.$link_value.'" ';
     }
   }
   echo '>'.$link->content.'</a></li>';
