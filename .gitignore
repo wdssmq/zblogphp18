@@ -11,3 +11,4 @@ zb_users/cache/
 zb_users/data/
 zb_users/logs/
 zb_users/upload/
+*.zip
