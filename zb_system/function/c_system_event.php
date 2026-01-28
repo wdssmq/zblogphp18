@@ -1914,11 +1914,11 @@ function PostModule()
     }
 
     if (isset($_POST['custom_content'])) {
-        if ($mod->Type == 'ul' && $_POST['custom_content'] === '1') {
+        if ('ul' == $mod->Type && '1' === $_POST['custom_content']) {
             $mod->ConvertLink();
             $mod->Type = 'div';
         }
-        if ($mod->Type == 'div' && $_POST['custom_content'] === '0') {
+        if ('div' == $mod->Type && '0' === $_POST['custom_content']) {
             $mod->ParseLink();
             $mod->Type = 'ul';
         }
