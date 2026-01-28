@@ -1932,7 +1932,7 @@ function PostModule()
                 $link = new stdClass();
                 $link->href = $_POST['href'][$i];
                 $link->content = $_POST['content'][$i];
-                if (isset($_POST['li_id']) && isset($_POST['li_id'][$i])) {
+                if (isset($_POST['li_id'], $_POST['li_id'][$i])) {
                     $link->li_id = $_POST['li_id'][$i];
                 }
                 foreach ($_POST as $key => $post) {
