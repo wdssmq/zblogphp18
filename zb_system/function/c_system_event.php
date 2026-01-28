@@ -1892,11 +1892,6 @@ function PostModule()
     if (!isset($_POST['Type'])) {
         $_POST['Type'] = 'ul';
     }
-    // if (isset($_POST['Content'])) {
-    //     if ($_POST['Type'] != 'div') {
-    //         // div不再过滤\r和\n//$_POST['Content'] = str_replace(array("\r", "\n"), array('', ''), $_POST['Content']);
-    //     }
-    // }
 
     /* @var Module $mod */
     $mod = $zbp->GetModuleByID(GetVars('ID', 'POST'));
@@ -1916,6 +1911,17 @@ function PostModule()
 
     if (empty($mod->HtmlID)) {
         $mod->HtmlID = $mod->FileName;
+    }
+
+    if (isset($_POST['custom_content'])) {
+        if ($mod->Type == 'ul' && $_POST['custom_content'] === '1') {
+            $mod->ConvertLink();
+            $mod->Type = 'div';
+        }
+        if ($mod->Type == 'div' && $_POST['custom_content'] === '0') {
+            $mod->ParseLink();
+            $mod->Type = 'ul';
+        }
     }
 
     if ('ul' == $mod->Type && false == $mod->AutoContent) {

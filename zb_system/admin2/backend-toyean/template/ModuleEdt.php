@@ -63,9 +63,13 @@ foreach ($mod->Links as $link) {
     <!-- maxli -->
     <input type="hidden" name="MaxLi" value="{$mod->MaxLi}" size="40" />
     <!-- no refresh content -->
-    <p {if $mod->SourceType == 'themeinclude'}class="hidden"{/if}>
+    <p style="display:none;" {if $mod->SourceType == 'themeinclude'}class="hidden"{/if}>
         <span class="title">{$zbp->lang['msg']['no_refresh_content']}:</span>
         <input type="text" id="NoRefresh" name="NoRefresh" class="checkbox" value="{$mod->NoRefresh}" />
+    </p>
+    <p {if $mod->SourceType != 'user' && $mod->SourceType != 'plugin' && $mod->SourceType != 'theme'}class="hidden"{/if}>
+        <span class="title">{$zbp->lang['msg']['custom_content']}:</span>
+        <input type="text" id="custom_content" name="custom_content" class="checkbox" value="{if $mod->Type == 'div'}1{else}0{/if}" />
     </p>
     <div id='response' class='editmod2'>
         {php}

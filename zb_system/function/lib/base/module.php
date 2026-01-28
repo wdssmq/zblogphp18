@@ -316,6 +316,27 @@ abstract class Base__Module extends Base
         return $inused;
     }
 
+
+    public function ConvertLink()
+    {
+        $s = '';
+        foreach ($this->Links as $link) {
+            $s .= '<li><'.'a ';
+            foreach ($link as $link_key => $link_value) {
+                if ($link_key=='content') {
+
+                }elseif($link_key=='target' && empty($link_value)) {
+
+                }else{
+                    $link_key=str_replace('data_','data-',$link_key);
+                    $s .= $link_key.'="'.$link_value.'" ';
+                }
+            }
+            $s .= '>'.$link->content.'</a></li>';
+        }
+        $this->Content = $s;
+    }
+
     public function ParseLink()
     {
         $s = $this->Content;
