@@ -119,16 +119,21 @@ abstract class Base__Module extends Base
 
             return $this->private_links;
         }
-        if ('ContentWithoutId' == $name) {
-            $s = preg_replace("/(id=\"[^\\s]*\"|id='[^\\s]*')/i", '', $this->Content);
-
-            return $s;
-        }
         if ('AutoContent' == $name) {
+            if ('navbar' == $this->FileName) {
+                return false;
+            }
             if (in_array($this->FileName, ['catalog', 'calendar', 'comments', 'previous', 'archives', 'tags', 'statistics', 'authors'])) {
                 return true;
             }
-
+            if (isset(ModuleBuilder::$List[$this->FileName])) {
+                if (isset(ModuleBuilder::$List[$this->FileName]['function'])) {
+                    return true;
+                }
+            }
+            if (isset($this->Metas->system_function)) {
+                return true;
+            }
             return false;
         }
         foreach ($GLOBALS['hooks']['Filter_Plugin_Module_Get'] as $fpname => &$fpsignal) {
