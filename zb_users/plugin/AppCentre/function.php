@@ -19,8 +19,8 @@ function AppCentre_SubMenus($id)
     }
 
     if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
-        if ($zbp->option['ZC_BACKEND_ID'] === 'backend-legacy') {
-        echo '<div style="flex-grow: 1;"></div>';
+        if ('backend-legacy' === $zbp->option['ZC_BACKEND_ID']) {
+            echo '<div style="flex-grow: 1;"></div>';
         }
     }
 
