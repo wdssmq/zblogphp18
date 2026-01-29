@@ -1,10 +1,7 @@
 <?php
 require '../../../zb_system/function/c_system_base.php';
-
 require '../../../zb_system/function/c_system_admin.php';
-
 require dirname(__FILE__) . '/function.php';
-
 if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
     require '../../../zb_system/admin2/function/admin2_function.php';
 }
@@ -70,6 +67,12 @@ if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
         'Js_Nonce' => $nonce,
         'ActiveLeftMenu' => 'aAppCentre',
     ]);
+    ob_start();
+    foreach ($GLOBALS['hooks']['Filter_Plugin_AppCentre_Client_SubMenu'] as $fpname => &$fpsignal) {
+        $fpname();
+    }
+    AppCentre_SubMenus(GetVars('method', 'GET') == 'check' ? 2 : 1);
+    $ActionInfo->SubMenu = ob_get_clean();
 
     // 输出页面
     $zbp->template_admin->SetTags('title', $ActionInfo->Title);

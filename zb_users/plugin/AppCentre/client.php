@@ -2,6 +2,9 @@
 require '../../../zb_system/function/c_system_base.php';
 require '../../../zb_system/function/c_system_admin.php';
 require dirname(__FILE__) . '/function.php';
+if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+    require '../../../zb_system/admin2/function/admin2_function.php';
+}
 $zbp->Load();
 
 $action = 'root';
@@ -59,6 +62,67 @@ if (GetVars('act') == 'logout') {
     Redirect('./client.php');
     die;
 }
+
+
+if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+    ob_start();
+
+if (!$zbp->Config('AppCentre')->token) { ?>
+            <div class="divHeader2"><?php echo $zbp->lang['AppCentre']['account_login']; ?></div>
+            <form action="?act=login&token=<?php echo $zbp->GetToken('AppCentre'); ?>" method="post">
+              <table width="100%" border="0">
+                <tr height="32">
+                  <th align="center"><?php echo $zbp->lang['AppCentre']['account_login']; ?>
+                    </td>
+                </tr>
+                <tr height="32">
+                  <td  align="center"><?php echo $zbp->lang['AppCentre']['token']; ?>:
+                    <input type="password" name="app_token" value="" style="width:40%"/></td>
+                </tr>
+                <tr height="32" align="center">
+                  <td align="center"><input type="submit" value="<?php echo $zbp->lang['msg']['login']; ?>" class="button" /></td>
+                </tr>
+                <tr height="32" align="center">
+                  <td align="center"><a href="https://user.zblogcn.com/user/security/token" target="_blank"><?php echo $zbp->lang['AppCentre']['get_token']; ?></a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="https://uc.zblogcn.com/user/security/token" target="_blank"><?php echo $zbp->lang['AppCentre']['get_token2']; ?></a></td>
+                </tr>
+              </table>
+            </form>
+    <?php
+} else {
+//已登录
+    Server_Open('shoplist');
+}
+
+    $content = ob_get_clean();
+
+
+    $ActionInfo = zbp_admin2_GetActionInfo($action, (object) [
+        'Title' => $blogtitle,
+        'Header' => $blogtitle,
+        'HeaderIcon' => $bloghost . 'zb_users/plugin/AppCentre/logo.png',
+        'Content' => $content,
+        'Js_Nonce' => @$nonce,
+        'ActiveLeftMenu' => 'aAppCentre',
+    ]);
+    ob_start();
+    foreach ($GLOBALS['hooks']['Filter_Plugin_AppCentre_Client_SubMenu'] as $fpname => &$fpsignal) {
+        $fpname();
+    }
+    AppCentre_SubMenus(9);
+    $ActionInfo->SubMenu = ob_get_clean();
+
+    // 输出页面
+    $zbp->template_admin->SetTags('title', $ActionInfo->Title);
+    $zbp->template_admin->SetTags('main', $ActionInfo);
+    $zbp->template_admin->Display('index');
+
+    RunTime();
+
+    exit;
+}
+
 
 require $blogpath . 'zb_system/admin/admin_header.php';
 require $blogpath . 'zb_system/admin/admin_top.php';
