@@ -270,7 +270,7 @@ if (($newbuild - $nowbuild) > 0) {
         echo '<input id="updatenow" type="button" onclick="location.href=\'?update=' . $nowbuild . '-' . $newbuild . '\';$(this).hide();" value="' . $zbp->lang['AppCentre']['upgrade_program'] . '" />';
     } ?>
               </p>
-              <div class="divHeader"><?php echo $zbp->lang['AppCentre']['verify_core_file']; ?>&nbsp;&nbsp;<span id="checknow"><a href="?check=now" title="<?php echo $zbp->lang['AppCentre']['start_check']; ?>"><img src="images/refresh.png" width="16" alt="<?php echo $zbp->lang['AppCentre']['check']; ?>" /></a></span></div>
+              <div class="" style="padding-top:1.5em;padding-bottom:1.5em;"><?php echo $zbp->lang['AppCentre']['verify_core_file']; ?>&nbsp;&nbsp;<span id="checknow"><a href="?check=now" title="<?php echo $zbp->lang['AppCentre']['start_check']; ?>"><img src="images/refresh.png" width="16" alt="<?php echo $zbp->lang['AppCentre']['check']; ?>" /></a></span></div>
               <table class="table_hover table_striped tableFull">
                 <tr>
                   <th width='78%'><?php echo $zbp->lang['AppCentre']['filename']; ?></th>
