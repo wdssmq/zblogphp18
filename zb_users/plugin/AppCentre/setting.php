@@ -2,7 +2,9 @@
 require '../../../zb_system/function/c_system_base.php';
 require '../../../zb_system/function/c_system_admin.php';
 require dirname(__FILE__) . '/function.php';
-
+if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+    require '../../../zb_system/admin2/function/admin2_function.php';
+}
 $zbp->Load();
 
 $action = 'root';
@@ -40,6 +42,10 @@ if (GetVars('act') == 'save') {
 
     $zbp->SetHint('good');
     Redirect('./setting.php');
+}
+
+if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+
 }
 
 require $blogpath . 'zb_system/admin/admin_header.php';

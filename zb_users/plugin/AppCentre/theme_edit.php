@@ -4,7 +4,9 @@ require '../../../zb_system/function/c_system_base.php';
 require '../../../zb_system/function/c_system_admin.php';
 
 require dirname(__FILE__) . '/function.php';
-
+if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+    require '../../../zb_system/admin2/function/admin2_function.php';
+}
 $zbp->Load();
 
 $action = 'root';
@@ -207,6 +209,13 @@ if (count($_POST) > 0) {
     $zbp->SetHint('good', '<a href="submit.php?type=theme&id=' . $app->id . $t . '">' . $zbp->lang['AppCentre']['submitted successfully'] . '</a>');
     Redirect($_SERVER["HTTP_REFERER"]);
 }
+
+
+if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+
+}
+
+
 
 require $blogpath . 'zb_system/admin/admin_header.php';
 require $blogpath . 'zb_system/admin/admin_top.php';
