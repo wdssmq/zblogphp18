@@ -1,6 +1,8 @@
 <?php
 require '../../../zb_system/function/c_system_base.php';
+
 require '../../../zb_system/function/c_system_admin.php';
+
 require dirname(__FILE__) . '/function.php';
 if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
     require '../../../zb_system/admin2/function/admin2_function.php';
@@ -10,12 +12,14 @@ $zbp->Load();
 $action = 'root';
 if (!$zbp->CheckRights($action)) {
     $zbp->ShowError(6);
-    die();
+
+    exit();
 }
 
 if (!$zbp->CheckPlugin('AppCentre')) {
     $zbp->ShowError(48);
-    die();
+
+    exit();
 }
 
 if (count($_POST) > 0) {
@@ -28,7 +32,6 @@ if (count($_POST) > 0) {
 $blogtitle = AppCentre_GetBlogTitle() . '-' . $zbp->lang['AppCentre']['safe_mode'];
 
 if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
-
 }
 
 require $blogpath . 'zb_system/admin/admin_header.php';
@@ -62,15 +65,15 @@ AppCentre_SubMenus(7);
 if (AppCentre_InSecurityMode()) {
     echo $zbp->lang['AppCentre']['turn_off_safe_mode_note'];
 } else {
-    echo $zbp->lang['AppCentre']['turn_on_safe_mode_note'];
-    ?>
+    echo $zbp->lang['AppCentre']['turn_on_safe_mode_note']; ?>
 <p>
 <form method="post">
     <?php if (function_exists('CheckIsRefererValid')) { ?>
 <input type="hidden" name="csrfToken" value="<?php echo $zbp->GetCSRFToken(); ?>">
     <?php } ?>
 <input type="submit" class="button" value="<?php echo $zbp->lang['AppCentre']['turn_on_safe_mode']; ?>"></form></p>
-<?php } ?>
+<?php
+} ?>
 </div>
     <script type="text/javascript">ActiveLeftMenu("aAppCentre");</script>
     <script type="text/javascript">AddHeaderIcon("<?php echo $bloghost . 'zb_users/plugin/AppCentre/logo.png'; ?>");</script>
@@ -82,4 +85,3 @@ if (AppCentre_InSecurityMode()) {
 require $blogpath . 'zb_system/admin/admin_footer.php';
 
 RunTime();
-

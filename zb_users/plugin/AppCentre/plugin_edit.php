@@ -12,17 +12,20 @@ $zbp->Load();
 $action = 'root';
 if (!$zbp->CheckRights($action)) {
     $zbp->ShowError(6);
-    die();
+
+    exit();
 }
 
 if (!$zbp->CheckPlugin('AppCentre')) {
     $zbp->ShowError(48);
-    die();
+
+    exit();
 }
 
 if (!$zbp->ValidToken(GetVars('token', 'GET'), 'AppCentre') && GetVars('id', 'GET')) {
     $zbp->ShowError(5, __FILE__, __LINE__);
-    die();
+
+    exit();
 }
 
 $blogtitle = AppCentre_GetBlogTitle() . '-' . $zbp->lang['AppCentre']['edit_app'];
@@ -31,25 +34,25 @@ AppCentre_CheckInSecurityMode();
 
 if (GetVars('id')) {
     $app = $zbp->LoadApp('plugin', GetVars('id'));
-    $mt = array();
+    $mt = [];
     $ft = GetFilesInDir($zbp->path . '/zb_users/plugin/' . $app->id . '/', 'php|inc|png');
     foreach ($ft as $f) {
         $mt[] = filemtime($f);
     }
     rsort($mt);
-    if (count($mt) == 0) {
+    if (0 == count($mt)) {
         $mt[] = time();
     }
 
     $app->modified = date('Y-m-d', reset($mt));
 } else {
-    $app = new App;
+    $app = new App();
     $app->price = 0;
     $app->version = '1.0';
     $app->pubdate = date('Y-m-d', time());
     $app->modified = date('Y-m-d', time());
     $v = array_keys($zbpvers);
-  //$app->adapted = (string) end($v);
+    //$app->adapted = (string) end($v);
     $app->adapted = $GLOBALS['blogversion'];
     $app->type = 'plugin';
     $app->author_name = $zbp->user->Name;
@@ -62,33 +65,36 @@ if (GetVars('id')) {
 if (count($_POST) > 0) {
     if (!$zbp->ValidToken(GetVars('token', 'POST'), 'AppCentre')) {
         $zbp->ShowError(5, __FILE__, __LINE__);
-        die();
+
+        exit();
     }
 
     $app->id = trim($_POST['app_id']);
-    if (!CheckRegExp($app->id, "/^[A-Za-z0-9_]{3,30}$/")) {
+    if (!CheckRegExp($app->id, '/^[A-Za-z0-9_]{3,30}$/')) {
         $zbp->ShowError($zbp->lang['AppCentre']['app_id_name_rule']);
-        die();
+
+        exit();
     }
     if (!GetVars('id')) {
         $app2 = $zbp->LoadApp('plugin', $app->id);
         if (property_exists($app2, 'isloaded') && $app2->isloaded) {
             $zbp->ShowError($zbp->lang['AppCentre']['app_with_same_name']);
-            die();
+
+            exit();
         }
         @mkdir($zbp->usersdir . 'plugin/' . $app->id . '/');
         @copy($zbp->usersdir . 'plugin/AppCentre/images/plugin.png', $zbp->usersdir . 'plugin/' . $app->id . '/logo.png');
 
         if (trim($_POST['app_path'])) {
             $file = file_get_contents('tpl/main.html');
-            $file = str_replace("<%appid%>", $app->id, $file);
-            $file = str_replace("<%appname%>", trim($_POST['app_name']), $file);
+            $file = str_replace('<%appid%>', $app->id, $file);
+            $file = str_replace('<%appname%>', trim($_POST['app_name']), $file);
             $path = $zbp->usersdir . 'plugin/' . $app->id . '/' . trim($_POST['app_path']);
             @file_put_contents($path, $file);
         }
         if (trim($_POST['app_include'])) {
             $file = file_get_contents('tpl/include.html');
-            $file = str_replace("<%appid%>", $app->id, $file);
+            $file = str_replace('<%appid%>', $app->id, $file);
             $path = $zbp->usersdir . 'plugin/' . $app->id . '/include.php';
             @file_put_contents($path, $file);
         }
@@ -102,12 +108,12 @@ if (count($_POST) > 0) {
         $app->version = (float) $_POST['app_version'];
     } else {
         $app->version = trim((int) $_POST['app_version1']) . '.' . trim((int) $_POST['app_version2']);
-        if (trim($_POST['app_version3']) != null) {
+        if (null != trim($_POST['app_version3'])) {
             $app->version .= '.' . trim((int) $_POST['app_version3']);
         }
     }
 
-    if ($app->version === 1) {
+    if (1 === $app->version) {
         $app->version = '1.0';
     }
 
@@ -140,17 +146,14 @@ if (count($_POST) > 0) {
 
     $t = '&token=' . $zbp->GetToken('AppCentre');
     $zbp->SetHint('good', '<a href="submit.php?type=plugin&id=' . $app->id . $t . '">' . $zbp->lang['AppCentre']['submitted successfully'] . '</a>');
-    Redirect($_SERVER["HTTP_REFERER"]);
+    Redirect($_SERVER['HTTP_REFERER']);
 }
-
 
 if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
-
 }
 
-
-
 require $blogpath . 'zb_system/admin/admin_header.php';
+
 require $blogpath . 'zb_system/admin/admin_top.php';
 
 ?>
@@ -161,7 +164,7 @@ require $blogpath . 'zb_system/admin/admin_top.php';
 foreach ($GLOBALS['hooks']['Filter_Plugin_AppCentre_Client_SubMenu'] as $fpname => &$fpsignal) {
     $fpname();
 }
-AppCentre_SubMenus(GetVars('id', 'GET') == '' ? 5 : '');
+AppCentre_SubMenus('' == GetVars('id', 'GET') ? 5 : '');
 ?></div>
   <div id="divMain2">
 
@@ -336,4 +339,3 @@ if (function_exists('OutputOptionItemsOfMemberLevel')) {
 require $blogpath . 'zb_system/admin/admin_footer.php';
 
 RunTime();
-

@@ -1,6 +1,8 @@
 <?php
 require '../../../zb_system/function/c_system_base.php';
+
 require '../../../zb_system/function/c_system_admin.php';
+
 require dirname(__FILE__) . '/function.php';
 if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
     require '../../../zb_system/admin2/function/admin2_function.php';
@@ -10,34 +12,36 @@ $zbp->Load();
 $action = 'root';
 if (!$zbp->CheckRights($action)) {
     $zbp->ShowError(6);
-    die();
+
+    exit();
 }
 
 if (!$zbp->CheckPlugin('AppCentre')) {
     $zbp->ShowError(48);
-    die();
+
+    exit();
 }
 
 AppCentre_CheckInSecurityMode();
 
 $blogtitle = AppCentre_GetBlogTitle() . '-' . $zbp->lang['AppCentre']['settings'];
 
-
-if (GetVars('act') == 'save') {
+if ('save' == GetVars('act')) {
     if (!$zbp->ValidToken(GetVars('token', 'POST'), 'AppCentre')) {
         $zbp->ShowError(5, __FILE__, __LINE__);
-        die();
+
+        exit();
     }
-    $zbp->Config('AppCentre')->enabledcheck = (int) GetVars("app_enabledcheck");
-    $zbp->Config('AppCentre')->checkbeta = (int) GetVars("app_checkbeta");
-    $zbp->Config('AppCentre')->enabledevelop = (int) GetVars("app_enabledevelop");
-    $zbp->Config('AppCentre')->enablegzipapp = (int) GetVars("app_enablegzipapp");
-    $zbp->Config('AppCentre')->networktype = trim(GetVars("app_networktype"));
-    $zbp->Config('AppCentre')->firstdomain = trim(GetVars("app_firstdomain"));
-    $zbp->Config('AppCentre')->enablepluginsort = trim(GetVars("app_enablepluginsort"));
-    $zbp->Config('AppCentre')->enablemultidownload = trim(GetVars("app_enablemultidownload"));
-    $zbp->Config('AppCentre')->app_ignores = GetVars("app_ignores");
-    $zbp->Config('AppCentre')->forcehttps = (int) GetVars("app_forcehttps");
+    $zbp->Config('AppCentre')->enabledcheck = (int) GetVars('app_enabledcheck');
+    $zbp->Config('AppCentre')->checkbeta = (int) GetVars('app_checkbeta');
+    $zbp->Config('AppCentre')->enabledevelop = (int) GetVars('app_enabledevelop');
+    $zbp->Config('AppCentre')->enablegzipapp = (int) GetVars('app_enablegzipapp');
+    $zbp->Config('AppCentre')->networktype = trim(GetVars('app_networktype'));
+    $zbp->Config('AppCentre')->firstdomain = trim(GetVars('app_firstdomain'));
+    $zbp->Config('AppCentre')->enablepluginsort = trim(GetVars('app_enablepluginsort'));
+    $zbp->Config('AppCentre')->enablemultidownload = trim(GetVars('app_enablemultidownload'));
+    $zbp->Config('AppCentre')->app_ignores = GetVars('app_ignores');
+    $zbp->Config('AppCentre')->forcehttps = (int) GetVars('app_forcehttps');
     $zbp->SaveConfig('AppCentre');
 
     $zbp->SetHint('good');
@@ -45,10 +49,10 @@ if (GetVars('act') == 'save') {
 }
 
 if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
-
 }
 
 require $blogpath . 'zb_system/admin/admin_header.php';
+
 require $blogpath . 'zb_system/admin/admin_top.php';
 ?>
 <div id="divMain">
@@ -93,17 +97,17 @@ AppCentre_SubMenus(4);
                   <td width="30%" align="left"><p><b>· <?php echo $zbp->lang['AppCentre']['connect_type_background']; ?></b><br/>
                       <span class="note">&nbsp;&nbsp;<?php echo $zbp->lang['AppCentre']['connect_type_background_note']; ?></span></p></td>
                   <td>
-<label><input name="app_networktype" type="radio" value="curl" <?php echo $zbp->Config('AppCentre')->networktype == 'curl' ? 'checked="checked"' : ''; ?> />curl(<?php echo $zbp->lang['msg']['default']; ?>)</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<label><input name="app_networktype" type="radio" value="fsockopen" <?php echo $zbp->Config('AppCentre')->networktype == 'fsockopen' ? 'checked="checked"' : ''; ?> />fsockopen</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<label><input name="app_networktype" type="radio" value="filegetcontents" <?php echo $zbp->Config('AppCentre')->networktype == 'filegetcontents' ? 'checked="checked"' : ''; ?> />filegetcontents</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input name="app_networktype" type="radio" value="curl" <?php echo 'curl' == $zbp->Config('AppCentre')->networktype ? 'checked="checked"' : ''; ?> />curl(<?php echo $zbp->lang['msg']['default']; ?>)</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input name="app_networktype" type="radio" value="fsockopen" <?php echo 'fsockopen' == $zbp->Config('AppCentre')->networktype ? 'checked="checked"' : ''; ?> />fsockopen</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input name="app_networktype" type="radio" value="filegetcontents" <?php echo 'filegetcontents' == $zbp->Config('AppCentre')->networktype ? 'checked="checked"' : ''; ?> />filegetcontents</label>&nbsp;&nbsp;&nbsp;&nbsp;
                   </td>
                 </tr>
                 <tr height="32">
                   <td width="30%" align="left"><p><b>· <?php echo $zbp->lang['AppCentre']['ignore_updated_apps']; ?></b></p></td>
                   <td>
 <?php
-if(!is_array($zbp->Config('AppCentre')->app_ignores)) {
-    $zbp->Config('AppCentre')->app_ignores = array();
+if (!is_array($zbp->Config('AppCentre')->app_ignores)) {
+    $zbp->Config('AppCentre')->app_ignores = [];
 }
 foreach ($zbp->Config('AppCentre')->app_ignores as $key => $value) {
     echo "<label><input type=\"checkbox\" name=\"app_ignores[]\" checked=\"checked\" value=\"{$value}\">&nbsp;{$value}</label>&nbsp;&nbsp;&nbsp;";
@@ -111,12 +115,12 @@ foreach ($zbp->Config('AppCentre')->app_ignores as $key => $value) {
 if (method_exists($zbp, 'GetPreActivePlugin')) {
     $aps = $GLOBALS['zbp']->GetPreActivePlugin();
 } else {
-    $aps = array_unique(explode("|", $zbp->option['ZC_USING_PLUGIN_LIST']));
+    $aps = array_unique(explode('|', $zbp->option['ZC_USING_PLUGIN_LIST']));
 }
-$aps = array_merge(array($zbp->theme) ,$aps);
+$aps = array_merge([$zbp->theme], $aps);
 
 foreach ($aps as $key => $value) {
-    if (in_array($value, $zbp->Config('AppCentre')->app_ignores) || $value == 'AppCentre') {
+    if (in_array($value, $zbp->Config('AppCentre')->app_ignores) || 'AppCentre' == $value) {
         continue;
     }
     echo "<label><input type=\"checkbox\" name=\"app_ignores[]\" value=\"{$value}\">&nbsp;{$value}</label>&nbsp;&nbsp;&nbsp;";
@@ -134,8 +138,8 @@ foreach ($aps as $key => $value) {
                   <td width="30%" align="left"><p><b>· <?php echo $zbp->lang['AppCentre']['domain_of_appcentre']; ?></b><br/>
                       <span class="note">&nbsp;&nbsp;<?php echo $zbp->lang['AppCentre']['domain_of_appcentre_note']; ?></span></p></td>
                   <td>
-<label><input name="app_firstdomain" type="radio" value="zblogcn.com" <?php echo $zbp->Config('AppCentre')->firstdomain == 'zblogcn.com' ? 'checked="checked"' : ''; ?> />app.zblogcn.com(<?php echo $zbp->lang['msg']['default']; ?>)</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<label><input name="app_firstdomain" type="radio" value="zblogcn.net" <?php echo $zbp->Config('AppCentre')->firstdomain == 'zblogcn.net' ? 'checked="checked"' : ''; ?> />app.zblogcn.net</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input name="app_firstdomain" type="radio" value="zblogcn.com" <?php echo 'zblogcn.com' == $zbp->Config('AppCentre')->firstdomain ? 'checked="checked"' : ''; ?> />app.zblogcn.com(<?php echo $zbp->lang['msg']['default']; ?>)</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label><input name="app_firstdomain" type="radio" value="zblogcn.net" <?php echo 'zblogcn.net' == $zbp->Config('AppCentre')->firstdomain ? 'checked="checked"' : ''; ?> />app.zblogcn.net</label>&nbsp;&nbsp;&nbsp;&nbsp;
                   </td>
                 </tr>
                 <tr height="32">
@@ -162,4 +166,3 @@ foreach ($aps as $key => $value) {
 require $blogpath . 'zb_system/admin/admin_footer.php';
 
 RunTime();
-
