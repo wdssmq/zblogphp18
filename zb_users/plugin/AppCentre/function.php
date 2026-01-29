@@ -18,6 +18,12 @@ function AppCentre_SubMenus($id)
         echo '<a href="client.php"><span class="m-left ' . (9 == $id ? 'm-now' : '') . '">' . $zbp->lang['AppCentre']['login_store'] . '</span></a>';
     }
 
+    if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
+        if ($zbp->option['ZC_BACKEND_ID'] === 'backend-legacy') {
+        echo '<div style="flex-grow: 1;"></div>';
+        }
+    }
+
     if (!AppCentre_InSecurityMode()) {
         echo '<a href="setting.php"><span class="m-right ' . (4 == $id ? 'm-now' : '') . '">' . $zbp->lang['AppCentre']['settings'] . '</span></a>';
         echo '<a href="plugin_edit.php"><span class="m-right ' . (5 == $id ? 'm-now' : '') . '">' . $zbp->lang['AppCentre']['new_plugin'] . '</span></a>';

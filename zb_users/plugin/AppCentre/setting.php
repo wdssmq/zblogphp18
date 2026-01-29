@@ -130,11 +130,9 @@ if (!is_array($zbp->Config('AppCentre')->app_ignores)) {
                 </tr>
 
               </table>
-              <hr/>
               <p>
                 <input type="submit" value="<?php echo $zbp->lang['msg']['submit']; ?>" class="button" />
               </p>
-              <hr/>
             </form>
 <?php
     $content = ob_get_clean();
