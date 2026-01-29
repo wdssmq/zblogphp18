@@ -82,6 +82,12 @@ tr {
   }
 }
 
+td {
+    &.tdCenter {
+      text-align: center;
+    }
+  }
+
 @for $i from 1 through 7 {
   .td#{$i * 5} {
     width: #{$i * 5}#{'%'};

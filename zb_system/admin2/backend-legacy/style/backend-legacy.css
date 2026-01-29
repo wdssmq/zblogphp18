@@ -528,6 +528,10 @@ tr.color4 {
   background: #ffffdd;
 }
 
+td.tdCenter {
+  text-align: center;
+}
+
 .td5 {
   width: 5%;
 }
