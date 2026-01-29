@@ -245,9 +245,8 @@ if ($zbp->version >= 150101 && (int) $zbp->option['ZC_LAST_VERSION'] < 150101) {
     if ($zbp->version >= 162090 && (int) $zbp->option['ZC_LAST_VERSION'] < 162090) {
         echo '<input id="updatenow" type="button" onclick="location.href=\'?updatedb\';$(this).hide();" value="' . $zbp->lang['AppCentre']['database_update'] . '" />';
     } ?>
-              </p><hr/>
-
-              <table border="1" width="100%" cellspacing="0" cellpadding="0" class="tableBorder tableBorder-thcenter">
+              </p>
+              <table class="table_hover table_striped tableFull">
                 <tr>
                   <th width='50%'><?php echo $zbp->lang['AppCentre']['current_version']; ?></th>
                   <th><?php echo $zbp->lang['AppCentre']['latest_version']; ?></th>
@@ -271,9 +270,8 @@ if (($newbuild - $nowbuild) > 0) {
         echo '<input id="updatenow" type="button" onclick="location.href=\'?update=' . $nowbuild . '-' . $newbuild . '\';$(this).hide();" value="' . $zbp->lang['AppCentre']['upgrade_program'] . '" />';
     } ?>
               </p>
-              <hr/>
               <div class="divHeader"><?php echo $zbp->lang['AppCentre']['verify_core_file']; ?>&nbsp;&nbsp;<span id="checknow"><a href="?check=now" title="<?php echo $zbp->lang['AppCentre']['start_check']; ?>"><img src="images/refresh.png" width="16" alt="<?php echo $zbp->lang['AppCentre']['check']; ?>" /></a></span></div>
-              <table border="1" width="100%" cellspacing="0" cellpadding="0" class="tableBorder tableBorder-thcenter">
+              <table class="table_hover table_striped tableFull">
                 <tr>
                   <th width='78%'><?php echo $zbp->lang['AppCentre']['filename']; ?></th>
                   <th id="_s"><?php echo $zbp->lang['AppCentre']['states']; ?></th>

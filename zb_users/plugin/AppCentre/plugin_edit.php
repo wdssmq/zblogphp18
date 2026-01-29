@@ -153,7 +153,7 @@ if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
     ob_start(); ?>
 <form method="post" action="">
 <?php echo '<input id="token" name="token" type="hidden" value="' . $zbp->GetToken('AppCentre') . '"/>'; ?>
-  <table border="1" width="100%" cellspacing="0" cellpadding="0" class="tableBorder tableBorder-thcenter">
+  <table class="table_hover table_striped tableFull">
     <tr>
       <th width='28%'>&nbsp;</th>
       <th>&nbsp;</th>

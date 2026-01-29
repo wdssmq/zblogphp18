@@ -74,19 +74,19 @@ if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
     ob_start();
 
     if (!$zbp->Config('AppCentre')->token) { ?>
-            <div class="divHeader2"><?php echo $zbp->lang['AppCentre']['account_login']; ?></div>
+            <div class="divHeader2"></div>
             <form action="?act=login&token=<?php echo $zbp->GetToken('AppCentre'); ?>" method="post">
-              <table width="100%" border="0">
+              <table class="table_hover table_striped tableFull">
                 <tr height="32">
-                  <th align="center"><?php echo $zbp->lang['AppCentre']['account_login']; ?>
-                    </td>
+                  <th align="center"><center><?php echo $zbp->lang['AppCentre']['account_login']; ?>
+                    </center></td>
                 </tr>
                 <tr height="32">
-                  <td  align="center"><?php echo $zbp->lang['AppCentre']['token']; ?>:
-                    <input type="password" name="app_token" value="" style="width:40%"/></td>
+                  <td  align="center"><center><?php echo $zbp->lang['AppCentre']['token']; ?>:
+                    <input type="password" name="app_token" value="" style="width:40%"/></center></td>
                 </tr>
                 <tr height="32" align="center">
-                  <td align="center"><input type="submit" value="<?php echo $zbp->lang['msg']['login']; ?>" class="button" /></td>
+                  <td align="center"><center><input type="submit" value="<?php echo $zbp->lang['msg']['login']; ?>" class="button" /></center></td>
                 </tr>
                 <tr height="32" align="center">
                   <td align="center"><a href="https://user.zblogcn.com/user/security/token" target="_blank"><?php echo $zbp->lang['AppCentre']['get_token']; ?></a>

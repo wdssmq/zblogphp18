@@ -52,7 +52,7 @@ if (version_compare(ZC_VERSION, '1.8.0') >= 0) {
     ob_start(); ?>
             <form action="?act=save" method="post">
             <?php echo '<input id="token" name="token" type="hidden" value="' . $zbp->GetToken('AppCentre') . '"/>'; ?>
-              <table width="100%" border="0">
+              <table class="table_hover table_striped tableFull">
                 <tr height="32">
                   <th colspan="2" align="center"><?php echo $zbp->lang['AppCentre']['settings']; ?>
                     </td>
