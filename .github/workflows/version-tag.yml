@@ -1,0 +1,44 @@
+name: Auto Tag on Version Change
+
+on:
+  push:
+    paths:
+      - 'zb_system/function/c_system_version.php'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous commit
+        id: prev
+        run: echo "PREV_SHA=$(git rev-parse HEAD^1)" >> $GITHUB_ENV
+
+      - name: Extract version from current file
+        id: version_new
+        run: |
+          MAJOR=$(grep "define('ZC_VERSION_MAJOR'" zb_system/function/c_system_version.php | sed "s/.*'\([0-9]\+\)'.*/\1/")
+          MINOR=$(grep "define('ZC_VERSION_MINOR'" zb_system/function/c_system_version.php | sed "s/.*'\([0-9]\+\)'.*/\1/")
+          BUILD=$(grep "define('ZC_VERSION_BUILD'" zb_system/function/c_system_version.php | sed "s/.*'\([0-9]\+\)'.*/\1/")
+          echo "VERSION=$MAJOR.$MINOR.$BUILD" >> $GITHUB_ENV
+
+      - name: Extract version from previous commit
+        id: version_old
+        run: |
+          git show ${{ env.PREV_SHA }}:zb_system/function/c_system_version.php > old_version.php
+          MAJOR=$(grep "define('ZC_VERSION_MAJOR'" old_version.php | sed "s/.*'\([0-9]\+\)'.*/\1/")
+          MINOR=$(grep "define('ZC_VERSION_MINOR'" old_version.php | sed "s/.*'\([0-9]\+\)'.*/\1/")
+          BUILD=$(grep "define('ZC_VERSION_BUILD'" old_version.php | sed "s/.*'\([0-9]\+\)'.*/\1/")
+          echo "OLD_VERSION=$MAJOR.$MINOR.$BUILD" >> $GITHUB_ENV
+
+      - name: Create tag if version changed
+        if: env.VERSION != env.OLD_VERSION
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "AutoTag-${{ env.VERSION }}"
+          git push origin "AutoTag-${{ env.VERSION }}"
